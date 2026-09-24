@@ -1,0 +1,5 @@
+/* افکت شیشه‌ای و چرخشی پیشرفته */
+.flip-card-container {
+    perspective: 1000px;
+    height: 220px;
+}
