@@ -957,24 +957,52 @@ h1 span {
 .crypto-mini-badge:hover .fa-dollar-sign {
     text-shadow: 0 0 15px #28a745;
 }
-.setInterval(() => {
-    const btcEl = document.getElementById('btc-price');
-    const ethEl = document.getElementById('eth-price');
-
-    if (btcEl) {
-        let btcPrice = parseFloat(btcEl.innerText.replace(/[$,]/g, ''));
-        let btcChange = (Math.random() * 40 - 20); // نوسان بین مثبت و منفی ۲۰ دلار
-        let newBtc = btcPrice + btcChange;
-        btcEl.innerText = "$" + newBtc.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        btcEl.className = btcChange >= 0 ? "fw-extrabold mb-0 price-up" : "fw-extrabold mb-0 price-down";
+// === ۹. شبیه‌ساز فوق پیشرفته فید سفارشات زنده و نوسان تیکر تهمینه و مروه ===
+setInterval(() => {
+    // الف) نوسان زنده و تغییر رنگ قیمت بیت‌کوین
+    const btcText = document.getElementById('btc-price');
+    if (btcText) {
+        let btc = parseFloat(btcText.innerText.replace(/[\$,]/g, ''));
+        if (!isNaN(btc)) {
+            let change = (Math.random() * 40 - 20); // نوسان بین مثبت و منفی ۲۰ دلار
+            let finalBtc = btc + change;
+            btcText.innerText = "\$" + finalBtc.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            btcText.className = change >= 0 ? "fw-black mb-0 price-up" : "fw-black mb-0 price-down";
+        }
     }
 
-    if (ethEl) {
-        let ethPrice = parseFloat(ethEl.innerText.replace(/[$,]/g, ''));
-        let ethChange = (Math.random() * 4 - 2); // نوسان بین مثبت و منفی ۲ دلار
-        let newEth = ethPrice + ethChange;
-        ethEl.innerText = "$" + newEth.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        ethEl.className = ethChange >= 0 ? "fw-extrabold mb-0 price-up" : "fw-extrabold mb-0 price-down";
+    // ب) نوسان زنده و تغییر رنگ قیمت اتریوم
+    const ethText = document.getElementById('eth-price');
+    if (ethText) {
+        let eth = parseFloat(ethText.innerText.replace(/[\$,]/g, ''));
+        if (!isNaN(eth)) {
+            let changeEth = (Math.random() * 4 - 2); // نوسان بین مثبت و منفی ۲ دلار
+            let finalEth = eth + changeEth;
+            ethText.innerText = "\$" + finalEth.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            ethText.className = changeEth >= 0 ? "fw-black mb-0 price-up" : "fw-black mb-0 price-down";
+        }
+    }
+
+    // ج) تزریق و تغییر لایو استریم سفارشات خرید و فروش (Order Feed Stream)
+    const feed1 = document.getElementById('feed-1');
+    const feed2 = document.getElementById('feed-2');
+    if (feed1 && feed2) {
+        const isBtc = Math.random() >= 0.5;
+        const isBuy = Math.random() >= 0.5;
+        const vol = (Math.random() * 1.5).toFixed(3);
+
+        if (isBuy) {
+            feed1.className = "order-line text-success d-flex justify-content-between animate-feed";
+            feed1.innerHTML = `<span><i class="fas fa-caret-up me-1"></i> BUY ${isBtc ? 'BTC' : 'ETH'}</span> <span class="fw-bold">${vol}</span>`;
+        } else {
+            feed1.className = "order-line text-danger d-flex justify-content-between animate-feed";
+            feed1.innerHTML = `<span><i class="fas fa-caret-down me-1"></i> SELL ${isBtc ? 'BTC' : 'ETH'}</span> <span class="fw-bold">${vol}</span>`;
+        }
+
+        const vol2 = (Math.random() * 2.5).toFixed(3);
+        const isBuy2 = Math.random() >= 0.5;
+        feed2.className = isBuy2 ? "order-line text-success d-flex justify-content-between" : "order-line text-danger d-flex justify-content-between";
+        feed2.innerHTML = `<span>${isBuy2 ? '🟢 BUY' : '🔴 SELL'} ${!isBtc ? 'BTC' : 'ETH'}</span> <span class="fw-bold">${vol2}</span>`;
     }
 }, 3000);
 
