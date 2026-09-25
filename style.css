@@ -30,3 +30,200 @@
     border-color: rgba(0, 245, 212, 0.3) !important;
     transform: translateX(4px);
 }
+/* === تعریف متغیرهای رنگی صرافی مروه و تهمینه === */
+:root {
+    --dark-bg: #020b14;
+    --navy-primary: #051d3b;
+    --amber-gold: #ff9f1c; /* زرد پررنگ زعفرانی */
+    --accent-cyan: #00f5d4; /* فیروزه‌ای نئونی */
+    --white: #ffffff;
+    --light-gray: #f8f9fa;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--dark-bg);
+}
+
+/* =====================================================
+   انیمیشن‌های عمومی ورود و شناوری (Global Animations)
+===================================================== */
+@keyframes floatAnimation {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-10px); }
+}
+
+@keyframes laserScan {
+    0% { top: 0%; opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { top: 100%; opacity: 0.3; }
+}
+
+@keyframes borderGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* === استایل‌های پیشرفته بخش اعتبار (Trust Section) === */
+.trust-section {
+    background-color: var(--white) !important;
+    position: relative;
+}
+
+/* افکت کادر ویدیو همراه با خط اسکن لیزری متحرک */
+.trust-image {
+    position: relative;
+    border: 2px solid rgba(5, 29, 59, 0.05);
+    animation: floatAnimation 4s ease-in-out infinite alternate;
+}
+
+.trust-image::before {
+    content: '';
+    position: absolute;
+    left: 0; width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+    box-shadow: 0 0 12px var(--accent-cyan), 0 0 20px var(--accent-cyan);
+    z-index: 3;
+    animation: laserScan 3s linear infinite;
+    pointer-events: none;
+}
+
+.trust-image video {
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trust-image:hover video {
+    transform: scale(1.06) scaleX(1.01);
+    filter: brightness(1.1);
+}
+
+/* استایل‌های متن و دکمه درخشان تهمینه */
+.trust-text {
+    animation: floatAnimation 4.5s ease-in-out infinite alternate-reverse;
+}
+
+.btn-modern-glow {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.4s ease !important;
+}
+
+.btn-modern-glow:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 12px 25px rgba(5, 29, 59, 0.3) !important;
+    background-color: var(--amber-gold) !important;
+    color: var(--dark-bg) !important;
+}
+
+.btn-modern-glow:hover .arrow-slide {
+    transform: translateX(6px);
+}
+.arrow-slide { transition: transform 0.3s ease; display: inline-block; }
+
+/* === هاور مگنتیک و نئونی کارت‌های ۴گانه ویژگی === */
+.feature-card {
+    background: var(--light-gray);
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    cursor: pointer;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    background: var(--white) !important;
+    border-color: var(--amber-gold) !important;
+    box-shadow: 0 15px 30px rgba(255, 159, 28, 0.15) !important;
+}
+
+.feature-card .icon-box {
+    transition: transform 0.4s ease;
+}
+
+.feature-card:hover .icon-box {
+    transform: scale(1.15) rotate(15deg);
+}
+
+.feature-card .small-arrow {
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .small-arrow {
+    transform: translate(4px, -4px);
+    color: var(--amber-gold) !important;
+}
+
+/* === استایل بخش خدمات و نمودار متحرک لکوییدیتی === */
+.services-section {
+    background: linear-gradient(135deg, #01060d 0%, #031224 100%) !important;
+}
+
+.moving-chart-container {
+    transition: all 0.4s ease;
+}
+
+.moving-chart-container:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 12px 25px rgba(0, 245, 212, 0.15) !important;
+}
+
+/* افکت نئونی ستون‌های نمودار متحرک شما مروه جان */
+.chart-bar {
+    box-shadow: 0 0 10px rgba(0, 245, 212, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-bar::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, transparent, rgba(255,255,255,0.4), transparent);
+    animation: chartShine 1.5s infinite linear;
+}
+
+@keyframes chartShine {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(-100%); }
+}
+
+.service-card {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.service-card:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: var(--amber-gold) !important;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(255, 159, 28, 0.1) !important;
+}
+
+.mini-service {
+    transition: all 0.3s ease !important;
+}
+
+.mini-service:hover {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: var(--accent-cyan) !important;
+    transform: translateX(6px);
+}
+
+/* === انیمیشن‌های سراسری لود اسکرول === */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+}
