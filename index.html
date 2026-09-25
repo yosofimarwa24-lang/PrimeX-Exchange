@@ -234,6 +234,49 @@
             </div>
         </div>
     </section>
+    <!-- === 🚀 SUPER BONUS: CYBERPUNK LIVE TRADING TERMINAL (Marwa & Tahmina Masterpiece) === -->
+<div class="cyber-terminal-card mt-3 p-3 rounded-4 text-white position-relative overflow-hidden shadow-lg" style="background: linear-gradient(135deg, #010811 0%, #03162b 100%); border: 1px solid #00f5d4; height: 140px; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);">
+    <!-- خطوط اسکن لیزری پس‌زمینه ماتریکس -->
+    <div class="cyber-grid-overlay"></div>
+    
+    <div class="row align-items-center h-100 position-relative z-2">
+        <!-- بخش تیکر قیمت زنده ارزها -->
+        <div class="col-7 border-end border-secondary border-opacity-25">
+            <div class="d-flex justify-content-between align-items-center px-2">
+                <!-- بیت‌کوین -->
+                <div class="ticker-item text-center">
+                    <div class="d-flex align-items-center gap-2 mb-1 justify-content-center">
+                        <i class="fab fa-bitcoin" style="color: #ff9f1c; font-size: 1.4rem; animation: rotateCoin 3s linear infinite;"></i>
+                        <span class="fw-bold tracking-wider" style="font-size: 0.75rem;">BTC/USD</span>
+                    </div>
+                    <h5 class="fw-black mb-0 text-white tracking-tight" id="btc-price" style="font-size: 1.15rem; text-shadow: 0 0 10px rgba(255,255,255,0.2);">$64,250.00</h5>
+                </div>
+                <!-- اتریوم -->
+                <div class="ticker-item text-center">
+                    <div class="d-flex align-items-center gap-2 mb-1 justify-content-center">
+                        <i class="fab fa-ethereum" style="color: #00f5d4; font-size: 1.4rem; animation: pulseCoin 1.5s infinite alternate;"></i>
+                        <span class="fw-bold tracking-wider" style="font-size: 0.75rem;">ETH/USD</span>
+                    </div>
+                    <h5 class="fw-black mb-0 text-white tracking-tight" id="eth-price" style="font-size: 1.15rem; text-shadow: 0 0 10px rgba(255,255,255,0.2);">$3,450.00</h5>
+                </div>
+            </div>
+            <!-- نوار پیشرفت تایمر لود دیتا صرافی -->
+            <div class="w-100 bg-secondary bg-opacity-25 rounded-pill mt-3 position-relative" style="height: 4px; overflow: hidden;">
+                <div class="network-progress-bar" style="width: 100%; height: 100%; background: var(--accent-color); animation: networkLoad 3s infinite linear;"></div>
+            </div>
+        </div>
+
+        <!-- بخش فوق خفن: لایو استریم سفارشات خرید و فروش صرافی مروه -->
+        <div class="col-5">
+            <div class="live-orders-stream px-2 d-flex flex-column gap-1 justify-content-center h-100" style="font-family: monospace; font-size: 0.7rem;">
+                <div class="text-uppercase tracking-wider text-white-50 mb-1 fw-bold" style="font-size: 0.6rem;"><i class="fas fa-satellite-dish fa-spin me-1"></i> Order Feed Stream</div>
+                <div class="order-line text-success d-flex justify-content-between animate-feed" id="feed-1"><span>🟢 BUY BTC</span> <span class="fw-bold">0.452</span></div>
+                <div class="order-line text-danger d-flex justify-content-between animate-feed" id="feed-2"><span>🔴 SELL ETH</span> <span class="fw-bold">1.820</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <script src="script.js"></script>
 </body>

@@ -951,3 +951,80 @@ h1 span {
 
 =======
 >>>>>>> tahmina
+/* افکت هاور نئونی و تغییر پالت رنگی کارت‌های رمزارز صرافی */
+.crypto-mini-badge {
+    cursor: pointer;
+    will-change: transform, border-color, box-shadow;
+}
+
+.crypto-mini-badge:hover {
+    transform: translateY(-4px) scale(1.05);
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.crypto-mini-badge:hover .fa-bitcoin {
+    text-shadow: 0 0 15px #ff9f1c;
+}
+
+.crypto-mini-badge:hover .fa-ethereum {
+    text-shadow: 0 0 15px #00f5d4;
+}
+
+.crypto-mini-badge:hover .fa-dollar-sign {
+    text-shadow: 0 0 15px #28a745;
+}
+// === ۸. شبیه‌ساز کاملاً زنده نوسانات قیمت بیت‌کوین و اتریوم مروه ===
+setInterval(() => {
+    const btcEl = document.getElementById('btc-price');
+    const ethEl = document.getElementById('eth-price');
+
+    if (btcEl) {
+        let btcPrice = parseFloat(btcEl.innerText.replace(/[$,]/g, ''));
+        let btcChange = (Math.random() * 40 - 20); // نوسان بین مثبت و منفی ۲۰ دلار
+        let newBtc = btcPrice + btcChange;
+        btcEl.innerText = "$" + newBtc.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        btcEl.className = btcChange >= 0 ? "fw-extrabold mb-0 price-up" : "fw-extrabold mb-0 price-down";
+    }
+
+    if (ethEl) {
+        let ethPrice = parseFloat(ethEl.innerText.replace(/[$,]/g, ''));
+        let ethChange = (Math.random() * 4 - 2); // نوسان بین مثبت و منفی ۲ دلار
+        let newEth = ethPrice + ethChange;
+        ethEl.innerText = "$" + newEth.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        ethEl.className = ethChange >= 0 ? "fw-extrabold mb-0 price-up" : "fw-extrabold mb-0 price-down";
+    }
+}, 3000);
+/* === استایل‌های ترمینال معاملاتی پیشرفته مروه === */
+.cyber-terminal-card {
+    box-shadow: 0 0 20px rgba(0, 245, 212, 0.1) !important;
+}
+
+.cyber-terminal-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: #ff9f1c !important; /* تبدیل کادر به زرد در هاور */
+    box-shadow: 0 20px 40px rgba(255, 159, 28, 0.25) !important;
+}
+
+/* شبکه ماتریکس پس‌زمینه کارت */
+.cyber-grid-overlay {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(0, 245, 212, 0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0, 245, 212, 0.03) 1px, transparent 1px);
+    background-size: 15px 15px;
+    z-index: 1;
+}
+
+/* انیمیشن بارگذاری شبکه ایبک صرافی مروه */
+@keyframes networkLoad {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* انیمیشن چشمک‌زن ملایم برای فید سفارشات */
+@keyframes rowFlash {
+    0% { opacity: 0.6; transform: scale(0.98); }
+    100% { opacity: 1; transform: scale(1); }
+}
+.animate-feed {
+    animation: rowFlash 0.4s ease-out;
+}
