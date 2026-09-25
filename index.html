@@ -27,14 +27,14 @@
                 <div class="col-lg-5">
                     <div class="trust-image overflow-hidden rounded-4 shadow-lg position-relative" style="height: 380px;">
                        <!-- LEFT VIDEO (جایگزین عکس در بخش تهمینه با افکت سینمایی) -->
-<div class="col-lg-5">
-    <div class="trust-image overflow-hidden rounded-4 shadow-lg position-relative" style="height: 380px; background: #020b14;">
-        <!-- ویدیوی صرافی: به صورت خودکار، بی‌صدا و لوپ پخش می‌شود -->
-        <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
+<!-- LEFT VIDEO (اصلاح شده و مهار شده با کلاس‌های واکنش‌گرای بوت‌استرپ) -->
+<div class="col-lg-5 col-md-12">
+    <div class="trust-image overflow-hidden rounded-4 shadow-lg position-relative w-100" style="height: 380px; background-color: #020b14;">
+        <!-- اعمال استایل‌های مهارکننده کلاس img-fluid و w-100 برای جلوگیری از شکستن خط -->
+        <video autoplay loop muted playsinline class="img-fluid w-100 h-100" style="object-fit: cover; transition: transform 0.6s ease;">
             <source src="./image/aa78a8838f4e1247daa1c7c19a905880_720w.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        
     </div>
 </div>
 
@@ -163,6 +163,24 @@
 
                 <div class="col-lg-7 text-white">
                     <div class="row g-4">
-
+                        <div class="moving-chart-container mt-4 p-3 rounded-4 shadow-sm text-white" style="background: linear-gradient(135deg, #020b14 0%, #051d3b 100%); border: 1px solid rgba(255,255,255,0.06); height: 160px; position: relative; overflow: hidden;">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="fw-bold small" style="color: #ff9f1c;"><i class="fas fa-chart-line me-1"></i> Live Liquidity Flow</span>
+            <span class="badge bg-success-subtle text-success border border-success px-2 py-0.5 rounded-pill item-rate-badge" style="font-size: 0.65rem;">+0.42%</span>
+        </div>
+        <!-- خطوط گرافیکی متحرک نمودار صرافی مروه -->
+        <div class="live-chart-graphics d-flex align-items-end justify-content-between h-75 px-1 pt-3">
+            <div class="chart-bar" style="width: 8%; background: #ff9f1c; height: 30%; border-radius: 4px; transition: height 0.5s ease;"></div>
+            <div class="chart-bar" style="width: 8%; background: #00f5d4; height: 55%; border-radius: 4px; transition: height 0.5s ease;"></div>
+            <div class="chart-bar" style="width: 8%; background: #ff9f1c; height: 40%; border-radius: 4px; transition: height 0.5s ease;"></div>
+            <div class="chart-bar" style="width: 8%; background: #00f5d4; height: 75%; border-radius: 4px; transition: height 0.5s ease;"></div>
+            <div class="chart-bar" style="width: 8%; background: #ff9f1c; height: 50%; border-radius: 4px; transition: height 0.5s ease;"></div>
+            <div class="chart-bar" style="width: 8%; background: #00f5d4; height: 85%; border-radius: 4px; transition: height 0.5s ease;"></div>
+            <div class="chart-bar" style="width: 8%; background: #ff9f1c; height: 65%; border-radius: 4px; transition: height 0.5s ease;"></div>
+            <div class="chart-bar" style="width: 8%; background: #00f5d4; height: 95%; border-radius: 4px; transition: height 0.5s ease;"></div>
+        </div>
+    </div>
+</div>
+<script src="./script.js"></script>
 </body>
 </html>
