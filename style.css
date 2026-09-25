@@ -6,7 +6,7 @@
 
 :root {
   --navy: #061b33;
-  --gold: #e9b83f;
+  --gold: #ff9f1c; /* زرد پررنگ غلیظ و شیک متناسب با تصویر دلارهای شما */
   --gold-light: #f4ce68;
   --white: #ffffff;
 }
@@ -19,70 +19,56 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background: #061b33;
   color: white;
+  overflow-x: hidden;
 }
 
 /* =========================
-   NAVBAR
+   NAVBAR (هاورهای خطی پیشرفته)
 ========================= */
-
 .navbar {
   height: 70px;
   width: 100%;
   padding: 0 5.5%;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  background: #061b33;
-
+  background: rgba(6, 27, 51, 0.95);
+  backdrop-filter: blur(10px);
   position: relative;
   z-index: 10;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
-
-/* Logo */
 
 .brand {
   color: white;
   text-decoration: none;
-
   display: flex;
   align-items: center;
   gap: 9px;
-
   min-width: 205px;
 }
 
 .logo {
   width: 43px;
   height: 43px;
-
   border: 3px solid var(--gold);
   color: var(--gold);
-
   border-radius: 50%;
-
   display: grid;
   place-items: center;
-
   font-size: 23px;
   font-weight: 800;
-
   position: relative;
+  box-shadow: 0 0 15px rgba(255, 159, 28, 0.3);
 }
 
 .logo::after {
   content: "";
-
   position: absolute;
-
   width: 7px;
   height: 7px;
-
   background: var(--gold);
-
   border-radius: 50%;
-
   right: 2px;
   top: 5px;
 }
@@ -99,11 +85,10 @@ body {
 
 .brand-text small {
   font-size: 8px;
-  color: #d7dce2;
+  color: var(--gold);
   margin-top: 4px;
+  letter-spacing: 1px;
 }
-
-/* Navigation */
 
 .nav-links {
   display: flex;
@@ -114,41 +99,37 @@ body {
 
 .nav-links a {
   height: 100%;
-
   display: flex;
   align-items: center;
-
   color: #f2f2f2;
-
   text-decoration: none;
-
-  font-size: 9px;
-
+  font-size: 10px;
+  font-weight: 600;
   position: relative;
+  transition: color 0.3s ease;
+}
+
+/* افکت خطی متحرک زیر لینک‌های منو */
+.nav-links a::after {
+  content: "";
+  height: 2px;
+  width: 0;
+  background: var(--gold);
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--gold);
 }
-
-.nav-links a.active::after {
-  content: "";
-
-  height: 2px;
-  width: 20px;
-
-  background: var(--gold);
-
-  position: absolute;
-
-  bottom: 12px;
-  left: 50%;
-
-  transform: translateX(-50%);
-}
-
-/* Right side */
 
 .nav-right {
   display: flex;
@@ -159,349 +140,259 @@ body {
 .language {
   background: transparent;
   border: 0;
-
   color: white;
-
   font-size: 9px;
-
   cursor: pointer;
+  transition: color 0.3s;
 }
+.language:hover { color: var(--gold); }
 
 .login {
   text-decoration: none;
-
   color: #142238;
-
   background: var(--gold);
-
   border-radius: 18px;
-
   padding: 8px 18px;
-
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
+  transition: all 0.3s ease;
 }
 
 .login:hover {
-  background: var(--gold-light);
+  background: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
 }
 
 .menu-btn {
   display: none;
-
   background: transparent;
   color: white;
-
   border: 0;
-
   font-size: 23px;
-
   cursor: pointer;
 }
 
 /* =========================
-   HERO
+   HERO (عریض، بزرگ و انیمیشن ایبرو)
 ========================= */
-
 .hero {
   min-height: calc(100vh - 70px);
-
   position: relative;
-
   overflow: hidden;
-
   display: flex;
   align-items: center;
-
-  background-image: url("https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=2000&q=85");
-
+  background-image: url("./image/monetjpg.jpg"); /* هماهنگ با تصویر محلی دلارهای شما */
   background-size: cover;
-  background-position: center right;
+  background-position: center;
 }
-
-/* Dark overlay */
 
 .hero-overlay {
   position: absolute;
-
   inset: 0;
-
-  background: linear-gradient(
-    90deg,
-    rgba(4, 25, 46, 0.98) 0%,
-    rgba(4, 25, 46, 0.94) 30%,
-    rgba(4, 25, 46, 0.55) 58%,
-    rgba(4, 25, 46, 0.15) 100%
-  );
+  background: radial-gradient(circle, rgba(6,27,51,0.65) 0%, rgba(4,25,46,0.98) 100%);
+  z-index: 1;
 }
 
-/* Hero content */
+@keyframes heroFadeLeft {
+    0% { opacity: 0; transform: translateX(-40px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
 
+/* بزرگ‌تر کردن عرض بدنه هیرو برای ایجاد حالت پرده عریض سینمایی */
 .hero-content {
   position: relative;
-
   z-index: 2;
-
-  width: min(600px, 48%);
-
+  width: min(750px, 60%); /* تغییر از ۶۰۰ پیکسل به ۷۵۰ پیکسل برای ابعاد بزرگ‌تر */
   margin-left: 6%;
   margin-top: -2%;
+  animation: heroFadeLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* انیمیشن پالس نئونی و درخشش برای متن ایبرو (آبرو) */
+@keyframes eyebrowPulse {
+  0% { transform: scale(1); color: var(--gold); text-shadow: 0 0 5px rgba(255,159,28,0.2); }
+  50% { transform: scale(1.03); color: var(--white); text-shadow: 0 0 15px rgba(255,255,255,0.6); }
+  100% { transform: scale(1); color: var(--gold); text-shadow: 0 0 5px rgba(255,159,28,0.2); }
 }
 
 .eyebrow {
-  color: #dfc873;
-
-  font-size: 12px;
-
-  font-weight: 600;
-
-  margin-bottom: 13px;
+  font-size: 13px; /* افزایش سایز آبرو */
+  font-weight: 700;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  animation: eyebrowPulse 3s infinite ease-in-out; /* اتصال انیمیشن اختصاصی آبرو */
 }
 
+/* بزرگ‌تر کردن ساختار فونت عنوان اصلی صرافی */
 h1 {
   font-family: Georgia, "Times New Roman", serif;
-
-  font-size: clamp(42px, 4.1vw, 72px);
-
-  line-height: 0.98;
-
-  font-weight: 700;
-
-  letter-spacing: -2px;
-
-  margin-bottom: 21px;
+  font-size: clamp(48px, 5vw, 85px); /* ارتقای اندازه فونت عریض سینمایی */
+  line-height: 0.95;
+  font-weight: 800;
+  letter-spacing: -3px;
+  margin-bottom: 25px;
+  color: var(--white);
 }
 
 h1 span {
   color: var(--gold);
 }
 
+/* افزایش ابعاد متن توضیحات */
 .description {
-  max-width: 455px;
-
+  max-width: 550px;
   color: #e0e5ea;
-
-  font-size: 12px;
-
-  line-height: 1.65;
-
-  margin-bottom: 25px;
+  font-size: 14px; /* بزرگ‌تر کردن متن فرعی */
+  line-height: 1.7;
+  margin-bottom: 30px;
+  opacity: 0.95;
 }
-
-/* Buttons */
 
 .hero-buttons {
   display: flex;
   align-items: center;
-
-  gap: 14px;
+  gap: 16px;
 }
 
 .btn {
   text-decoration: none;
-
-  font-size: 10px;
-
-  border-radius: 20px;
-
-  padding: 11px 17px;
-
-  transition: 0.2s ease;
+  font-size: 12px;
+  border-radius: 25px;
+  padding: 13px 26px; /* بزرگ‌تر کردن کادر دکمه‌ها */
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn.primary {
   color: #152033;
-
   background: var(--gold);
-
   font-weight: 700;
+  display: inline-flex;
+  align-items: center;
 }
 
-.btn.primary span {
+.btn.primary:hover {
+  background: var(--white);
+  color: #152033;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(255, 159, 28, 0.4);
+}
+
+.btn.primary:hover .arrow-move {
+  transform: translateX(5px);
+}
+
+.arrow-move {
+  display: inline-block;
+  transition: transform 0.3s ease;
   margin-left: 8px;
 }
 
 .btn.outline {
   color: white;
-
   border: 1px solid #d2d8df;
-
   background: rgba(0, 0, 0, 0.1);
 }
 
 .btn.outline:hover {
-  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
 }
 
-/* Slogan */
-
+/* انیمیشن تپش دایره معلق شیشه‌ای سمت راست */
 .hero-slogan {
   position: absolute;
-
   right: 5.5%;
-  top: 20%;
-
+  top: 22%;
   z-index: 2;
-
   color: white;
-
   font-family: Georgia, "Times New Roman", serif;
-
   font-style: italic;
-
-  font-size: 17px;
-
-  line-height: 1.05;
-
-  transform: rotate(-6deg);
-
+  font-size: 18px;
+  line-height: 1.1;
   text-align: center;
-
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  width: 170px; height: 170px; border-radius: 50%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  animation: rightBadgePulse 2.5s infinite ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+@keyframes rightBadgePulse {
+    0% { transform: scale(1) rotate(-6deg); box-shadow: 0 0 0 0 rgba(255, 159, 28, 0.2); }
+    70% { transform: scale(1.04) rotate(-6deg); box-shadow: 0 0 0 12px rgba(255, 159, 28, 0); }
+    100% { transform: scale(1) rotate(-6deg); box-shadow: 0 0 0 0 rgba(255, 159, 28, 0); }
+}
+
+.hero-slogan:hover {
+  transform: scale(1.08) rotate(0deg);
+  border-color: var(--gold);
 }
 
 .hero-slogan strong {
-  font-size: 20px;
+  font-size: 21px;
+  color: var(--gold);
+  font-weight: 800;
 }
 
 .hero-slogan i {
   display: block;
-
   width: 45px;
   height: 1px;
-
   background: var(--gold);
-
   margin: 7px auto 0;
-
   transform: rotate(-8deg);
 }
 
 /* =========================
-   TABLET
+   TABLET RESPONSIVE
 ========================= */
-
 @media (max-width: 1000px) {
-  .nav-links {
-    gap: 14px;
-  }
-
-  .hero-content {
-    width: 58%;
-  }
+  .nav-links { gap: 14px; }
+  .hero-content { width: 70%; }
 }
 
 /* =========================
-   MOBILE
+   MOBILE RESPONSIVE
 ========================= */
-
 @media (max-width: 800px) {
-  .navbar {
-    height: 64px;
-  }
-
+  .navbar { height: 64px; }
   .nav-links {
     display: none;
-
     position: absolute;
-
-    top: 64px;
-    left: 0;
-    right: 0;
-
-    height: auto;
-
+    top: 64px; left: 0; right: 0;
     padding: 18px 6%;
-
     background: #061b33;
-
     flex-direction: column;
-
     align-items: flex-start;
-
     gap: 17px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .nav-links a {
-    height: auto;
-  }
-
-  .nav-links a.active::after {
-    display: none;
-  }
-
-  .menu-btn {
-    display: block;
-  }
-
-  .language {
-    display: none;
-  }
-
-  .hero {
-    min-height: calc(100vh - 64px);
-
-    background-position: 65% center;
-  }
-
-  .hero-overlay {
-    background: linear-gradient(
-      90deg,
-      rgba(4, 25, 46, 0.98),
-      rgba(4, 25, 46, 0.78)
-    );
-  }
-
-  .hero-content {
-    width: 90%;
-
-    margin-left: 6%;
-  }
-
-  .hero-slogan {
-    display: none;
-  }
+  .nav-links.open { display: flex !important; }
+  .nav-links a { height: auto; padding: 5px 0; font-size: 13px; }
+  .nav-links a::after { bottom: 0; }
+  .menu-btn { display: block; }
+  .language { display: none; }
+  .hero { min-height: calc(100vh - 64px); background-position: center; }
+  .hero-content { width: 90%; margin-left: 6%; }
+  .hero-slogan { display: none; }
 }
-
-/* =========================
-   SMALL MOBILE
-========================= */
 
 @media (max-width: 500px) {
-  .brand {
-    min-width: 0;
-  }
-
-  .brand-text strong {
-    font-size: 11px;
-  }
-
-  .brand-text small {
-    font-size: 7px;
-  }
-
-  .logo {
-    width: 37px;
-    height: 37px;
-  }
-
-  .login {
-    padding: 7px 13px;
-  }
-
-  h1 {
-    font-size: 42px;
-  }
-
-  .description {
-    font-size: 11px;
-  }
-
-  .hero-buttons {
-    flex-wrap: wrap;
-  }
+  .brand { min-width: 0; }
+  .brand-text strong { font-size: 11px; }
+  .brand-text small { font-size: 7px; }
+  .logo { width: 37px; height: 37px; }
+  .login { padding: 7px 13px; }
+  h1 { font-size: 42px; }
+  .description { font-size: 11px; }
+  .hero-buttons { flex-wrap: wrap; }
 }
