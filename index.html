@@ -1,255 +1,155 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <script src="./script.js"></script>
+</head>
+<body>
+    <!-- === START NASRIN SECTIONS === -->
 
-    <title>Global Exchange - Contact</title>
+<!-- =====================================================
+     CONTACT & SUPPORT SECTION (Nasrin)
+===================================================== -->
+<section id="contact" class="contact-section py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="row g-4">
+            
+            <!-- CONTACT FORM (بخش فرم تماس نئونی) -->
+            <div class="col-lg-4 col-md-12">
+                <div class="contact-form p-4 rounded-4 bg-white shadow-sm border">
+                    <h2 class="fw-bold text-dark mb-2" style="font-size: 1.8rem;">Contact Us</h2>
+                    <p class="text-secondary small mb-4">
+                        Have a question? Fill out the form and we'll get back to you soon.
+                    </p>
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <input type="text" id="name" class="form-control rounded-pill px-3 py-2" placeholder="Your Name" required style="font-size: 0.85rem;">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" id="email" class="form-control rounded-pill px-3 py-2" placeholder="Your Email" required style="font-size: 0.85rem;">
+                        </div>
+                        <div class="mb-3">
+                            <select id="subject" class="form-select rounded-pill px-3 py-2" required style="font-size: 0.85rem; color: #6c757d;">
+                                <option value="">Subject</option>
+                                <option>Currency Exchange</option>
+                                <option>Money Transfer</option>
+                                <option>International Payment</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <textarea id="message" class="form-control rounded-4 px-3 py-2" rows="4" placeholder="Your Message" required style="font-size: 0.85rem;"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-modern-glow text-white fw-bold w-100 rounded-pill py-2.5 d-flex align-items-center justify-content-center gap-2" style="background: #03045e; font-size: 0.85rem;">
+                            <i class="fa-solid fa-paper-plane"></i> Send Message
+                        </button>
+                        <p id="formMessage" class="mt-2 small text-center mb-0"></p>
+                    </form>
+                </div>
+            </div>
 
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+            <!-- LOCATION & MAP (نقشه و جزییات صرافی) -->
+            <div class="col-lg-4 col-md-6">
+                <div class="location p-4 rounded-4 bg-white shadow-sm border h-100">
+                    <h3 class="fw-bold text-dark mb-3" style="font-size: 1.3rem;">
+                        <i class="fa-solid fa-location-dot text-warning me-1"></i> Our Location
+                    </h3>
+                    <div class="map overflow-hidden rounded-4 mb-3 border shadow-sm" style="height: 180px;">
+                        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=69.135%2C34.500%2C69.245%2C34.570&layer=mapnik&marker=34.5553%2C69.2075" class="w-100 h-100 border-0" loading="lazy"></iframe>
+                    </div>
+                    <div class="contact-info d-flex flex-column gap-2 text-secondary" style="font-size: 0.82rem;">
+                        <p class="mb-0"><i class="fa-solid fa-phone text-primary me-2"></i> +93 700 000 000</p>
+                        <p class="mb-0"><i class="fa-solid fa-envelope text-success me-2"></i> info@globalexchange.com</p>
+                        <p class="mb-0"><i class="fa-regular fa-clock text-warning me-2"></i> Sun - Thu: 8:00 AM - 6:00 PM</p>
+                        <p class="mb-0 text-danger fw-bold"><i class="fa-solid fa-ban me-2"></i> Fri: 9:00 AM - 1:00 PM</p>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
+            <!-- FAQ ACCORDION (بخش آکاردئون سؤالات) -->
+            <div class="col-lg-4 col-md-6">
+                <div class="support p-4 rounded-4 bg-white shadow-sm border h-100 d-flex flex-column justify-content-between">
+                    <div>
+                        <h3 class="fw-bold text-dark mb-1" style="font-size: 1.3rem;">
+                            <i class="fa-solid fa-circle-question text-info me-1"></i> Need Support?
+                        </h3>
+                        <p class="text-secondary small mb-3">Frequently Asked Questions</p>
+                        
+                        <div class="faq d-flex flex-column gap-2">
+                            <div class="faq-item border rounded-3 overflow-hidden">
+                                <button class="faq-question w-100 bg-light border-0 p-2.5 text-start fw-bold text-dark d-flex justify-content-between align-items-center" style="font-size: 0.8rem; transition: background 0.2s;">
+                                    How can I exchange currency? <span class="text-warning fw-bold">+</span>
+                                </button>
+                                <div class="faq-answer p-2.5 text-secondary border-top bg-white d-none" style="font-size: 0.78rem;">
+                                    Visit one of our branches or contact support for current exchange rates.
+                                </div>
+                            </div>
+                            <div class="faq-item border rounded-3 overflow-hidden">
+                                <button class="faq-question w-100 bg-light border-0 p-2.5 text-start fw-bold text-dark d-flex justify-content-between align-items-center" style="font-size: 0.8rem; transition: background 0.2s;">
+                                    What documents do I need? <span class="text-warning fw-bold">+</span>
+                                </button>
+                                <div class="faq-answer p-2.5 text-secondary border-top bg-white d-none" style="font-size: 0.78rem;">
+                                    A valid identification document may be required.
+                                </div>
+                            </div>
+                            <div class="faq-item border rounded-3 overflow-hidden">
+                                <button class="faq-question w-100 bg-light border-0 p-2.5 text-start fw-bold text-dark d-flex justify-content-between align-items-center" style="font-size: 0.8rem; transition: background 0.2s;">
+                                    Do you offer online services? <span class="text-warning fw-bold">+</span>
+                                </button>
+                                <div class="faq-answer p-2.5 text-secondary border-top bg-white d-none" style="font-size: 0.78rem;">
+                                    Yes, some exchange and transfer services are available online.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn w-100 rounded-pill text-white fw-bold py-2 mt-3 d-flex align-items-center justify-content-center gap-2" style="background: #ff9f1c; font-size: 0.85rem; box-shadow: 0 4px 15px rgba(255,159,28,0.2);">
+                        <i class="fa-regular fa-comments"></i> Chat with Support
+                    </button>
+                </div>
+            </div>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <!-- nasrin start -->
+        </div>
+    </div>
+</section>
 
-  <body>
-    <!-- ================= CONTACT SECTION ================= -->
+<!-- =====================================================
+     GLOBAL SITE FOOTER (Nasrin)
+===================================================== -->
+<footer style="background-color: #020b14; border-top: 1px solid rgba(255,255,255,0.05);">
+    <div class="container py-4">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-4 border-bottom border-secondary border-opacity-25 pb-3">
+            <!-- LOGO -->
+            <div class="d-flex align-items-center gap-2 text-white">
+                <div class="bg-warning text-dark fw-bold rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; font-size: 1.1rem;">G</div>
+                <div class="lh-1">
+                    <strong class="d-block" style="font-size: 0.95rem;">Global Exchange</strong>
+                    <small class="text-warning" style="font-size: 0.7rem;">Safe • Fast • Reliable</small>
+                </div>
+            </div>
 
-    <section class="contact-section">
-      <!-- LEFT IMAGE -->
-      <div class="contact-image"></div>
-
-      <!-- ================= CONTACT FORM ================= -->
-
-      <div class="contact-form">
-        <h2>Contact Us</h2>
-
-        <p class="subtitle">
-          Have a question? Fill out the form and we'll get back to you soon.
-        </p>
-
-        <form id="contactForm">
-          <div class="input-row">
-            <input type="text" id="name" placeholder="Your Name" required />
-
-            <input type="email" id="email" placeholder="Your Email" required />
-          </div>
-
-          <select id="subject" required>
-            <option value="">Subject</option>
-            <option>Currency Exchange</option>
-            <option>Money Transfer</option>
-            <option>International Payment</option>
-            <option>Other</option>
-          </select>
-
-          <textarea id="message" placeholder="Your Message" required></textarea>
-
-          <button type="submit" class="send-btn">
-            <i class="fa-solid fa-paper-plane"></i>
-
-            Send Message
-          </button>
-
-          <p id="formMessage"></p>
-        </form>
-      </div>
-
-      <!-- ================= LOCATION ================= -->
-
-      <div class="location">
-        <h3>
-          <i class="fa-solid fa-location-dot"></i>
-          Our Location
-        </h3>
-
-        <!-- MAP -->
-
-        <div class="map">
-          <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=69.135%2C34.500%2C69.245%2C34.570&layer=mapnik&marker=34.5553%2C69.2075"
-            loading="lazy"
-          >
-          </iframe>
+            <!-- NETWORKS SOCIAL -->
+            <div class="social-links d-flex gap-3">
+                <a href="#" class="text-white-50 fs-5" style="transition: color 0.2s;"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="text-white-50 fs-5" style="transition: color 0.2s;"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="text-white-50 fs-5" style="transition: color 0.2s;"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#" class="text-white-50 fs-5" style="transition: color 0.2s;"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
         </div>
 
-        <!-- CONTACT INFORMATION -->
-
-        <div class="contact-info">
-          <p>
-            <i class="fa-solid fa-phone"></i>
-            +93 700 000 000
-          </p>
-
-          <p>
-            <i class="fa-solid fa-envelope"></i>
-            info@globalexchange.com
-          </p>
-
-          <p>
-            <i class="fa-regular fa-clock"></i>
-            Sun - Thu: 8:00 AM - 6:00 PM
-          </p>
-
-          <p class="friday">Fri: 9:00 AM - 1:00 PM</p>
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 pt-3 text-white-50" style="font-size: 0.78rem;">
+            <span>© 2026 Global Exchange. All Rights Reserved.</span>
+            <a href="#" class="text-warning text-gradient-move text-decoration-none fw-bold d-flex align-items-center gap-1">
+                <i class="fa-solid fa-arrow-up"></i> Back to Top
+            </a>
         </div>
-      </div>
+    </div>
+</footer>
 
-      <!-- ================= FAQ ================= -->
+<!-- === END NASRIN SECTIONS === -->
 
-      <div class="support">
-        <h3>
-          <i class="fa-solid fa-circle-question"></i>
-          Need Support?
-        </h3>
-
-        <p class="subtitle">Frequently Asked Questions</p>
-
-        <div class="faq">
-          <div class="faq-item">
-            <button class="faq-question">
-              How can I exchange currency?
-
-              <span>+</span>
-            </button>
-
-            <div class="faq-answer">
-              Visit one of our branches or contact support for current exchange
-              rates.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              What documents do I need?
-
-              <span>+</span>
-            </button>
-
-            <div class="faq-answer">
-              A valid identification document may be required.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Do you offer online services?
-
-              <span>+</span>
-            </button>
-
-            <div class="faq-answer">
-              Yes, some exchange and transfer services are available online.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              What are your fees?
-
-              <span>+</span>
-            </button>
-
-            <div class="faq-answer">
-              Fees depend on the service and transaction amount.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How long does a transfer take?
-
-              <span>+</span>
-            </button>
-
-            <div class="faq-answer">
-              Transfer times depend on the destination and payment method.
-            </div>
-          </div>
-        </div>
-
-        <button class="support-btn">
-          <i class="fa-regular fa-comments"></i>
-
-          Chat with Support
-        </button>
-      </div>
-    </section>
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-      <div class="footer-main">
-        <!-- LOGO -->
-
-        <div class="logo">
-          <div class="logo-circle">G</div>
-
-          <div>
-            <strong> Global Exchange </strong>
-
-            <small> Safe • Fast • Reliable </small>
-          </div>
-        </div>
-
-        <!-- MENU -->
-
-        <nav>
-          <a href="#">Home</a>
-          <a href="#">About Us</a>
-          <a href="#">Our Team</a>
-          <a href="#">Exchange Rates</a>
-          <a href="#">Services</a>
-          <a href="#">Security</a>
-          <a href="#">Contact</a>
-        </nav>
-
-        <!-- SOCIAL -->
-
-        <div class="social">
-          <a href="#">
-            <i class="fa-brands fa-facebook-f"></i>
-          </a>
-
-          <a href="#">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-
-          <a href="#">
-            <i class="fa-brands fa-telegram"></i>
-          </a>
-
-          <a href="#">
-            <i class="fa-brands fa-linkedin-in"></i>
-          </a>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span> © 2026 Global Exchange. All Rights Reserved. </span>
-
-        <a href="#">
-          <i class="fa-solid fa-arrow-up"></i>
-          Back to Top
-        </a>
-      </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="script.js"></script>
-  </body>
-  <!-- nasrin end -->
+</body>
 </html>

@@ -1,57 +1,41 @@
-/* ================= FAQ ================= */
-
-const questions = document.querySelectorAll(".faq-question");
-
-questions.forEach(function (question) {
-  question.addEventListener("click", function () {
-    const item = question.closest(".faq-item");
-
-    const isActive = item.classList.contains("active");
-
-    /* Close all */
-
-    document.querySelectorAll(".faq-item").forEach(function (otherItem) {
-      otherItem.classList.remove("active");
+// === ۱۰. جاوااسکریپت اختصاصی برنچ نسرین برای مدیریت کلیک‌های آکاردئون FAQ ===
+document.addEventListener("DOMContentLoaded", () => {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            const span = question.querySelector('span');
+            
+            // باز و بسته کردن لایه‌ی پاسخ به صورت انیمیشنی مینی‌مال
+            if (answer.classList.contains('d-none')) {
+                answer.classList.remove('d-none');
+                span.innerText = "−";
+                span.style.color = "#ff9f1c";
+                question.style.backgroundColor = "rgba(255, 159, 28, 0.05)";
+            } else {
+                answer.classList.add('d-none');
+                span.innerText = "+";
+                span.style.color = "";
+                question.style.backgroundColor = "";
+            }
+        });
     });
 
-    /* Open clicked item */
-
-    if (!isActive) {
-      item.classList.add("active");
+    // مدیریت ارسال شبیه‌سازی شده فرم تماس نسرین
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+    if (contactForm && formMessage) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formMessage.innerText = "⏳ Sending your message securely...";
+            formMessage.style.color = "#ff9f1c";
+            
+            setTimeout(() => {
+                formMessage.innerText = "✓ Message sent successfully! We'll contact you soon.";
+                formMessage.style.color = "#28a745";
+                contactForm.reset();
+            }, 2000);
+        });
     }
-  });
-});
-
-/* ================= CONTACT FORM ================= */
-
-const form = document.getElementById("contactForm");
-
-const formMessage = document.getElementById("formMessage");
-
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  if (!form.checkValidity()) {
-    formMessage.textContent = "Please complete all required fields.";
-
-    formMessage.style.color = "#ffaaaa";
-
-    form.reportValidity();
-
-    return;
-  }
-
-  formMessage.textContent = "Message sent successfully!";
-
-  formMessage.style.color = "#9ee6ae";
-
-  form.reset();
-});
-
-/* ================= SUPPORT BUTTON ================= */
-
-const supportButton = document.querySelector(".support-btn");
-
-supportButton.addEventListener("click", function () {
-  alert("Support chat would open here.");
 });
