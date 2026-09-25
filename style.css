@@ -59,3 +59,98 @@
 .animate-bounce {
     animation: bounce 1s infinite;
 }
+/* کدهای فوق پیشرفته و مدرن صرافی مروه */
+.fw-black { font-weight: 900; }
+.tracking-wide { letter-spacing: 1px; font-size: 0.8rem; }
+.text-navy { color: #051d3b; }
+
+/* متن با گرادینت متحرک خفن */
+.text-gradient-move {
+    background: linear-gradient(135deg, #051d3b 0%, #0d6efd 50%, #020b14 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shineText 4s linear infinite;
+}
+@keyframes shineText {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* کارت‌های مینی‌مال با افکت نوری سایه ملایم */
+.modern-feature-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modern-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(13, 110, 253, 0.08);
+    border-color: rgba(13, 110, 253, 0.2);
+}
+
+/* دایره آیکون‌ها */
+.icon-circle {
+    width: 45px;
+    height: 45px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+/* دکمه با افکت موج متحرک شیک */
+.btn-modern-glow {
+    background: #051d3b;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(5, 29, 59, 0.2);
+}
+.btn-modern-glow::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: all 0.6s ease;
+}
+.btn-modern-glow:hover::before {
+    left: 100%;
+}
+.btn-modern-glow:hover {
+    background: #0d6efd;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.3);
+}
+.btn-modern-glow:hover .arrow-slide {
+    transform: translateX(4px);
+}
+.arrow-slide { transition: transform 0.3s ease; }
+
+/* فریم پیشرفته و انیمیشنی تصویر ساختمان */
+.modern-img-frame {
+    background: #f8f9fa;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.scale-img {
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modern-img-frame:hover .scale-img {
+    transform: scale(1.05) rotate(1deg); /* یک چرخش و زوم فوق‌العاده ریز و هنری */
+}
+
+/* کارت شناور روی عکس */
+.floating-badge {
+    bottom: -20px;
+    left: -20px;
+    z-index: 3;
+    backdrop-filter: blur(10px);
+    background: rgba(5, 29, 59, 0.95) !important;
+}
+.animate-spin-slow {
+    animation: spinnerSlow 8s linear infinite;
+}
+@keyframes spinnerSlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
