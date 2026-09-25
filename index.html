@@ -9,147 +9,216 @@
     <script src="./script.js"></script>
 </head>
 <body>
-    <!-- === START NASRIN SECTIONS === -->
-
-<!-- =====================================================
-     CONTACT & SUPPORT SECTION (Nasrin)
-===================================================== -->
-<section id="contact" class="contact-section py-5" style="background-color: #f8f9fa;">
+        <!-- === 6. ROTATING DOUGHNUT CHART SECTION (Marwa restoration) === -->
+   <!-- === 🚀 NASRIN PRODUCTION LAYER: CONTACT & 5 DYNAMIC COLLAPSES === -->
+<section id="contact" class="contact-section py-5 position-relative overflow-hidden" style="background: linear-gradient(180deg, #f8f9fa 0%, #eef1f6 100%); border-top: 1px solid rgba(0,0,0,0.05);">
     <div class="container">
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
             
-            <!-- CONTACT FORM (بخش فرم تماس نئونی) -->
+            <!-- CONTACT FORM (فرم تماس فوق پیشرفته نئونی) -->
             <div class="col-lg-4 col-md-12">
-                <div class="contact-form p-4 rounded-4 bg-white shadow-sm border">
-                    <h2 class="fw-bold text-dark mb-2" style="font-size: 1.8rem;">Contact Us</h2>
-                    <p class="text-secondary small mb-4">
-                        Have a question? Fill out the form and we'll get back to you soon.
-                    </p>
+                <div class="contact-form p-4 rounded-4 bg-white shadow-lg border position-relative overflow-hidden cyber-box-neon">
+                    <h2 class="fw-black text-dark mb-2 tracking-tight" style="font-size: 1.8rem; font-weight: 900;"><i class="fas fa-satellite-dish text-warning me-1"></i> Contact Node</h2>
+                    <p class="text-secondary small mb-4 fw-medium">Securely broadcast your metrics to our central matrix network.</p>
                     <form id="contactForm">
+                        <div class="mb-3"><input type="text" id="name" class="form-control rounded-pill px-3 py-2.5 custom-cyber-input" placeholder="Your Name" required style="font-size: 0.85rem;"></div>
+                        <div class="mb-3"><input type="email" id="email" class="form-control rounded-pill px-3 py-2.5 custom-cyber-input" placeholder="Your Email" required style="font-size: 0.85rem;"></div>
                         <div class="mb-3">
-                            <input type="text" id="name" class="form-control rounded-pill px-3 py-2" placeholder="Your Name" required style="font-size: 0.85rem;">
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" id="email" class="form-control rounded-pill px-3 py-2" placeholder="Your Email" required style="font-size: 0.85rem;">
-                        </div>
-                        <div class="mb-3">
-                            <select id="subject" class="form-select rounded-pill px-3 py-2" required style="font-size: 0.85rem; color: #6c757d;">
-                                <option value="">Subject</option>
-                                <option>Currency Exchange</option>
-                                <option>Money Transfer</option>
-                                <option>International Payment</option>
-                                <option>Other</option>
+                            <select id="subject" class="form-select rounded-pill px-3 py-2.5 custom-cyber-input" required style="font-size: 0.85rem; color: #6c757d;">
+                                <option value="">Select Protocol Metric</option>
+                                <option>Currency Liquidity</option>
+                                <option>Instant Money Remittance</option>
+                                <option>Crypto Vault Settlement</option>
+                                <option>Other Firewall Issue</option>
                             </select>
                         </div>
-                        <div class="mb-3">
-                            <textarea id="message" class="form-control rounded-4 px-3 py-2" rows="4" placeholder="Your Message" required style="font-size: 0.85rem;"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-modern-glow text-white fw-bold w-100 rounded-pill py-2.5 d-flex align-items-center justify-content-center gap-2" style="background: #03045e; font-size: 0.85rem;">
-                            <i class="fa-solid fa-paper-plane"></i> Send Message
+                        <div class="mb-3"><textarea id="message" class="form-control rounded-4 px-3 py-2.5 custom-cyber-input" rows="3" placeholder="Write Security Message..." required style="font-size: 0.85rem Holy;"></textarea></div>
+                        <button type="submit" class="btn btn-cyber-submit text-white fw-bold w-100 rounded-pill py-2.5 d-flex align-items-center justify-content-center gap-2" style="background: #03045e; border: none; font-size: 0.85rem;">
+                            <i class="fas fa-paper-plane btn-plane-icon"></i> Broadcast Message
                         </button>
-                        <p id="formMessage" class="mt-2 small text-center mb-0"></p>
+                        <p id="formMessage" class="mt-2 small text-center mb-0" style="font-weight: 700;"></p>
                     </form>
                 </div>
             </div>
 
-            <!-- LOCATION & MAP (نقشه و جزییات صرافی) -->
+            <!-- LOCATION & LIVE ONLINE MAP (نقشه تعاملی اینترنتی بدون کادر سفید) -->
             <div class="col-lg-4 col-md-6">
-                <div class="location p-4 rounded-4 bg-white shadow-sm border h-100">
-                    <h3 class="fw-bold text-dark mb-3" style="font-size: 1.3rem;">
-                        <i class="fa-solid fa-location-dot text-warning me-1"></i> Our Location
-                    </h3>
-                    <div class="map overflow-hidden rounded-4 mb-3 border shadow-sm" style="height: 180px;">
-                        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=69.135%2C34.500%2C69.245%2C34.570&layer=mapnik&marker=34.5553%2C69.2075" class="w-100 h-100 border-0" loading="lazy"></iframe>
+                <div class="location p-4 rounded-4 bg-white shadow-lg border h-100 tile-cyber-hover">
+                    <h3 class="fw-bold text-dark mb-3" style="font-size: 1.25rem;"><i class="fas fa-map-marked-alt text-warning me-1"></i> HQ Live Terminal</h3>
+                    <div class="map overflow-hidden rounded-4 mb-3 border shadow-sm position-relative map-cyber-container" style="height: 180px; background: #020b14;">
+                        <!-- نقشه تعاملی گوگل مپس آنلاین و اینترنتی -->
+                        <iframe src="https://google.com" class="w-100 h-100 border-0 map-iframe" allowfullscreen="" loading="lazy" style="filter: invert(90%) hue-rotate(180deg) contrast(1.15);"></iframe>
                     </div>
-                    <div class="contact-info d-flex flex-column gap-2 text-secondary" style="font-size: 0.82rem;">
-                        <p class="mb-0"><i class="fa-solid fa-phone text-primary me-2"></i> +93 700 000 000</p>
-                        <p class="mb-0"><i class="fa-solid fa-envelope text-success me-2"></i> info@globalexchange.com</p>
-                        <p class="mb-0"><i class="fa-regular fa-clock text-warning me-2"></i> Sun - Thu: 8:00 AM - 6:00 PM</p>
-                        <p class="mb-0 text-danger fw-bold"><i class="fa-solid fa-ban me-2"></i> Fri: 9:00 AM - 1:00 PM</p>
+                    <div class="contact-info d-flex flex-column gap-2 text-secondary fw-medium" style="font-size: 0.82rem;">
+                        <p class="mb-0"><i class="fas fa-phone-alt text-primary me-2"></i> Hot-Line: +93 700 000 000</p>
+                        <p class="mb-0"><i class="fas fa-network-wired text-success me-2"></i> Core Node: info@globalexchange.com</p>
+                        <p class="mb-0"><i class="far fa-clock text-warning me-2"></i> Mainframe: Sun - Thu: 8:00 AM - 6:00 PM</p>
                     </div>
                 </div>
             </div>
 
-            <!-- FAQ ACCORDION (بخش آکاردئون سؤالات) -->
+            <!-- FAQ SUPPORT LINE (بخش جذاب ۵ کالاپس / آکاردئون داینامیک) -->
             <div class="col-lg-4 col-md-6">
-                <div class="support p-4 rounded-4 bg-white shadow-sm border h-100 d-flex flex-column justify-content-between">
+                <div class="support p-4 rounded-4 bg-white shadow-lg border h-100 d-flex flex-column justify-content-between tile-cyber-hover">
                     <div>
-                        <h3 class="fw-bold text-dark mb-1" style="font-size: 1.3rem;">
-                            <i class="fa-solid fa-circle-question text-info me-1"></i> Need Support?
-                        </h3>
-                        <p class="text-secondary small mb-3">Frequently Asked Questions</p>
+                        <h3 class="fw-bold text-dark mb-1" style="font-size: 1.25rem;"><i class="fas fa-shield-virus text-info me-1"></i> Firewall Support</h3>
+                        <p class="text-secondary small mb-3 fw-medium">Frequently Asked Questions — 5 Active Nodes</p>
                         
                         <div class="faq d-flex flex-column gap-2">
-                            <div class="faq-item border rounded-3 overflow-hidden">
-                                <button class="faq-question w-100 bg-light border-0 p-2.5 text-start fw-bold text-dark d-flex justify-content-between align-items-center" style="font-size: 0.8rem; transition: background 0.2s;">
-                                    How can I exchange currency? <span class="text-warning fw-bold">+</span>
+                            <div class="faq-cyber-item border rounded-3 overflow-hidden">
+                                <button type="button" class="faq-question w-100 bg-light border-0 p-2 text-start fw-bold text-dark d-flex justify-content-between align-items-center" style="font-size: 0.78rem;">
+                                    1. How can I exchange currency safely? <span class="text-warning">+</span>
                                 </button>
-                                <div class="faq-answer p-2.5 text-secondary border-top bg-white d-none" style="font-size: 0.78rem;">
-                                    Visit one of our branches or contact support for current exchange rates.
-                                </div>
+                                <div class="faq-answer p-2.5 text-secondary border-top bg-white d-none" style="font-size: 0.75rem;">Visit our main validated cryptographic branches or deploy instant conversion modals online.</div>
                             </div>
-                            <div class="faq-item border rounded-3 overflow-hidden">
-                                <button class="faq-question w-100 bg-light border-0 p-2.5 text-start fw-bold text-dark d-flex justify-content-between align-items-center" style="font-size: 0.8rem; transition: background 0.2s;">
-                                    What documents do I need? <span class="text-warning fw-bold">+</span>
+                            <div class="faq-cyber-item border rounded-3 overflow-hidden">
+                                <button type="button" class="faq-question w-100 bg-light border-0 p-2 text-start fw-bold text-dark d-flex justify-content-between align-items-center" style="font-size: 0.78rem;">
+                                    2. What compliance documents are required? <span class="text-warning">+</span>
                                 </button>
-                                <div class="faq-answer p-2.5 text-secondary border-top bg-white d-none" style="font-size: 0.78rem;">
-                                    A valid identification document may be required.
-                                </div>
+                                <div class="faq-answer p-2.5 text-secondary border-top bg-white d-none" style="font-size: 0.75rem;">A validated biometrics passport or government-issued identification layer is essential.</div>
                             </div>
-                            <div class="faq-item border rounded-3 overflow-hidden">
-                                <button class="faq-question w-100 bg-light border-0 p-2.5 text-start fw-bold text-dark d-flex justify-content-between align-items-center" style="font-size: 0.8rem; transition: background 0.2s;">
-                                    Do you offer online services? <span class="text-warning fw-bold">+</span>
+                            <div class="faq-cyber-item border rounded-3 overflow-hidden">
+                                <button type="button" class="faq-question w-100 bg-light border-0 p-2 text-start fw-bold text-dark d-flex justify-content-between align-items-center" style="font-size: 0.78rem;">
+                                    3. Do you support crypto vault liquidity? <span class="text-warning">+</span>
                                 </button>
-                                <div class="faq-answer p-2.5 text-secondary border-top bg-white d-none" style="font-size: 0.78rem;">
-                                    Yes, some exchange and transfer services are available online.
-                                </div>
+                                <div class="faq-answer p-2.5 text-secondary border-top bg-white d-none" style="font-size: 0.75rem;">Yes, we process multi-layered settlements in Bitcoin (BTC), Ethereum (ETH), and Tether (USDT).</div>
+                            </div>
+                            <div class="faq-cyber-item border rounded-3 overflow-hidden">
+                                <button type="button" class="faq-question w-100 bg-light border-0 p-2 text-start fw-bold text-dark d-flex justify-content-between align-items-center" style="font-size: 0.78rem;">
+                                    4. What are the commission metrics? <span class="text-warning">+</span>
+                                </button>
+                                <div class="faq-answer p-2.5 text-secondary border-top bg-white d-none" style="font-size: 0.75rem;">Our policies strictly enforce zero hidden commissions; rates are directly synced to global APIs.</div>
+                            </div>
+                            <div class="faq-cyber-item border rounded-3 overflow-hidden">
+                                <button type="button" class="faq-question w-100 bg-light border-0 p-2 text-start fw-bold text-dark d-flex justify-content-between align-items-center" style="font-size: 0.78rem;">
+                                    5. What is the average transfer latency? <span class="text-warning">+</span>
+                                </button>
+                                <div class="faq-answer p-2.5 text-secondary border-top bg-white d-none" style="font-size: 0.75rem;">International remittance channels are processed within 120 seconds under firewall protection.</div>
                             </div>
                         </div>
                     </div>
-                    <button class="btn w-100 rounded-pill text-white fw-bold py-2 mt-3 d-flex align-items-center justify-content-center gap-2" style="background: #ff9f1c; font-size: 0.85rem; box-shadow: 0 4px 15px rgba(255,159,28,0.2);">
-                        <i class="fa-regular fa-comments"></i> Chat with Support
-                    </button>
+                    <button type="button" class="btn super-radar-button w-100 rounded-pill text-white fw-bold py-2 mt-3 d-flex align-items-center justify-content-center gap-2" style="background: #ff9f1c; font-size: 0.85rem; border: none;"><i class="fas fa-network-wired"></i> Activate Live Core Chat</button>
                 </div>
             </div>
 
         </div>
     </div>
 </section>
-
 <!-- =====================================================
-     GLOBAL SITE FOOTER (Nasrin)
+     MEGA LONG CINEMATIC FOOTER (فوتر طولانی، منظم و مستند نسرین)
 ===================================================== -->
-<footer style="background-color: #020b14; border-top: 1px solid rgba(255,255,255,0.05);">
-    <div class="container py-4">
-        <div class="d-flex flex-wrap align-items-center justify-content-between gap-4 border-bottom border-secondary border-opacity-25 pb-3">
-            <!-- LOGO -->
-            <div class="d-flex align-items-center gap-2 text-white">
-                <div class="bg-warning text-dark fw-bold rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; font-size: 1.1rem;">G</div>
-                <div class="lh-1">
-                    <strong class="d-block" style="font-size: 0.95rem;">Global Exchange</strong>
-                    <small class="text-warning" style="font-size: 0.7rem;">Safe • Fast • Reliable</small>
+<footer class="footer-cinema py-5" style="background: linear-gradient(135deg, #010811 0%, #031427 100%); border-top: 2px solid rgba(0, 245, 212, 0.2); position: relative; overflow: hidden;">
+    <div class="footer-bg-glow"></div>
+    <div class="container position-relative z-2">
+        
+        <!-- ردیف اصلی اطلاعات عریض و طولانی فوتر صرافی -->
+        <div class="row g-5 text-start border-bottom border-secondary border-opacity-25 pb-5 mb-4">
+            
+            <!-- ستون ۱: توضیحات مهندسی پروژه تیمی -->
+            <div class="col-lg-4 col-md-12 text-white">
+                <div class="footer-logo d-flex align-items-center gap-2 text-white mb-3">
+                    <div class="logo-ball text-dark fw-bold rounded-circle d-flex align-items-center justify-content-center animate-pulse-gold" style="width: 42px; height: 42px; font-size: 1.2rem; background-color: #ff9f1c; box-shadow: 0 0 20px rgba(255,159,28,0.5);">G</div>
+                    <div class="lh-1">
+                        <strong class="d-block text-white" style="font-size: 1.2rem; font-weight: 900;">PrimeX Global</strong>
+                        <small class="text-warning fw-bold text-uppercase" style="font-size: 0.68rem; letter-spacing: 1px;">Cryptographic Protocol 2026</small>
+                    </div>
+                </div>
+                <p class="text-white-50 small lh-lg pe-lg-3">
+                    PrimeX-Exchange is a decentralized-inspired financial web architecture developed under advanced responsive grid layouts. This framework implements strict client-side calculations, custom viewports, and infinite transform pulse parameters to secure real-time node streaming.
+                </p>
+            </div>
+
+            <!-- ستون ۲: منابع فنی توسعه (Stack Resources) -->
+            <div class="col-lg-4 col-md-6 text-white">
+                <h5 class="text-warning fw-bold mb-4 text-uppercase" style="font-size: 0.95rem; letter-spacing: 1.5px;"><i class="fas fa-terminal text-info me-2"></i> Tech Stack Resources</h5>
+                <ul class="list-unstyled d-flex flex-column gap-3 text-white-50 small" style="line-height: 1.4;">
+                    <li><i class="fas fa-code text-info me-2"></i> <strong>Core Framework:</strong> Bootstrap v5.0.2 Production Distribution Bundle Layouts</li>
+                    <li><i class="fas fa-icons text-success me-2"></i> <strong>Vector Matrices:</strong> FontAwesome Free v5.15.1 Web Kit Icons & Typography</li>
+                    <li><i class="fas fa-chart-pie text-warning me-2"></i> <strong>Mathematical Layout:</strong> CSS Conic-Gradient Layout Engine & Transform Cycles</li>
+                    <li><i class="fas fa-server text-danger me-2"></i> <strong>Async Logic Engine:</strong> Native HTML5 DOMContentLoaded & IntersectionObserver Core APIs</li>
+                </ul>
+            </div>
+
+            <!-- ستون ۳: مآخذ و مراجع پروژه (Bibliographies) -->
+            <div class="col-lg-4 col-md-6 text-white">
+                <h5 class="text-warning fw-bold mb-4 text-uppercase" style="font-size: 0.95rem; letter-spacing: 1.5px;"><i class="fas fa-book text-success me-2"></i> Project Bibliographies</h5>
+                <ul class="list-unstyled d-flex flex-column gap-3 text-white-50 small" style="line-height: 1.4;">
+                    <li><i class="fas fa-link text-muted me-2"></i> <strong>Distributed Networks:</strong> Cloudflare Distributed CDN Services [cdnjs engine]</li>
+                    <li><i class="fas fa-map text-muted me-2"></i> <strong>Map Engine Protocol:</strong> Google Maps API Live Embed Cartographic Overlays</li>
+                    <li><i class="fas fa-images text-muted me-2"></i> <strong>Media Databases:</strong> Unsplash Curated High-Definition Digital Photography Libraries</li>
+                    <li><i class="fas fa-network-wired text-muted me-2"></i> <strong>Version Control Layer:</strong> GitHub Enterprise Multi-Branch Collaboration Repositories</li>
+                </ul>
+            </div>
+            
+        </div>
+
+        <!-- ردیف لینک‌های منو و گوی‌های چرخشی ۳۶۰ درجه شبکه‌های اجتماعی -->
+        <div class="row align-items-center g-4 border-bottom border-secondary border-opacity-25 pb-4 mb-4">
+            <div class="col-md-6 text-center text-md-start">
+                <div class="footer-nav d-flex flex-wrap justify-content-center justify-content-md-start gap-4">
+                    <a href="#" class="f-cyber-link text-white-50 text-decoration-none small text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 1px;">Home Terminal</a>
+                    <a href="#about-us-section" class="f-cyber-link text-white-50 text-decoration-none small text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 1px;">About Node</a>
+                    <a href="#rates" class="f-cyber-link text-white-50 text-decoration-none small text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 1px;">Live Markets</a>
+                    <a href="#contact" class="f-cyber-link text-white-50 text-decoration-none small text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 1px;">Secure Contact</a>
                 </div>
             </div>
-
-            <!-- NETWORKS SOCIAL -->
-            <div class="social-links d-flex gap-3">
-                <a href="#" class="text-white-50 fs-5" style="transition: color 0.2s;"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" class="text-white-50 fs-5" style="transition: color 0.2s;"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="text-white-50 fs-5" style="transition: color 0.2s;"><i class="fa-brands fa-telegram"></i></a>
-                <a href="#" class="text-white-50 fs-5" style="transition: color 0.2s;"><i class="fa-brands fa-linkedin-in"></i></a>
+            
+            <div class="col-md-6 text-center text-md-end">
+                <div class="social-orb-group d-flex justify-content-center justify-content-md-end gap-3">
+                    <a href="https://facebook.com" class="social-cyber-orb fb-hover" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" class="social-cyber-orb inst-hover" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://telegram.org" class="social-cyber-orb tg-hover" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://github.com" class="social-cyber-orb link-hover" title="GitHub" style="color: #6e5494;"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com" class="social-cyber-orb link-hover" title="LinkedIn" style="color: #0077b5;"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
         </div>
 
-        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 pt-3 text-white-50" style="font-size: 0.78rem;">
-            <span>© 2026 Global Exchange. All Rights Reserved.</span>
-            <a href="#" class="text-warning text-gradient-move text-decoration-none fw-bold d-flex align-items-center gap-1">
-                <i class="fa-solid fa-arrow-up"></i> Back to Top
+        <!-- پایین‌ترین لایه‌ی حقوقی سایت -->
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 text-white-50" style="font-size: 0.78rem;">
+            <span class="fw-medium text-muted">© 2026 Global Exchange Inc. Secure Encryption Trading Protocols Active.</span>
+            <a href="#" class="back-to-top-cyber text-warning text-decoration-none fw-bold d-flex align-items-center gap-1">
+                <i class="fas fa-chevron-circle-up text-warning fs-5"></i> Upper Terminal Base
             </a>
         </div>
+        
     </div>
 </footer>
 
-<!-- === END NASRIN SECTIONS === -->
+<!-- پنجره مودال پاپ‌آپ ماشین حساب صرافی مروه -->
+<div class="modal fade" id="convertModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-white rounded-4 border-0 shadow-lg" style="background: linear-gradient(135deg, #020b14 0%, #051d3b 100%);">
+            <div class="modal-header border-bottom border-secondary">
+                <h5 class="modal-title fw-bold">💱 Live Currency Converter</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form id="modalCalcForm">
+                    <div class="mb-3">
+                        <label class="form-label text-white-50 small">Amount to Convert ($)</label>
+                        <input type="number" class="form-control bg-dark text-white border-secondary" id="convertAmount" value="100">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white-50 small">Target Currency Metric</label>
+                        <select class="form-select bg-dark text-white border-secondary" id="targetCurrency">
+                            <option value="70.50">USD to AFN (Rate: 70.50)</option>
+                            <option value="79.00">EUR to AFN (Rate: 79.00)</option>
+                            <option value="91.50">GBP to AFN (Rate: 91.50)</option>
+                        </select>
+                    </div>
+                    <div class="p-3 rounded-3 mt-4 text-center" style="background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.1);">
+                        <span class="text-white-50 small d-block mb-1">Estimated Result</span>
+                        <h3 class="fw-bold text-warning mb-0" id="calculationResult">7,050.00 AFN</h3>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- اسکریپت‌های نهایی انتهای سند -->
+<script src="./bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+<script src="./script.js"></script>
 </body>
 </html>
