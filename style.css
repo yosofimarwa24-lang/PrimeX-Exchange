@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
     --primary-color: #0077b6;      
     --dark-color: #03045e;        
@@ -322,7 +323,7 @@
     animation: dynamicGlow 10s linear infinite alternate;
 }
 
-
+=======
 * {
   margin: 0;
   padding: 0;

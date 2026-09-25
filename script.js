@@ -108,8 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
         currencySelect.addEventListener('change', calculateExchange);
     }
 });
-
-=======
 document.addEventListener("DOMContentLoaded", () => {
     // === ۱. مدیریت منوی همبرگری در موبایل ===
     const menuBtn = document.getElementById("menuBtn");
@@ -143,4 +141,3 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
->>>>>>> zobaideh
