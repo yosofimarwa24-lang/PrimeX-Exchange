@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 :root {
-
     --primary-color: #0077b6;      
     --dark-color: #03045e;        
     --light-bg: #f8f9fa;           
@@ -299,7 +298,7 @@ body {
 }
 
 .flip-card-container:hover .flip-card-front {
-    border-color: var(--accent-color) !important;
+    border-color: var(--accent-color);
 }
 
 /* ۷. انیمیشن ملایم لرزش پرچم‌ها هنگام رفتن ماوس روی کارت */
@@ -311,20 +310,13 @@ body {
     0% { transform: rotate(-3deg) scale(1.05); }
     100% { transform: rotate(3deg) scale(1.05); }
 }
-/* === انیمیشن‌های سراسری ورود عناصر صفحه پروژه مروه === */
-
-/* کلاس‌های پایه برای انیمیشن‌های اسکرول */
 .reveal-on-scroll {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: opacity, transform;
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);}
+    will-change:{ opacity: 0;
+     transform: scale(1.06) rotate(1deg);
 }
-
-/* حالت فعال که توسط جاوااسکریپت تزریق می‌شود */
-=======
-/* === استایل‌های تعاملی و انیمیشنی بخش تهمینه === */
-
 .trust-image:hover .scale-img {
     transform: scale(1.06) rotate(1deg);
 }
@@ -970,43 +962,29 @@ setInterval(() => {
             btcText.className = change >= 0 ? "fw-black mb-0 price-up" : "fw-black mb-0 price-down";
         }
     }
+// === بخش نوسان زنده قیمت بیت‌کوین و اتریوم صرافی مروه جان 
+.setInterval(() => {
+    const btcEl = document.getElementById('btc-price');
+    const ethEl = document.getElementById('eth-price');
 
-    // ب) نوسان زنده و تغییر رنگ قیمت اتریوم
-    const ethText = document.getElementById('eth-price');
-    if (ethText) {
-        let eth = parseFloat(ethText.innerText.replace(/[\$,]/g, ''));
-        if (!isNaN(eth)) {
-            let changeEth = (Math.random() * 4 - 2); // نوسان بین مثبت و منفی ۲ دلار
-            let finalEth = eth + changeEth;
-            ethText.innerText = "\$" + finalEth.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            ethText.className = changeEth >= 0 ? "fw-black mb-0 price-up" : "fw-black mb-0 price-down";
-        }
+    if (btcEl) {
+        // تغییر از const به let برای مجاز بودن نوسان قیمت
+        let btcPrice = parseFloat(btcEl.innerText.replace(/[$,]/g, ''));
+        let btcChange = (Math.random() * 40 - 20); // نوسان بین مثبت و منفی ۲۰ دلار
+        let newBtc = btcPrice + btcChange;
+        btcEl.innerText = "$" + newBtc.toLocaleString('en-US', { minimumFractionDigits: 2, .maximumFractionDigits: 2 });
+        btcEl.className = btcChange >= 0 ? "fw-extrabold mb-0 price-up" : "fw-extrabold mb-0 price-down";
     }
 
-    // ج) تزریق و تغییر لایو استریم سفارشات خرید و فروش (Order Feed Stream)
-    const feed1 = document.getElementById('feed-1');
-    const feed2 = document.getElementById('feed-2');
-    if (feed1 && feed2) {
-        const isBtc = Math.random() >= 0.5;
-        const isBuy = Math.random() >= 0.5;
-        const vol = (Math.random() * 1.5).toFixed(3);
-
-        if (isBuy) {
-            feed1.className = "order-line text-success d-flex justify-content-between animate-feed";
-            feed1.innerHTML = `<span><i class="fas fa-caret-up me-1"></i> BUY ${isBtc ? 'BTC' : 'ETH'}</span> <span class="fw-bold">${vol}</span>`;
-        } else {
-            feed1.className = "order-line text-danger d-flex justify-content-between animate-feed";
-            feed1.innerHTML = `<span><i class="fas fa-caret-down me-1"></i> SELL ${isBtc ? 'BTC' : 'ETH'}</span> <span class="fw-bold">${vol}</span>`;
-        }
-
-        const vol2 = (Math.random() * 2.5).toFixed(3);
-        const isBuy2 = Math.random() >= 0.5;
-        feed2.className = isBuy2 ? "order-line text-success d-flex justify-content-between" : "order-line text-danger d-flex justify-content-between";
-        feed2.innerHTML = `<span>${isBuy2 ? '🟢 BUY' : '🔴 SELL'} ${!isBtc ? 'BTC' : 'ETH'}</span> <span class="fw-bold">${vol2}</span>`;
+    if (ethEl) {
+        // تغییر از const به let برای مجاز بودن نوسان قیمت
+        let ethPrice = parseFloat(ethEl.innerText.replace(/[$,]/g, ''));
+        let ethChange = (Math.random() * 4 - 2); // نوسان بین مثبت و منفی ۲ دلار
+        let newEth = ethPrice + ethChange;
+        ethEl.innerText = "$" + newEth.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        ethEl.className = ethChange >= 0 ? "fw-extrabold mb-0 price-up" : "fw-extrabold mb-0 price-down";
     }
 }, 3000);
-
-
 
 
 
