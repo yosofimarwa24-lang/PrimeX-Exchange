@@ -1,72 +1,18 @@
-/* افکت شیشه‌ای و چرخشی پیشرفته */
-.flip-card-container {
-    perspective: 1000px;
-    height: 220px;
-}
-.flip-card {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-/* عملیات چرخش کارت سه‌بعدی هنگام هاور */
-.flip-card-container:hover .flip-card {
-    transform: rotateY(180deg);
-}
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
-/* گلاسمورفیسم پیشرفته برای جلوی کارت */
-.flip-card-front {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+:root {
+    --primary-color: #0077b6;      
+    --dark-color: #03045e;        
+    --light-bg: #f8f9fa;           
+    --accent-color: #00f5d4;       
+    --text-muted: #6c757d;       
+    --white: #ffffff;         
 }
 
-/* پشت کارت صرافی مروه */
-.flip-card-back {
-    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
-    transform: rotateY(180deg);
-    box-shadow: 0 8px 32px 0 rgba(13, 110, 253, 0.3);
-}
-
-/* دکمه با افکت نوری نئون */
-.btn-glow {
-    background: #0d6efd;
-    color: white;
-    border: none;
-    box-shadow: 0 0 15px rgba(13, 110, 253, 0.5);
-    transition: all 0.3s ease;
-}
-.btn-glow:hover {
-    background: #fff;
-    color: #051d3b;
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
-    transform: translateY(-2px);
-}
-
-/* انیمیشن فلش دکمه */
-@keyframes bounce {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(4px); }
-}
-.animate-bounce {
-    animation: bounce 1s infinite;
-}
-/* کدهای فوق پیشرفته و مدرن صرافی مروه */
 .fw-black { font-weight: 900; }
 .tracking-wide { letter-spacing: 1px; font-size: 0.8rem; }
-.text-navy { color: #051d3b; }
+.text-navy { color: var(--dark-color) !important; }
 
-/* متن با گرادینت متحرک خفن */
 .text-gradient-move {
-    background: linear-gradient(135deg, #051d3b 0%, #0d6efd 50%, #020b14 100%);
+    background: linear-gradient(135deg, var(--dark-color) 0%, #0d6efd 50%, #020b14 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -77,9 +23,8 @@
     100% { background-position: 200% center; }
 }
 
-/* کارت‌های مینی‌مال با افکت نوری سایه ملایم */
 .modern-feature-card {
-    background: #ffffff;
+    background: var(--white);
     border: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -87,10 +32,9 @@
 .modern-feature-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 30px rgba(13, 110, 253, 0.08);
-    border-color: rgba(13, 110, 253, 0.2);
+    border-color: var(--accent-color);
 }
 
-/* دایره آیکون‌ها */
 .icon-circle {
     width: 45px;
     height: 45px;
@@ -100,9 +44,8 @@
     border-radius: 12px;
 }
 
-/* دکمه با افکت موج متحرک شیک */
 .btn-modern-glow {
-    background: #051d3b;
+    background: var(--dark-color);
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(5, 29, 59, 0.2);
 }
@@ -114,32 +57,24 @@
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     transition: all 0.6s ease;
 }
-.btn-modern-glow:hover::before {
-    left: 100%;
-}
+.btn-modern-glow:hover::before { left: 100%; }
 .btn-modern-glow:hover {
     background: #0d6efd;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(13, 110, 253, 0.3);
 }
-.btn-modern-glow:hover .arrow-slide {
-    transform: translateX(4px);
-}
-.arrow-slide { transition: transform 0.3s ease; }
 
-/* فریم پیشرفته و انیمیشنی تصویر ساختمان */
 .modern-img-frame {
-    background: #f8f9fa;
+    background: var(--light-bg);
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 .scale-img {
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .modern-img-frame:hover .scale-img {
-    transform: scale(1.05) rotate(1deg); /* یک چرخش و زوم فوق‌العاده ریز و هنری */
+    transform: scale(1.05) rotate(1deg);
 }
 
-/* کارت شناور روی عکس */
 .floating-badge {
     bottom: -20px;
     left: -20px;
@@ -154,3 +89,236 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.exchange-rates-section {
+    background: linear-gradient(135deg, #020b14 0%, var(--dark-color) 100%) !important;
+}
+.flip-card-container {
+    perspective: 1000px;
+    height: 220px;
+}
+.flip-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.flip-card-container:hover .flip-card {
+    transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+.flip-card-front {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.flip-card-back {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+    transform: rotateY(180deg);
+    box-shadow: 0 8px 32px 0 rgba(13, 110, 253, 0.3);
+}
+
+.btn-glow {
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    box-shadow: 0 0 15px rgba(13, 110, 253, 0.5);
+    transition: all 0.3s ease;
+}
+.btn-glow:hover {
+    background: var(--accent-color);
+    color: var(--dark-color);
+    box-shadow: 0 0 25px rgba(0, 245, 212, 0.8);
+    transform: translateY(-2px);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+}
+.animate-bounce { animation: bounce 1s infinite; }
+
+.chart-wrapper {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modern-pie-chart {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        #0077b6 0% 50%,
+        #00f5d4 50% 80%,
+        #ffb703 80% 100%
+    );
+    box-shadow: 0 10px 30px rgba(3, 4, 94, 0.15);
+    animation: continuousRotate 12s linear infinite;
+}
+@keyframes continuousRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.chart-center-hole {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    z-index: 2;
+}
+/* === افکت‌های هاور و انیمیشن‌های خفن پروژه مروه === */
+
+/* ۱. انیمیشن درخشش نئونی و موج نوری متحرک برای کارت‌های مینی‌مال */
+.modern-feature-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modern-feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 245, 212, 0.2), transparent);
+    transition: all 0.5s ease;
+}
+
+.modern-feature-card:hover::before {
+    left: 100%;
+}
+
+.modern-feature-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 245, 212, 0.15) !important;
+    border-color: var(--accent-color) !important;
+}
+
+/* ۲. انیمیشن تپش نئونی (Pulse) برای آیکون‌های دایره‌ای */
+.icon-circle {
+    transition: all 0.3s ease;
+}
+
+.modern-feature-card:hover .icon-circle {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 0 15px rgba(0, 119, 182, 0.4);
+    animation: iconPulse 1.5s infinite alternate;
+}
+
+@keyframes iconPulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15); }
+}
+
+/* ۳. انیمیشن اسکیل و چرخش نرم برای تصویر/کادر لندمارک صرافی */
+.modern-img-frame {
+    transition: all 0.5s ease;
+}
+
+.modern-img-frame:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(3, 4, 94, 0.2) !important;
+}
+
+.modern-img-frame:hover i.fa-landmark {
+    animation: buildingFloat 2s ease-in-out infinite alternate;
+    color: var(--accent-color) !important;
+    text-shadow: 0 0 20px rgba(0, 245, 212, 0.6);
+}
+
+@keyframes buildingFloat {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-10px) scale(1.05); }
+}
+
+/* ۴. هاور سه بعدی نئونی روی دکمه‌های اصلی */
+.btn-modern-glow, .btn-glow {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease !important;
+}
+
+.btn-modern-glow:hover, .btn-glow:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 245, 212, 0.5) !important;
+    background-color: var(--accent-color) !important;
+    color: var(--dark-color) !important;
+}
+
+/* ۵. افکت شناور متحرک برای دکمه‌های فلش‌دار */
+.btn-modern-glow:hover .arrow-slide {
+    animation: arrowJump 0.6s infinite alternate;
+}
+
+@keyframes arrowJump {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(6px); }
+}
+
+/* ۶. افکت براقیت سه‌بعدی و سایه نئونی کارت‌های ارز هنگام هاور */
+.flip-card-container {
+    transition: all 0.4s ease;
+}
+
+.flip-card-container:hover {
+    filter: drop-shadow(0 15px 25px rgba(0, 245, 212, 0.25));
+}
+
+.flip-card-front {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.flip-card-container:hover .flip-card-front {
+    border-color: var(--accent-color) !important;
+}
+
+/* ۷. انیمیشن ملایم لرزش پرچم‌ها هنگام رفتن ماوس روی کارت */
+.flip-card-container:hover img {
+    animation: flagWiggle 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes flagWiggle {
+    0% { transform: rotate(-3deg) scale(1.05); }
+    100% { transform: rotate(3deg) scale(1.05); }
+}
+/* === انیمیشن‌های سراسری ورود عناصر صفحه پروژه مروه === */
+
+/* کلاس‌های پایه برای انیمیشن‌های اسکرول */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+/* حالت فعال که توسط جاوااسکریپت تزریق می‌شود */
+.reveal-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* انیمیشن چرخش نئونی پس‌زمینه برای جذابیت بیشتر */
+@keyframes dynamicGlow {
+    0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 0.15; }
+    50% { transform: translate(-50%, -50%) scale(1.2) rotate(180deg); opacity: 0.25; }
+    100% { transform: translate(-50%, -50%) scale(1) rotate(360deg); opacity: 0.15; }
+}
+
+.about-us-section .rounded-circle,
+.exchange-rates-section .rounded-circle {
+    animation: dynamicGlow 10s linear infinite alternate;
+}
+
