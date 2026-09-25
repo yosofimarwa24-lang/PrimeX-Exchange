@@ -24,3 +24,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+// === ۷. شبیه‌ساز زنده نوسانات کادرهای نمودار متحرک تهمینه ===
+setInterval(() => {
+    const bars = document.querySelectorAll('.chart-bar');
+    const rateBadge = document.querySelector('.item-rate-badge');
+    
+    bars.forEach(bar => {
+        // تولید رندوم ارتفاع ستون‌های نمودار بین ۲۰ تا ۱۰۰ درصد
+        const randomHeight = Math.floor(Math.random() * 80) + 20;
+        bar.style.height = randomHeight + '%';
+    });
+
+    if (rateBadge) {
+        const randomRate = (Math.random() * 0.5).toFixed(2);
+        rateBadge.innerText = "+" + randomRate + "%";
+    }
+}, 2000);
