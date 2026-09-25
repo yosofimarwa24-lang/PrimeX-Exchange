@@ -87,4 +87,24 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, 4000); // هر ۴ ثانیه یک‌بار قیمت‌ها به صورت زنده تغییر می‌کنند
 });
+// === ۴. محاسبات ماشین‌حساب صرافی درون پنجره مودال ===
+document.addEventListener("DOMContentLoaded", () => {
+    const amountInput = document.getElementById('convertAmount');
+    const currencySelect = document.getElementById('targetCurrency');
+    const resultDisplay = document.getElementById('calculationResult');
+
+    const calculateExchange = () => {
+        const amount = parseFloat(amountInput.value) || 0;
+        const rate = parseFloat(currencySelect.value) || 0;
+        const total = amount * rate;
+        
+        // نمایش نتیجه با فرمت پولی منظم
+        resultDisplay.innerText = total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " AFN";
+    };
+
+    if (amountInput && currencySelect) {
+        amountInput.addEventListener('input', calculateExchange);
+        currencySelect.addEventListener('change', calculateExchange);
+    }
+});
 
