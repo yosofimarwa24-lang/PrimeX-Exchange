@@ -1,46 +1,25 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-// انیمیشن افزایش نرم و پویای نرخ ارزها از صفر تا مقدار واقعی
+// === ۱. مدیریت رویدادهای پس از بارگذاری کامل ساختار سند (DOM) ===
 document.addEventListener("DOMContentLoaded", () => {
-    const counters = document.querySelectorAll('.count-up');
     
-    counters.forEach(counter => {
-        const target = parseFloat(counter.getAttribute('data-target'));
-        const speed = 40; // سرعت افزایش اعداد
-        const increment = target / speed;
-        
-        let count = 0;
-        const updateCount = () => {
-            if (count < target) {
-                count += increment;
-                counter.innerText = count.toFixed(2);
-                setTimeout(updateCount, 20);
-            } else {
-                counter.innerText = target.toFixed(2);
-            }
-        };
-        
-        updateCount();
-    });
-});
-document.addEventListener("DOMContentLoaded", () => {
-    // === ۱. انیمیشن هوشمند اسکرول و شمارشگر اعداد ===
+    // --- الف) انیمیشن هوشمند افزایش پویای نرخ ارزها از صفر تا مقدار واقعی (Marwa) ---
     const startCounterAnimation = (counter) => {
         const target = parseFloat(counter.getAttribute('data-target'));
-        const totalSteps = 150; 
-        const increment = target / totalSteps;
-        let count = 0;
+        if (!isNaN(target)) {
+            const totalSteps = 100; 
+            const increment = target / totalSteps;
+            let count = 0;
 
-        const updateCount = () => {
-            if (count < target) {
-                count += increment;
-                counter.innerText = count.toFixed(2);
-                setTimeout(updateCount, 25); 
-            } else {
-                counter.innerText = target.toFixed(2);
-            }
-        };
-        updateCount();
+            const updateCount = () => {
+                if (count < target) {
+                    count += increment;
+                    counter.innerText = count.toFixed(2);
+                    setTimeout(updateCount, 20); 
+                } else {
+                    counter.innerText = target.toFixed(2);
+                }
+            };
+            updateCount();
+        }
     };
 
     // اجرای انیمیشن دقیقاً زمانی که کاربر به بخش نرخ ارز می‌رسد
@@ -50,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (entry.isIntersecting) {
                 const counters = entry.target.querySelectorAll('.count-up');
                 counters.forEach(counter => startCounterAnimation(counter));
-                observer.unobserve(entry.target); // پس از یک‌بار اجرا متوقف می‌شود
+                observer.unobserve(entry.target); 
             }
         });
     }, observerOptions);
@@ -60,69 +39,32 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(ratesSection);
     }
 
-    // === ۲. شبیه‌ساز زنده نوسانات قیمت صرافی ===
-    setInterval(() => {
-        const counters = document.querySelectorAll('.count-up');
-        counters.forEach(counter => {
-            let currentPrice = parseFloat(counter.innerText);
-            if (!isNaN(currentPrice) && currentPrice > 0) {
-                // ایجاد یک نوسان تصادفی بسیار کوچک بین -0.05 تا +0.05
-                const fluctuation = (Math.random() * 0.1 - 0.05);
-                let newPrice = currentPrice + fluctuation;
-                counter.innerText = newPrice.toFixed(2);
-
-                // پیدا کردن کارت مادر برای تغییر رنگ نئونی بر اساس صعودی یا نزولی شدن
-                const card = counter.closest('.flip-card-front');
-                if (card) {
-                    const badge = card.querySelector('.badge');
-                    if (badge) {
-                        if (fluctuation >= 0) {
-                            badge.className = "badge bg-success-subtle text-success border border-success rounded-pill px-2 py-1 small";
-                            badge.innerText = "+" + (Math.random() * 0.3).toFixed(2) + "%";
-                        } else {
-                            badge.className = "badge bg-danger-subtle text-danger border border-danger rounded-pill px-2 py-1 small";
-                            badge.innerText = "-" + (Math.random() * 0.3).toFixed(2) + "%";
-                        }
-                    }
-                }
-            }
-        });
-    }, 4000); // هر ۴ ثانیه یک‌بار قیمت‌ها به صورت زنده تغییر می‌کنند
-});
-// === ۴. محاسبات ماشین‌حساب صرافی درون پنجره مودال ===
-document.addEventListener("DOMContentLoaded", () => {
+    // --- ب) محاسبات ماشین‌حساب صرافی درون پنجره مودال پاپ‌آپ (Marwa) ---
     const amountInput = document.getElementById('convertAmount');
     const currencySelect = document.getElementById('targetCurrency');
     const resultDisplay = document.getElementById('calculationResult');
 
-    const calculateExchange = () => {
-        const amount = parseFloat(amountInput.value) || 0;
-        const rate = parseFloat(currencySelect.value) || 0;
-        const total = amount * rate;
-        
-        // نمایش نتیجه با فرمت پولی منظم
-        resultDisplay.innerText = total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " AFN";
-    };
-
-    if (amountInput && currencySelect) {
+    if (amountInput && currencySelect && resultDisplay) {
+        const calculateExchange = () => {
+            const amount = parseFloat(amountInput.value) || 0;
+            const rate = parseFloat(currencySelect.value) || 0;
+            const total = amount * rate;
+            resultDisplay.innerText = total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " AFN";
+        };
         amountInput.addEventListener('input', calculateExchange);
         currencySelect.addEventListener('change', calculateExchange);
     }
-});
-document.addEventListener("DOMContentLoaded", () => {
-    // === ۱. مدیریت منوی همبرگری در موبایل ===
+
+    // --- ج) مدیریت منوی همبرگری در نسخه موبایل (Zobaideh) ---
     const menuBtn = document.getElementById("menuBtn");
     const navLinks = document.getElementById("navLinks");
 
     if (menuBtn && navLinks) {
         menuBtn.addEventListener("click", () => {
-            // باز و بسته کردن منو با کلاس تعاملی open
             navLinks.classList.toggle("open");
-            
-            // تغییر آیکون منو بین حالت همبرگری (☰) و ضربدر (✕)
             if (navLinks.classList.contains("open")) {
                 menuBtn.innerText = "✕";
-                menuBtn.style.color = "#ff9f1c"; // تغییر رنگ آیکون به زرد زعفرانی صرافی
+                menuBtn.style.color = "#ff9f1c"; 
             } else {
                 menuBtn.innerText = "☰";
                 menuBtn.style.color = "#ffffff";
@@ -130,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // === ۲. اسکرول نرم دکمه‌ها به بخش‌های مربوطه ===
+    // --- د) اسکرول نرم دکمه مشاهده نرخ‌ها به بخش مربوطه (Zobaideh) ---
     const viewRatesBtn = document.querySelector('.btn.outline[href="#rates"]');
     if (viewRatesBtn) {
         viewRatesBtn.addEventListener('click', (e) => {
@@ -141,16 +83,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-});
 
-=======
-// === ۶. جاوااسکریپت اختصاصی برنچ تهمینه برای انیمیشن ورود و اسکرول نرم ===
-document.addEventListener("DOMContentLoaded", () => {
+    // --- ه) انیمیشن ورود نرم و هماهنگ سکشن‌ها با اسکرول (Tahmina) ---
     const trustElements = document.querySelectorAll('.trust-section, .services-section');
-    
-    // متصل کردن انیمیشن ورود نرم به سکشن‌های تهمینه
     trustElements.forEach(el => {
-        if(typeof el.classList.add === 'function') {
+        if (el && el.classList) {
             el.classList.add('reveal-on-scroll');
         }
     });
@@ -165,18 +102,74 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.15 });
 
     trustElements.forEach(el => {
-        if(typeof trustObserver.observe === 'function') {
+        if (trustObserver && el) {
             trustObserver.observe(el);
         }
     });
+
+    // --- و) مدیریت کلیک‌های کشویی آکاردئون سؤالات متداول FAQ (Nasrin) ---
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            const span = question.querySelector('span');
+            
+            if (answer && answer.classList) {
+                if (answer.classList.contains('d-none')) {
+                    answer.classList.remove('d-none');
+                    if (span) {
+                        span.innerText = "−";
+                        span.style.color = "#ff9f1c";
+                    }
+                    question.style.backgroundColor = "rgba(255, 159, 28, 0.05)";
+                } else {
+                    answer.classList.add('d-none');
+                    if (span) {
+                        span.innerText = "+";
+                        span.style.color = "";
+                    }
+                    question.style.backgroundColor = "";
+                }
+            }
+        });
+    });
 });
-// === ۷. شبیه‌ساز زنده نوسانات کادرهای نمودار متحرک تهمینه ===
+
+// === ۲. شبیه‌سازهای زمانی زنده صرافی (اجرا به صورت پس‌زمینه) ===
+
+// --- الف) شبیه‌ساز زنده نوسانات نرخ ارزها روی کارت‌ها هر ۴ ثانیه (Marwa) ---
+setInterval(() => {
+    const counters = document.querySelectorAll('.count-up');
+    counters.forEach(counter => {
+        let currentPrice = parseFloat(counter.innerText);
+        if (!isNaN(currentPrice) && currentPrice > 0) {
+            const fluctuation = (Math.random() * 0.1 - 0.05);
+            let newPrice = currentPrice + fluctuation;
+            counter.innerText = newPrice.toFixed(2);
+
+            const card = counter.closest('.flip-card-front');
+            if (card) {
+                const badge = card.querySelector('.badge');
+                if (badge) {
+                    if (fluctuation >= 0) {
+                        badge.className = "badge bg-success-subtle text-success border border-success rounded-pill px-2 py-1 small";
+                        badge.innerText = "+" + (Math.random() * 0.3).toFixed(2) + "%";
+                    } else {
+                        badge.className = "badge bg-danger-subtle text-danger border border-danger rounded-pill px-2 py-1 small";
+                        badge.innerText = "-" + (Math.random() * 0.3).toFixed(2) + "%";
+                    }
+                }
+            }
+        }
+    });
+}, 4000);
+
+// --- ب) شبیه‌ساز زنده نوسانات کادرهای نمودار متحرک هر ۲ ثانیه (Tahmina) ---
 setInterval(() => {
     const bars = document.querySelectorAll('.chart-bar');
     const rateBadge = document.querySelector('.item-rate-badge');
     
     bars.forEach(bar => {
-        // تولید رندوم ارتفاع ستون‌های نمودار بین ۲۰ تا ۱۰۰ درصد
         const randomHeight = Math.floor(Math.random() * 80) + 20;
         bar.style.height = randomHeight + '%';
     });
@@ -186,117 +179,45 @@ setInterval(() => {
         rateBadge.innerText = "+" + randomRate + "%";
     }
 }, 2000);
->>>>>>> tahmina
-=======
-// === ۱۰. جاوااسکریپت اختصاصی برنچ نسرین برای مدیریت کلیک‌های آکاردئون FAQ ===
+// === ۱۱. قابلیت چرخش کارت‌های نرخ ارز با کلیک و لمس دست در موبایل (Marwa Unique Click Flip) ===
 document.addEventListener("DOMContentLoaded", () => {
-    const faqQuestions = document.querySelectorAll('.faq-question');
+    const cardContainers = document.querySelectorAll('.flip-card-container');
+
+    cardContainers.forEach(container => {
+        // تغییر نشانگر ماوس به دست برای راهنمایی کاربر
+        container.style.cursor = 'pointer';
+
+        container.addEventListener('click', (e) => {
+            // اگر کاربر روی دکمه تبدیل داخل کارت کلیک کرد، کارت برنگردد
+            if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+                return;
+            }
+            
+            // باز و بسته کردن کلاس چرخشی
+            container.classList.toggle('flipped');
+        });
+    });
+});
+// === ۱۲. موتور انیمیشن چرخشی اسکرول موبایل و کامپیوتر مروه (Intersection Observer) ===
+document.addEventListener("DOMContentLoaded", () => {
+    const animatedBlocks = document.querySelectorAll('.scroll-rotate-effect');
     
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            const span = question.querySelector('span');
-            
-            // باز و بسته کردن لایه‌ی پاسخ به صورت انیمیشنی مینی‌مال
-            if (answer.classList.contains('d-none')) {
-                answer.classList.remove('d-none');
-                span.innerText = "−";
-                span.style.color = "#ff9f1c";
-                question.style.backgroundColor = "rgba(255, 159, 28, 0.05)";
-            } else {
-                answer.classList.add('d-none');
-                span.innerText = "+";
-                span.style.color = "";
-                question.style.backgroundColor = "";
+    const scrollOptions = {
+        threshold: 0.12, // انیمیشن زمانی که ۱۲٪ دیو دیده شد روشن می‌شود
+        rootMargin: "0px 0px -40px 0px"
+    };
+
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('cyber-active');
+                // اگر می‌خواهی انیمیشن فقط یک‌بار اجرا شود، خط زیر را نگه‌دار:
+                observer.unobserve(entry.target); 
             }
         });
-    });
+    }, scrollOptions);
 
-    // مدیریت ارسال شبیه‌سازی شده فرم تماس نسرین
-    const contactForm = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
-    if (contactForm && formMessage) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            formMessage.innerText = "⏳ Sending your message securely...";
-            formMessage.style.color = "#ff9f1c";
-            
-            setTimeout(() => {
-                formMessage.innerText = "✓ Message sent successfully! We'll contact you soon.";
-                formMessage.style.color = "#28a745";
-                contactForm.reset();
-            }, 2000);
-        });
-    }
-});
-document.addEventListener("DOMContentLoaded", () => {
-    // ۱. فعال‌سازی فوری و اجباری انیمیشن ورود تمام دیوهای صرافی مروه
-    const scrollElements = document.querySelectorAll('.about-us-section, .exchange-rates-section, .pie-chart-section, .trust-section, .contact-section, .footer-cinema');
-    scrollElements.forEach(el => {
-        el.style.opacity = "1";
-        el.style.transform = "translateY(0)";
-        el.style.transition = "all 0.6s ease";
-    });
-
-    // ۲. مدیریت منوی همبرگری موبایل زبیده
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
-    if (menuBtn && navLinks) {
-        menuBtn.addEventListener("click", () => {
-            navLinks.classList.toggle("open");
-            menuBtn.innerText = navLinks.classList.contains("open") ? "✕" : "☰";
-        });
-    }
-
-    // ۳. انیمیشن فوری شمارشگر صعودی اعداد کارت‌ها
-    const counters = document.querySelectorAll('.count-up');
-    counters.forEach(counter => {
-        const target = parseFloat(counter.getAttribute('data-target'));
-        if (!isNaN(target)) {
-            let count = 0;
-            const updateCount = () => {
-                if (count < target) {
-                    count += target / 80;
-                    counter.innerText = count.toFixed(2);
-                    setTimeout(updateCount, 15);
-                } else {
-                    counter.innerText = target.toFixed(2);
-                }
-            };
-            updateCount();
-        }
-    });
-
-    // ۴. منطق نوسان زنده قیمت کریپتو تهمینه و مروه
-    setInterval(() => {
-        const btcText = document.getElementById('btc-price');
-        const ethText = document.getElementById('eth-price');
-        if (btcText) {
-            let btc = parseFloat(btcText.innerText.replace(/[\$,]/g, '')) || 64250;
-            let change = (Math.random() * 40 - 20);
-            btcText.innerText = "$" + (btc + change).toLocaleString('en-US', { minimumFractionDigits: 2 });
-            btcText.className = change >= 0 ? "mb-0 price-up" : "mb-0 price-down";
-        }
-        if (ethText) {
-            let eth = parseFloat(ethText.innerText.replace(/[\$,]/g, '')) || 3450;
-            let changeEth = (Math.random() * 4 - 2);
-            ethText.innerText = "$" + (eth + changeEth).toLocaleString('en-US', { minimumFractionDigits: 2 });
-            ethText.className = changeEth >= 0 ? "mb-0 price-up" : "mb-0 price-down";
-        }
-    }, 2500);
-
-    // ۵. فعال‌سازی باز و بسته شدن ۵ کالاپس کشویی نسرین جان
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            const span = question.querySelector('span');
-            if (answer) {
-                answer.classList.toggle('d-none');
-                span.innerText = answer.classList.contains('d-none') ? "+" : "−";
-                question.style.backgroundColor = answer.classList.contains('d-none') ? "" : "rgba(255,159,28,0.08)";
-            }
-        });
+    animatedBlocks.forEach(block => {
+        if (block) scrollObserver.observe(block);
     });
 });
->>>>>>> nasrin
