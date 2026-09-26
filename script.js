@@ -1,7 +1,10 @@
-// === ۱. مدیریت رویدادهای پس از بارگذاری کامل ساختار سند (DOM Unified Core) ===
+// ===================================================
+/* 🌟 ULTIMATE 3D PORTAL ENGINE - script.js (Part 1) */
+// ===================================================
+
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- الف) انیمیشن هوشمند افزایش پویای نرخ ارزها از صفر تا مقدار واقعی (Marwa) ---
+    // --- ۱. انیمیشن صعودی پویای شمارشگر اعداد کارت‌های مروه جان ---
     const startCounterAnimation = (counter) => {
         const target = parseFloat(counter.getAttribute('data-target'));
         if (!isNaN(target)) {
@@ -13,61 +16,66 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (count < target) {
                     count += increment;
                     counter.innerText = count.toFixed(2);
-                    setTimeout(updateCount, 20); 
+                    requestAnimationFrame(updateCount); 
                 } else {
                     counter.innerText = target.toFixed(2);
                 }
             };
-            updateCount();
+            requestAnimationFrame(updateCount);
         }
     };
 
-    // --- ب) موتور فوق پیشرفته انیمیشن چرخشی سه‌بعدی اسکرول مروه (3D Matrix Scroll Observer) ---
-    const animatedBlocks = document.querySelectorAll('.about-us-section, .exchange-rates-section, .pie-chart-section, .trust-section');
+    // --- ۲. 🌟 موتور ماتریکس چرخش ۳D و پشت‌ورو شدن اجباری دیوها با اسکرول (Up & Down) 🌟 ---
+    const cyberSections = document.querySelectorAll('.about-us-section, .exchange-rates-section, .pie-chart-section, .trust-section');
     
-    // متصل کردن کلاس اولیه افکت سه‌بعدی چرخشی به سکشن‌های اصلی
-    animatedBlocks.forEach(block => {
-        if (block) block.classList.add('scroll-rotate-effect');
+    cyberSections.forEach(sec => {
+        if (sec) {
+            sec.classList.add('scroll-rotate-effect');
+            // فعال‌سازی شتاب‌دهنده سخت‌افزاری مرورگر برای چرخش واقعی
+            sec.style.transformOrigin = "center top";
+        }
     });
 
-    const scrollOptions = {
-        threshold: 0.12, // انیمیشن زمانی که ۱۲٪ دایو دیده شد با زاویه سه بعدی روشن می‌شود
-        rootMargin: "0px 0px -50px 0px"
-    };
+    let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    const scrollObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('cyber-active');
+    // اجرای فوری انیمیشن مگنتیک با چرخش محسوس کل محتویات بدنه
+    window.addEventListener('scroll', () => {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        let delta = currentScroll - lastScrollTop;
+        
+        cyberSections.forEach(sec => {
+            const rect = sec.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
                 
-                // به محض رسیدن اسکرول به بخش نرخ ارز، انیمیشن صعودی اعداد هم کلید می‌خورد
-                if (entry.target.classList.contains('exchange-rates-section')) {
-                    const counters = entry.target.querySelectorAll('.count-up');
-                    counters.forEach(counter => startCounterAnimation(counter));
+                // محاسبه زاویه چرخش پویا بر اساس شدت و جهت اسکرول دست کاربر
+                let rotationAngle = Math.min(Math.max(delta * 0.12, -15), 15);
+                
+                if (currentScroll > lastScrollTop) {
+                    // اسکرول به سمت پایین: محتویات رو به جلو کج می‌شوند
+                    sec.style.transform = `perspective(1200px) translateY(0) rotateX(${rotationAngle}deg) scale(1)`;
+                    sec.style.opacity = "1";
+                    sec.style.filter = "blur(0px)";
+                } else {
+                    // اسکرول به سمت بالا: کل دیوها پشت و رو شده و تاب می‌خورند!
+                    sec.style.transform = `perspective(1200px) translateY(-20px) rotateX(${rotationAngle}deg) scale(0.97)`;
+                    sec.style.filter = "blur(0.5px)";
                 }
-                observer.unobserve(entry.target); // غیرفعال‌سازی رادار پس از اجرا جهت بهینه‌سازی پردازنده
+                sec.classList.add('cyber-active');
+                
+                if (sec.classList.contains('exchange-rates-section')) {
+                    const counters = sec.querySelectorAll('.count-up');
+                    counters.forEach(counter => {
+                        if(counter.innerText === "0" || counter.innerText === "0.00") {
+                            startCounterAnimation(counter);
+                        }
+                    });
+                }
             }
         });
-    }, scrollOptions);
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, { passive: true });
 
-    animatedBlocks.forEach(block => {
-        if (block) scrollObserver.observe(block);
-    });
-
-    // --- ج) قابلیت چرخش سه‌بعدی کارت‌های نرخ ارز با کلیک و لمس دست در موبایل (Marwa Unique Click Flip) ---
-    const cardContainers = document.querySelectorAll('.flip-card-container');
-    cardContainers.forEach(container => {
-        container.style.cursor = 'pointer';
-        container.addEventListener('click', (e) => {
-            // جلوگیری از تداخل کلیک دکمه تبدیل با چرخش کل کادر کارت
-            if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
-                return;
-            }
-            container.classList.toggle('flipped');
-        });
-    });
-
-    // --- د) محاسبات ماشین‌حساب صرافی درون پنجره مودال پاپ‌آپ (Marwa) ---
+    // --- ۳. محاسبات هوشمند آنلاین ماشین‌حساب صرافی مروه ---
     const amountInput = document.getElementById('convertAmount');
     const currencySelect = document.getElementById('targetCurrency');
     const resultDisplay = document.getElementById('calculationResult');
@@ -83,72 +91,76 @@ document.addEventListener("DOMContentLoaded", () => {
         currencySelect.addEventListener('change', calculateExchange);
     }
 
-    // --- ه) مدیریت منوی همبرگری باریک در نسخه موبایل (Zobaideh) ---
+    // --- ۴. مدیریت منوی همبرگری واکنش‌گرای زبیده در موبایل ---
     const menuBtn = document.getElementById("menuBtn");
     const navLinks = document.getElementById("navLinks");
 
     if (menuBtn && navLinks) {
         menuBtn.addEventListener("click", () => {
             navLinks.classList.toggle("open");
-            if (navLinks.classList.contains("open")) {
-                menuBtn.innerText = "✕";
-                menuBtn.style.color = "#ff9f1c"; 
-            } else {
-                menuBtn.innerText = "☰";
-                menuBtn.style.color = "#ffffff";
-            }
+            menuBtn.innerText = navLinks.classList.contains("open") ? "✕" : "☰";
         });
     }
-
-    // --- و) اسکرول نرم دکمه مشاهده نرخ‌ها به بخش مربوطه (Zobaideh) ---
-    const viewRatesBtn = document.querySelector('.btn.outline[href="#rates"]');
-    if (viewRatesBtn) {
-        viewRatesBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetSection = document.querySelector('.exchange-rates-section');
-            if (targetSection) {
-                targetSection.scrollIntoView({ behavior: 'smooth' });
-            }
+    // --- ۵. افکت مگنتیک سه‌بعدی ماوس روی کارت‌های صرافی مروه و تهمینه ---
+    const premiumCards = document.querySelectorAll('.modern-feature-card, .flip-card-front, .feature-card');
+    
+    premiumCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left; 
+            const y = e.clientY - rect.top;  
+            
+            const xc = rect.width / 2;
+            const yc = rect.height / 2;
+            
+            const angleX = (yc - y) / 10; 
+            const angleY = (x - xc) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-8px) scale(1.04)`;
+            card.style.boxShadow = `${-angleY * 2}px ${angleX * 2}px 35px rgba(0, 245, 212, 0.3)`;
+            card.style.transition = "transform 0.05s ease-out, box-shadow 0.05s ease-out";
         });
-    }
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)";
+            card.style.boxShadow = "";
+            card.style.transition = "transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+        });
+    });
 
-    // --- ز) مدیریت کلیک‌های کشویی آکاردئون سؤالات متداول FAQ (Nasrin) ---
+    // --- ۶. چرخش سه‌بعدی کارت‌های نرخ ارز با لمس دست در موبایل و کلیک ---
+    const cardContainers = document.querySelectorAll('.flip-card-container');
+    cardContainers.forEach(container => {
+        container.style.cursor = 'pointer';
+        container.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+                return; 
+            }
+            container.classList.toggle('flipped');
+        });
+    });
+
+    // --- ۷. آکاردئون سؤالات متداول FAQ نسرین جان ---
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(question => {
         question.addEventListener('click', () => {
             const answer = question.nextElementSibling;
             const span = question.querySelector('span');
-            
-            if (answer && answer.classList) {
-                if (answer.classList.contains('d-none')) {
-                    answer.classList.remove('d-none');
-                    if (span) {
-                        span.innerText = "−";
-                        span.style.color = "#ff9f1c";
-                    }
-                    question.style.backgroundColor = "rgba(255, 159, 28, 0.05)";
-                } else {
-                    answer.classList.add('d-none');
-                    if (span) {
-                        span.innerText = "+";
-                        span.style.color = "";
-                    }
-                    question.style.backgroundColor = "";
-                }
+            if (answer) {
+                answer.classList.toggle('d-none');
+                if (span) span.innerText = answer.classList.contains('d-none') ? "+" : "−";
             }
         });
     });
 });
 
-// === ۲. شبیه‌سازهای زمانی زنده صرافی (اجرا به صورت پس‌زمینه مستقل) ===
-
-// --- الف) شبیه‌ساز زنده نوسانات نرخ ارزها روی کارت‌ها هر ۴ ثانیه (Marwa Stream) ---
+// === ۸. شبیه‌ساز زنده نوسانات نرخ ارزها روی کارت‌ها هر ۴ ثانیه (Marwa Stream) ===
 setInterval(() => {
     const counters = document.querySelectorAll('.count-up');
     counters.forEach(counter => {
         let currentPrice = parseFloat(counter.innerText);
         if (!isNaN(currentPrice) && currentPrice > 0) {
-            const fluctuation = (Math.random() * 0.1 - 0.05);
+            const fluctuation = (Math.random() * 0.08 - 0.04);
             let newPrice = currentPrice + fluctuation;
             counter.innerText = newPrice.toFixed(2);
 
@@ -158,10 +170,10 @@ setInterval(() => {
                 if (badge) {
                     if (fluctuation >= 0) {
                         badge.className = "badge bg-success-subtle text-success border border-success rounded-pill px-2 py-1 small";
-                        badge.innerText = "+" + (Math.random() * 0.3).toFixed(2) + "%";
+                        badge.innerText = "+" + (Math.random() * 0.25).toFixed(2) + "%";
                     } else {
                         badge.className = "badge bg-danger-subtle text-danger border border-danger rounded-pill px-2 py-1 small";
-                        badge.innerText = "-" + (Math.random() * 0.3).toFixed(2) + "%";
+                        badge.innerText = "-" + (Math.random() * 0.25).toFixed(2) + "%";
                     }
                 }
             }
@@ -169,18 +181,18 @@ setInterval(() => {
     });
 }, 4000);
 
-// --- ب) شبیه‌ساز زنده نوسانات کادرهای نمودار متحرک هر ۲ ثانیه (Tahmina Stream) ---
+// === ۹. شبیه‌ساز زنده نوسانات کادرهای نمودار متحرک تهمینه هر ۲ ثانیه (Tahmina Stream) ===
 setInterval(() => {
     const bars = document.querySelectorAll('.chart-bar');
     const rateBadge = document.querySelector('.item-rate-badge');
     
     bars.forEach(bar => {
-        const randomHeight = Math.floor(Math.random() * 80) + 20;
+        const randomHeight = Math.floor(Math.random() * 75) + 25;
         bar.style.height = randomHeight + '%';
     });
 
     if (rateBadge) {
-        const randomRate = (Math.random() * 0.5).toFixed(2);
+        const randomRate = (Math.random() * 0.4).toFixed(2);
         rateBadge.innerText = "+" + randomRate + "%";
     }
 }, 2000);
