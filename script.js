@@ -1,51 +1,17 @@
-// === ۱۰. جاوااسکریپت اختصاصی برنچ نسرین برای مدیریت کلیک‌های آکاردئون FAQ ===
-document.addEventListener("DOMContentLoaded", () => {
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            const span = question.querySelector('span');
-            
-            // باز و بسته کردن لایه‌ی پاسخ به صورت انیمیشنی مینی‌مال
-            if (answer.classList.contains('d-none')) {
-                answer.classList.remove('d-none');
-                span.innerText = "−";
-                span.style.color = "#ff9f1c";
-                question.style.backgroundColor = "rgba(255, 159, 28, 0.05)";
-            } else {
-                answer.classList.add('d-none');
-                span.innerText = "+";
-                span.style.color = "";
-                question.style.backgroundColor = "";
-            }
-        });
-    });
+// ===================================================
+/* 🌟 UNIFIED CORE ENGINE - script.js برنچ نسرین (تکه اول) */
+// ===================================================
 
-    // مدیریت ارسال شبیه‌سازی شده فرم تماس نسرین
-    const contactForm = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
-    if (contactForm && formMessage) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            formMessage.innerText = "⏳ Sending your message securely...";
-            formMessage.style.color = "#ff9f1c";
-            
-            setTimeout(() => {
-                formMessage.innerText = "✓ Message sent successfully! We'll contact you soon.";
-                formMessage.style.color = "#28a745";
-                contactForm.reset();
-            }, 2000);
-        });
-    }
-});
 document.addEventListener("DOMContentLoaded", () => {
+
     // ۱. فعال‌سازی فوری و اجباری انیمیشن ورود تمام دیوهای صرافی مروه
     const scrollElements = document.querySelectorAll('.about-us-section, .exchange-rates-section, .pie-chart-section, .trust-section, .contact-section, .footer-cinema');
     scrollElements.forEach(el => {
-        el.style.opacity = "1";
-        el.style.transform = "translateY(0)";
-        el.style.transition = "all 0.6s ease";
+        if (el && el.style) {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+            el.style.transition = "all 0.6s ease";
+        }
     });
 
     // ۲. مدیریت منوی همبرگری موبایل زبیده
@@ -58,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ۳. انیمیشن فوری شمارشگر صعودی اعداد کارت‌ها
+    // ۳. انیمیشن فوری شمارشگر صعودی اعداد کارت‌های مروه جان
     const counters = document.querySelectorAll('.count-up');
     counters.forEach(counter => {
         const target = parseFloat(counter.getAttribute('data-target'));
@@ -90,22 +56,88 @@ document.addEventListener("DOMContentLoaded", () => {
         if (ethText) {
             let eth = parseFloat(ethText.innerText.replace(/[\$,]/g, '')) || 3450;
             let changeEth = (Math.random() * 4 - 2);
-            ethText.innerText = "$" + (eth + changeEth).toLocaleString('en-US', { minimumFractionDigits: 2 });
+            ethText.innerText = "$" + (changeEth + eth).toLocaleString('en-US', { minimumFractionDigits: 2 });
             ethText.className = changeEth >= 0 ? "mb-0 price-up" : "mb-0 price-down";
         }
     }, 2500);
 
-    // ۵. فعال‌سازی باز و بسته شدن ۵ کالاپس کشویی نسرین جان
+    // ۵. مدیریت ارسال شبیه‌سازی شده فرم تماس نسرین جان
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+    if (contactForm && formMessage) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formMessage.innerText = "⏳ Sending your message securely...";
+            formMessage.style.color = "#ff9f1c";
+            
+            setTimeout(() => {
+                formMessage.innerText = "✓ Message sent successfully! We'll contact you soon.";
+                formMessage.style.color = "#28a745";
+                contactForm.reset();
+            }, 2000);
+        });
+    }
+    // ===================================================
+    /* 🌟 پچ ۱۰۰٪ قطعی مروه لیدر برای رندر کشویی و روان کالاپس‌ها بدون تداخل */
+    // ===================================================
     const faqQuestions = document.querySelectorAll('.faq-question');
+    
     faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            const span = question.querySelector('span');
+        question.style.cursor = 'pointer';
+
+        question.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const currentBtn = e.currentTarget;
+            // پیدا کردن لایه دقیق پاسخ زیر دکمه
+            const answer = currentBtn.nextElementSibling;
+            // پیدا کردن آیکون مثبت و منفی با کلاس جدید تگ‌ها
+            const iconSpan = currentBtn.querySelector('.badge-icon') || currentBtn.querySelector('.text-warning');
+
             if (answer) {
-                answer.classList.toggle('d-none');
-                span.innerText = answer.classList.contains('d-none') ? "+" : "−";
-                question.style.backgroundColor = answer.classList.contains('d-none') ? "" : "rgba(255,159,28,0.08)";
+                // چک کردن باز یا بسته بودن کشو با بررسی کلاس d-none
+                if (answer.classList.contains('d-none')) {
+                    
+                    // بستن تمام کالاپس‌های باز دیگر برای انضباط کادر صرافی
+                    document.querySelectorAll('.faq-answer').forEach(ans => ans.classList.add('d-none'));
+                    document.querySelectorAll('.faq-question .badge-icon, .faq-question .text-warning').forEach(span => {
+                        if (span) span.innerText = "+";
+                    });
+                    document.querySelectorAll('.faq-question').forEach(btn => btn.style.backgroundColor = "");
+
+                    // باز کردن کشوی کلیک شده با تغییر علامت به منهای زرد زعفرانی
+                    answer.classList.remove('d-none');
+                    currentBtn.style.backgroundColor = "rgba(255, 159, 28, 0.08)";
+                    if (iconSpan) {
+                        iconSpan.innerText = "−";
+                    }
+                    
+                } else {
+                    // بسته شدن کشو با کلیک مجدد
+                    answer.classList.add('d-none');
+                    currentBtn.style.backgroundColor = "";
+                    if (iconSpan) {
+                        iconSpan.innerText = "+";
+                    }
+                }
             }
         });
     });
+
+    // --- ۶. محاسبات آنلاین ماشین‌حساب صرافی درون پنجره مودال پاپ‌آ‌پ مروه ---
+    const amountInput = document.getElementById('convertAmount');
+    const currencySelect = document.getElementById('targetCurrency');
+    const resultDisplay = document.getElementById('calculationResult');
+
+    if (amountInput && currencySelect && resultDisplay) {
+        const calculateExchange = () => {
+            const amount = parseFloat(amountInput.value) || 0;
+            const rate = parseFloat(currencySelect.value) || 0;
+            const total = amount * rate;
+            resultDisplay.innerText = total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " AFN";
+        };
+        amountInput.addEventListener('input', calculateExchange);
+        currencySelect.addEventListener('change', calculateExchange);
+    }
 });
