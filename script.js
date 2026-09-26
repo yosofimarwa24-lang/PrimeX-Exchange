@@ -4,7 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ۱. فعال‌سازی فوری و اجباری انیمیشن ورود تمام دیوهای صرافی مروه
+    // ۱. فعال‌سازی فوری و اجباری انیمیشن ورود تمام دیوهای صرافی 
     const scrollElements = document.querySelectorAll('.about-us-section, .exchange-rates-section, .pie-chart-section, .trust-section, .contact-section, .footer-cinema');
     scrollElements.forEach(el => {
         if (el && el.style) {
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // ۲. مدیریت منوی همبرگری موبایل زبیده
+    // ۲. مدیریت منوی همبرگری موبایل 
     const menuBtn = document.getElementById("menuBtn");
     const navLinks = document.getElementById("navLinks");
     if (menuBtn && navLinks) {
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // ۴. منطق نوسان زنده قیمت کریپتو تهمینه و مروه
+    // .منطق نوسان زنده قیمت کریپتو   
     setInterval(() => {
         const btcText = document.getElementById('btc-price');
         const ethText = document.getElementById('eth-price');
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, 2500);
 
-    // ۵. مدیریت ارسال شبیه‌سازی شده فرم تماس نسرین جان
+    // ۵. مدیریت ارسال شبیه‌سازی شده فرم تماس  
     const contactForm = document.getElementById('contactForm');
     const formMessage = document.getElementById('formMessage');
     if (contactForm && formMessage) {
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     // ===================================================
-    /* 🌟 پچ ۱۰۰٪ قطعی مروه لیدر برای رندر کشویی و روان کالاپس‌ها بدون تداخل */
+    /* 🌟 پچ ۱۰۰٪ قطعی برای رندر کشویی و روان کالاپس‌ها بدون تداخل */
     // ===================================================
     const faqQuestions = document.querySelectorAll('.faq-question');
     
