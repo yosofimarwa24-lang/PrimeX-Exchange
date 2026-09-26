@@ -196,3 +196,5 @@ setInterval(() => {
         rateBadge.innerText = "+" + randomRate + "%";
     }
 }, 2000);
+    // اضافه شدن سکشن تیم ما به رادار تعاملی چرخشی سه‌بعدی اسکرول مروه
+    const animatedBlocks = document.querySelectorAll('.about-us-section, .team-section, .exchange-rates-section, .pie-chart-section, .trust-section');
