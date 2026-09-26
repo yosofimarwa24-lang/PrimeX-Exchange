@@ -1,5 +1,5 @@
 /* ===================================================
-   ۱. پچ طلایی عمق دید سه‌بعدی و پالت ماتریکس صرافی مروه
+   ۱. تنظیمات ساختاری پایه و پالت رنگی سایبرپانک صرافی مروه
 =================================================== */
 * {
     margin: 0;
@@ -14,37 +14,34 @@
     --accent-color: #00f5d4;       
     --text-muted: #b0c4de;       
     --white: #ffffff;   
-    --dark-bg: #030914;        
+    --dark-bg: #030914;        /* سرمه‌ای ماتریکس عمیق، باریک و فوق‌العاده شیک */
     --navy-primary: #051d3b;
-    --amber-gold: #ff9f1c;     
-    --accent-cyan: #00f5d4;     
+    --amber-gold: #ff9f1c;     /* زرد پررنگ زعفرانی صرافی */
+    --accent-cyan: #00f5d4;     /* فیروزه‌ای نئونی */
 }
 
-/* 🌟 پچ فوق خفن فعال‌سازی عمق دید سه‌بعدی روی کل ساختار سایت برای چرخش واقعی */
-html, body {
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--dark-bg);
     color: var(--white);
     overflow-x: hidden;
-    perspective: 1500px; /* ایجاد عمق دید سه‌بعدی وال‌استریت سال ۲۰۲۶ */
-    transform-style: preserve-3d;
 }
 
-/* 🌟 شاهکار انیمیشن چرخشی سه‌بعدی اسکرول مروه جان */
+/* 🌟 پچ اصلی انیمیشن‌های چرخشی سه‌بعدی اسکرول مروه جان در موبایل و کامپیوتر */
 .scroll-rotate-effect {
     opacity: 0;
-    /* دیوها در ابتدا با زاویه سه‌بعدی واقعی چرخیده و به عقب متمایل هستند */
-    transform: translateY(70px) rotateX(12deg) rotateY(-2deg) scale(0.92);
+    /* دیوها در ابتدا کمی به پایین متمایل شده و ۶ درجه به صورت سه‌بعدی می‌چرخند */
+    transform: translateY(60px) rotateX(6deg) scale(0.95);
     transform-style: preserve-3d;
-    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     will-change: opacity, transform;
 }
 
-/* حالت فعال که با اسکرول دست در گوشی ماتریکس را فیکس و صاف می‌کند */
+/* حالت فعال که با اسکرول دست در گوشی روشن و فیکس می‌شود */
 .scroll-rotate-effect.cyber-active {
     opacity: 1;
-    transform: translateY(0) rotateX(0deg) rotateY(0deg) scale(1);
+    transform: translateY(0) rotateX(0deg) scale(1);
 }
 
 @keyframes matrixFloat {
@@ -53,36 +50,187 @@ html, body {
 }
 
 /* ===================================================
-   ۲. NAVBAR & PREMIUM LINKS (منوی مینی‌مال زبیده)
+   ۲. NAVBAR & PREMIUM LINKS (اصلاح نوار باریک و دکمه لاگین زبیده)
 =================================================== */
 .navbar {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0.6rem 5% !important; background-color: var(--dark-bg);
+    padding: 0.7rem 5% !important; background-color: var(--dark-bg);
     backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
     position: fixed; top: 0; width: 100%; z-index: 1000;
     border-bottom: 1px solid rgba(0, 245, 212, 0.15);
+    box-shadow: 0 4px 25px rgba(0,0,0,0.2);
 }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.logo { background-color: var(--amber-gold); color: #03045e; font-weight: 900; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; box-shadow: 0 0 15px var(--amber-gold); }
 
-.nav-links a { color: var(--text-muted); text-decoration: none; margin: 0 12px; font-size: 0.9rem; font-weight: 700; position: relative; transition: all 0.3s ease; display: inline-block; }
-.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--accent-cyan), var(--amber-gold)); transition: width 0.3s ease; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; }
+.logo {
+    background-color: var(--amber-gold); color: #03045e; font-weight: 900;
+    width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; box-shadow: 0 0 15px var(--amber-gold); transition: transform 0.3s;
+}
+.brand:hover .logo { transform: scale(1.1) rotate(15deg); }
+
+.nav-links a {
+    color: var(--text-muted); text-decoration: none; margin: 0 12px; font-size: 0.9rem; font-weight: 700;
+    position: relative; transition: all 0.3s ease; display: inline-block;
+}
+.nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--amber-gold)); 
+    transition: width 0.3s ease;
+}
 .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan) !important; text-shadow: 0 0 8px var(--accent-cyan); transform: translateY(-2px); }
 
-.login { background-color: var(--amber-gold) !important; color: #03045e !important; text-decoration: none !important; padding: 7px 22px !important; border-radius: 20px !important; font-weight: 800; font-size: 0.85rem; transition: all 0.4s ease; box-shadow: 0 0 12px rgba(255, 159, 28, 0.3); }
-.login:hover { background-color: var(--accent-cyan) !important; color: var(--dark-bg) !important; transform: translateY(-2px) scale(1.04); box-shadow: 0 0 20px var(--accent-cyan) !important; }
+.login {
+    background-color: var(--amber-gold) !important; color: #03045e !important;
+    text-decoration: none !important; padding: 8px 24px !important; border-radius: 20px !important;
+    font-weight: 800 !important; font-size: 0.85rem !important; display: inline-block !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 0 0 12px rgba(255, 159, 28, 0.3) !important;
+}
+.login:hover {
+    background-color: var(--accent-cyan) !important; color: var(--dark-bg) !important;
+    transform: translateY(-3px) scale(1.05) !important; box-shadow: 0 0 22px var(--accent-cyan) !important;
+}
 
-.nav-right { display: flex; align-items: center; gap: 12px; flex-direction: row !important; }
-.language { background: transparent; border: none; color: var(--white); cursor: pointer; font-size: 0.85rem; font-weight: 600; }
-.menu-btn { background: transparent; border: none; color: var(--white); font-size: 1.3rem; cursor: pointer; display: none; }
+.nav-right { display: flex; align-items: center; gap: 15px; flex-direction: row !important; }
+.language { background: transparent; border: none; color: var(--white); cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: color 0.2s; }
+.language:hover { color: var(--accent-cyan); }
+.menu-btn { background: transparent; border: none; color: var(--white); font-size: 1.3rem; cursor: pointer; transition: color 0.2s; }
 
 /* ===================================================
    ۳. CINEMATIC HERO SECTION (بخش عریض زبیده)
 =================================================== */
-.hero { min-height: 100vh; display: flex; align-items: center; padding: 0 8%; background-image: url("./image/5Pvkep.png"); background-size: cover; background-position: center; position: relative; }
+.hero {
+    min-height: 100vh; display: flex; align-items: center; padding: 0 8%;
+    background-image: url("./image/5Pvkep.png"); background-size: cover; background-position: center; position: relative;
+}
 .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, rgba(5,29,59,0.3) 0%, var(--dark-bg) 100%); z-index: 1; }
 .hero-content { position: relative; z-index: 2; animation: matrixFloat 4.5s ease-in-out infinite alternate; }
-h1 { font-size: clamp(42px, 5.5vw, 85px); font-weight: 900; color: var(--white); margin-bottom: 25px; line-height: 1.05; }
+
+h1 { font-size: clamp(42px, 5.5vw, 85px); font-weight: 900; color: var(--white); margin-bottom: 25px; line-height: 1.05; letter-spacing: -2px; }
 h1 span { color: var(--amber-gold); text-shadow: 0 0 25px rgba(255,159,28,0.3); }
 .description { max-width: 550px; color: #e0e5ea; font-size: 14px; line-height: 1.7; margin-bottom: 30px; }
+
+.hero-slogan {
+    position: absolute; right: 8%; top: 32%; z-index: 2; color: var(--white); text-align: center;
+    background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 165px; height: 165px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    animation: rightBadgePulse 3.5s infinite ease-in-out alternate;
+}
+@keyframes rightBadgePulse {
+    0% { transform: translateY(0px) rotate(-8deg); box-shadow: 0 5px 25px rgba(0,0,0,0.4); }
+    100% { transform: translateY(-25px) rotate(5deg); box-shadow: 0 0 35px var(--amber-gold); border-color: var(--amber-gold); }
+}
+.hero-slogan strong { font-size: 22px; color: var(--amber-gold); font-weight: 900; }
+/* هاور دکمه‌های هیرو زبیده */
+.hero-buttons { display: flex; align-items: center; gap: 18px; }
+.btn { text-decoration: none; font-size: 14px; border-radius: 25px; padding: 12px 28px; display: inline-flex; align-items: center; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); font-weight: 700; position: relative; overflow: hidden; }
+.btn.primary { color: #152033; background: var(--amber-gold); border: none; box-shadow: 0 4px 15px rgba(255, 159, 28, 0.3); }
+.btn.primary:hover { background: var(--accent-cyan); color: var(--dark-bg); transform: translateY(-5px) scale(1.02); box-shadow: 0 12px 25px rgba(0, 245, 212, 0.5); }
+.btn.outline { color: var(--white); border: 1.5px solid #d2d8df; background: rgba(0, 0, 0, 0.1); }
+.btn.outline:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); background: rgba(255, 255, 255, 0.04); transform: translateY(-3px); box-shadow: 0 0 15px rgba(0, 245, 212, 0.2); }
+.arrow-move { display: inline-block; transition: transform 0.3s ease; margin-left: 8px; }
+.btn.primary:hover .arrow-move { transform: translateX(5px); }
+
+/* ===================================================
+   ۴. MODERN ABOUT US SECTION & 99.9% SPIN RECOVERY (مروه جان)
+=================================================== */
+.modern-feature-card {
+    background: var(--white); border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 16px;
+    transition: all 0.5s ease; animation: matrixFloat 4.2s ease-in-out infinite alternate-reverse;
+}
+.modern-feature-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0, 245, 212, 0.15) !important; border-color: var(--accent-cyan) !important; }
+
+.modern-img-frame { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); position: relative; }
+.scale-img { transition: transform 0.8s ease; }
+.modern-img-frame:hover .scale-img { transform: scale(1.07) rotate(2deg); }
+
+.floating-badge { bottom: 20px !important; left: -20px !important; z-index: 100 !important; background: #ffffff !important; border: 1px solid #eee; display: flex !important; padding: 10px 15px !important; }
+.animate-spin-slow { animation: spinnerSlowRotate 12s linear infinite !important; display: inline-block; }
+@keyframes spinnerSlowRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* ===================================================
+   ۵. EXCHANGE RATES & RESPONSIVE FLAG PULSE (پرچم‌های کارت صرافی مروه)
+=================================================== */
+.exchange-rates-section { background: linear-gradient(135deg, #01060d 0%, var(--navy-primary) 100%) !important; transition: transform 0.6s ease; }
+.flip-card-container { perspective: 1200px; height: 220px; transition: all 0.4s ease; }
+.flip-card { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s ease; }
+.flip-card-container:hover .flip-card { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 16px; }
+.flip-card-front { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); }
+.flip-card-back { background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%); transform: rotateY(180deg); }
+
+.flip-card-front img { filter: grayscale(0.4) brightness(0.9); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+/* پچ پالس و فوکوس سه‌بعدی پرچم‌های صرافی شما مروه جان (به جای چرخیدن نامنظم قدیمی) */
+.flip-card-container:hover img { transform: scale(1.12); filter: grayscale(0) brightness(1.1) drop-shadow(0 0 12px var(--accent-cyan)) !important; }
+
+.btn-glow {
+    background: var(--primary-color) !important; color: var(--white) !important; border-radius: 25px !important; padding: 10px 26px !important; display: inline-flex !important;
+    align-items: center !important; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important; box-shadow: 0 4px 15px rgba(0, 119, 182, 0.3) !important; font-size: 0.85rem !important; border: none !important;
+}
+.btn-glow:hover { background: var(--accent-cyan) !important; color: var(--dark-bg) !important; transform: translateY(-3px) !important; box-shadow: 0 0 22px var(--accent-cyan) !important; }
+
+/* === TAHMINA LAYOUTS (بخش و دکمه شناور تهمینه) === */
+.trust-section { background-color: var(--white) !important; padding: 60px 0; border-top: 1px solid #eee; }
+.trust-text { animation: matrixFloat 4s ease-in-out infinite alternate !important; will-change: transform; }
+.trust-text .btn:hover { background: var(--accent-cyan) !important; color: var(--dark-bg) !important; transform: translateY(-3px) !important; box-shadow: 0 0 18px var(--accent-cyan) !important; }
+
+.trust-image { position: relative; border-radius: 16px; overflow: hidden; animation: matrixFloat 3.6s ease-in-out infinite alternate-reverse; }
+.trust-image::before { content: ''; position: absolute; left: 0; width: 100%; height: 4px; background: var(--accent-cyan); box-shadow: 0 0 20px var(--accent-cyan); z-index: 3; animation: videoLaserMove 2.2s ease-in-out infinite alternate; }
+@keyframes videoLaserMove { 0% { top: 0%; } 100% { top: 100%; } }
+
+.feature-card { transition: all 0.4s ease !important; cursor: pointer !important; }
+.feature-card:hover { transform: translateY(-8px) scale(1.03) !important; background-color: var(--white) !important; border-color: var(--amber-gold) !important; box-shadow: 0 15px 30px rgba(255, 159, 28, 0.2) !important; }
+.feature-card:hover .icon-box { transform: scale(1.2) rotate(10deg) !important; color: var(--amber-gold) !important; }
+
+.cyber-terminal-card { border-radius: 16px; border: 1px solid var(--accent-cyan); position: relative; overflow: hidden; }
+.network-progress-bar { width: 100%; height: 100%; background-color: var(--accent-cyan) !important; box-shadow: 0 0 15px var(--accent-cyan); animation: cryptoLineFlow 1.5s linear infinite !important; }
+@keyframes cryptoLineFlow { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+/* ===================================================
+   🌟 ۷. ROTATING PIE CHART LAYER & STATIC CENTER HOLE (کاور چرخشی مروه)
+=================================================== */
+.pie-chart-section { background-color: var(--white) !important; padding: 70px 0; transition: transform 0.6s ease; }
+.chart-wrapper { width: 260px; height: 260px; display: flex; align-items: center; justify-content: center; position: relative; }
+
+/* کاور بیرونی چارت که چرخشی و متحرک باقی می‌ماند */
+.modern-pie-chart { 
+    width: 100%; height: 100%; border-radius: 50%; 
+    background: conic-gradient(#0077b6 0% 50%, #00f5d4 50% 80%, #ffb703 80% 100%); 
+    animation: continuousRotate 12s linear infinite !important; 
+    will-change: transform;
+}
+@keyframes continuousRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* 🌟 پچ طلایی مروه جان برای ثابت و قفل نگه داشتن کامل دایره‌ی مرکزی و پرچم‌های داخلی چارت */
+.chart-center-hole { 
+    position: absolute; width: 140px; height: 140px; 
+    background-color: #ffffff !important; border-radius: 50%; z-index: 10; 
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1); 
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    animation: none !important; transform: rotate(0deg) !important; 
+}
+.chart-center-hole h4, .chart-center-hole small, .chart-center-hole img { animation: none !important; transform: none !important; }
+
+/* ===================================================
+   📱 ۸. RESPONSIVE HARDWARE MEDIA QUERIES (پچ نهایی موبایل)
+=================================================== */
+@media (max-width: 991px) {
+    .hero { padding-top: 110px; text-align: center; justify-content: center; flex-direction: column; }
+    .hero-buttons { justify-content: center; }
+    .hero-slogan { position: relative !important; right: 0 !important; top: 0 !important; margin: 40px auto 0 !important; width: 140px; height: 140px; display: flex !important; }
+    .chart-wrapper { margin-top: 30px; }
+}
+
+@media (max-width: 768px) {
+    .navbar { padding: 0.5rem 4% !important; height: 50px !important; }
+    .nav-links { position: absolute; top: 48px; left: 0; right: 0; background: var(--dark-bg); flex-direction: column; padding: 20px; gap: 15px; display: none; border-bottom: 2px solid rgba(0, 245, 212, 0.2); }
+    .nav-links.open { display: flex !important; }
+    .menu-btn { display: block !important; }
+    .nav-right .login { display: none !important; }
+    
+    .col-lg-6, .col-md-6, .col-sm-4, .col-lg-5, .col-lg-4, .col-lg-3 { width: 100% !important; }
+    .floating-badge { position: relative !important; bottom: 0 !important; left: 0 !important; margin-top: 15px; width: 100%; justify-content: center; }
+    .trust-image { height: 230px !important; }
+}
