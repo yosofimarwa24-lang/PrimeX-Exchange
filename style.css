@@ -1,106 +1,79 @@
-/* === تنظیمات پایه و پالت رنگی لوکس صرافی === */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-    --navy-dark: #020b14; --navy-blue: #051d3b; --amber-gold: #ff9f1c;
-    --accent-cyan: #00f5d4; --white: #ffffff; --text-muted: #b0c4de;
+/* ===================================================
+   ۱. تنظیمات ساختاری پایه و پالت رنگی سایبرپانک صرافی مروه
+=================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-body { font-family: sans-serif; background-color: var(--navy-dark); color: var(--white); overflow-x: hidden; }
 
-/* === NAVBAR & HERO (منوی بالا و هیرو زبیده) === */
-.navbar { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 5%; background-color: rgba(2, 11, 20, 0.95); position: fixed; top: 0; width: 100%; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); }
-.logo { background-color: var(--amber-gold); color: var(--navy-blue); font-weight: 900; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(255,159,28,0.4); }
-.nav-links a { color: var(--text-muted); text-decoration: none; margin: 0 15px; font-weight: 500; position: relative; transition: all 0.3s; }
-.nav-links a:hover, .nav-links a.active { color: var(--amber-gold); }
+:root {
+    --primary-color: #0077b6;      
+    --dark-color: #03045e;        
+    --light-bg: #f8f9fa;           
+    --accent-color: #00f5d4;       
+    --text-muted: #b0c4de;       
+    --white: #ffffff;   
+    --dark-bg: #030914;        /* سرمه‌ای ماتریکس عمیق و باکلاس */
+    --navy-primary: #051d3b;
+    --amber-gold: #ff9f1c;     /* زرد پررنگ زعفرانی صرافی */
+    --accent-cyan: #00f5d4;     /* فیروزه‌ای نئونی */
+}
 
-.hero { min-height: 100vh; display: flex; align-items: center; padding: 0 8%; background-image: url("./image/5Pvkep.png"); background-size: cover; position: relative; }
-.hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, rgba(5,29,59,0.65) 0%, rgba(2,11,20,0.97) 100%); z-index: 1; }
-.hero-content { position: relative; z-index: 2; }
-h1 { font-size: clamp(40px, 5vw, 80px); font-weight: 800; color: var(--white); margin-bottom: 20px; }
-h1 span { color: var(--amber-gold); }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--dark-bg);
+    color: var(--white);
+    overflow-x: hidden;
+}
 
-/* === ABOUT US & RATES (کارت‌های مروه) === */
-.text-gradient-move { background: linear-gradient(135deg, #03045e, #0d6efd, #020b14); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.modern-feature-card { background: var(--white); border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; transition: all 0.4s ease; }
-/* هاور فوق جذاب کارت‌های مروه جان */
-.modern-feature-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 15px 30px rgba(0,245,212,0.15); border-color: var(--accent-cyan); }
-
-.flip-card-container { perspective: 1000px; height: 220px; }
-.flip-card { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s ease; }
-.flip-card-container:hover .flip-card { transform: rotateY(180deg); }
-.flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 16px; }
-.flip-card-front { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
-.flip-card-back { background: linear-gradient(135deg, #0077b6, #03045e); transform: rotateY(180deg); }
-/* === TAHMINA CYBER TERMINAL (بخش ویدیو و رادار تهمینه) === */
-@keyframes cyberFloat { 0% { transform: translateY(0px); } 100% { transform: translateY(-8px); } }
-@keyframes laserScan { 0% { top: 0%; } 100% { top: 100%; } }
-
-.trust-section { background-color: var(--white) !important; padding: 80px 0; }
-.trust-image { position: relative; border-radius: 16px; overflow: hidden; animation: cyberFloat 3.5s ease-in-out infinite alternate; }
-.trust-image::before { content: ''; position: absolute; left: 0; width: 100%; height: 3px; background: var(--accent-cyan); box-shadow: 0 0 12px var(--accent-cyan); z-index: 3; animation: laserScan 2.5s linear infinite; }
-
-.cyber-terminal-card { border-radius: 16px; border: 1px solid var(--accent-cyan); position: relative; overflow: hidden; transition: all 0.4s ease; }
-/* هاور نئونی و تغییر رنگ به زرد بخش تهمینه */
-.cyber-terminal-card:hover { transform: translateY(-5px); border-color: var(--amber-gold) !important; box-shadow: 0 15px 30px rgba(255,159,28,0.25) !important; }
-.cyber-grid-overlay { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,245,212,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0,245,212,0.02) 1px, transparent 1px); background-size: 15px 15px; }
-.price-up { color: #28a745 !important; } .price-down { color: #dc3545 !important; }
-
-/* === MARWA PIE CHART (گراف چرخشی مروه) === */
-.pie-chart-section { background-color: var(--white) !important; padding: 80px 0; }
-.modern-pie-chart { width: 300px; height: 300px; border-radius: 50%; background: conic-gradient(#0077b6 0% 50%, #00f5d4 50% 80%, #ffb703 80% 100%); animation: orbitRotate 12s linear infinite; }
-@keyframes orbitRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-.chart-center-hole { position: absolute; width: 160px; height: 160px; background-color: #ffffff; border-radius: 50%; z-index: 2; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+@keyframes matrixFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-10px); }
+}
 
 /* ===================================================
-   🚀 NASRIN CYBER INTERACTIVE INPUTS & FOOTER
+   ۲. NAVBAR & PREMIUM LINKS (اصلاح نوار باریک زبیده)
 =================================================== */
-.contact-section { animation: cyberFloat 4s ease-in-out infinite alternate-reverse; }
+.navbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.7rem 5% !important; background-color: var(--dark-bg);
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    border-bottom: 1px solid rgba(0, 245, 212, 0.15);
+}
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo { background-color: var(--amber-gold); color: #03045e; font-weight: 900; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: 0 0 15px var(--amber-gold); }
 
-/* هاور و فوکوس انفجاری روی تک تک اینپوت‌ها و فیلدهای فرم نسرین */
-.custom-cyber-input {
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    border: 1px solid rgba(0, 0, 0, 0.1) !important;
-    background-color: #fafbfc !important;
+.nav-links a { color: var(--text-muted); text-decoration: none; margin: 0 12px; font-size: 0.9rem; font-weight: 700; position: relative; transition: all 0.3s ease; display: inline-block; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--accent-cyan), var(--amber-gold)); transition: width 0.3s ease; }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent-cyan) !important; text-shadow: 0 0 8px var(--accent-cyan); }
+
+.login { background-color: var(--amber-gold) !important; color: #03045e !important; text-decoration: none !important; padding: 7px 20px !important; border-radius: 20px !important; font-weight: 800; font-size: 0.85rem; transition: all 0.3s ease; }
+.login:hover { background-color: var(--accent-cyan) !important; color: var(--dark-bg) !important; transform: translateY(-2px); box-shadow: 0 0 20px var(--accent-cyan) !important; }
+.nav-right { display: flex; align-items: center; gap: 15px; flex-direction: row !important; }
+
+/* ===================================================
+   ۳. 🌟 PREMIUM TEAM SECTION (تغییر رنگ پس‌زمینه تیم به سرمه‌ای متالیک باکلاس - بدون رنگ سفید) 🌟
+=================================================== */
+.team-section {
+    background: linear-gradient(180deg, #020b14 0%, #051833 100%) !important; /* پچ طلایی حذف رنگ سفید */
+    border-top: 1px solid rgba(0, 245, 212, 0.1) !important;
+    padding: 80px 0;
 }
-.custom-cyber-input:hover {
-    border-color: var(--amber-gold) !important;
-    background-color: #ffffff !important;
-    transform: translateY(-2px);
+/* اصلاح استایل کارت‌های تیم در پس‌زمینه دارک جدید */
+.team-section .modern-feature-card {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: var(--white) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
 }
-.custom-cyber-input:focus {
+.team-section .modern-feature-card:hover {
     border-color: var(--accent-cyan) !important;
-    box-shadow: 0 0 15px rgba(0, 245, 212, 0.3) !important;
-    transform: translateY(-4px);
-    background-color: #ffffff !important;
+    box-shadow: 0 15px 35px rgba(0, 245, 212, 0.2) !important;
+    transform: translateY(-10px) scale(1.02);
 }
-
-/* هاور کارت‌های سؤالات متداول (کالاپس‌ها) */
-.faq-cyber-item { transition: all 0.3s ease; }
-.faq-cyber-item:hover { transform: translateX(5px); border-color: var(--amber-gold) !important; }
-.faq-question { transition: all 0.3s ease; }
-.faq-question:hover { color: var(--amber-gold) !important; background-color: rgba(255,159,28,0.03) !important; }
-
-/* هاور دکمه فعال‌سازی چت پشتیبانی راداری */
-@keyframes radarPulse { 0% { box-shadow: 0 0 0 0 rgba(255,159,28,0.5); } 70% { box-shadow: 0 0 0 15px rgba(255,159,28,0); } 100% { box-shadow: 0 0 0 0 rgba(255,159,28,0); } }
-.super-radar-button:hover { animation: radarPulse 1.4s infinite ease-in-out; transform: translateY(-3px); background-color: var(--navy-blue) !important; }
-
-/* === استایل‌های گوی‌های شیشه‌ای چرخشی ۳۶۰ درجه شبکه‌های اجتماعی فوتر === */
-.footer-cinema { background: linear-gradient(135deg, #010811 0%, #031427 100%); position: relative; }
-.f-cyber-link:hover { color: var(--accent-cyan) !important; text-shadow: 0 0 8px var(--accent-cyan); }
-
-.social-cyber-orb {
-    width: 42px; height: 42px; border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    display: inline-flex; align-items: center; justify-content: center;
-    color: rgba(255, 255, 255, 0.5); text-decoration: none; font-size: 1.1rem;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(5px);
+.team-section .text-navy {
+    color: var(--white) !important; /* سفید و خوانا شدن نام اعضا در تم دارک */
 }
-/* انیمیشن چرخش ۳۶۰ درجه کامل گوی‌های شیشه‌ای فوتر در هاور */
-.social-cyber-orb:hover {
-    color: #010811 !important;
-    transform: translateY(-8px) rotate(360deg); /* چرخش فوق‌العاده نرم دور خود مروه جان */
-}
-.fb-hover:hover { background-color: #3b5998 !important; border-color: #3b5998 !important; box-shadow: 0 0 15px #3b5998; }
-.inst-hover:hover { background-color: #e1306c !important; border-color: #e1306c !important; box-shadow: 0 0 15px #e1306c; }
-.tg-hover:hover { background-color: #0088cc !important; border-color: #0088cc !important; box-shadow: 0 0 15px #0088cc; }
-.link-hover:hover { background-color: #0077b5 !important; border-color: #0077b5 !important; box-shadow: 0 0 15px #0077b5; }
