@@ -1166,4 +1166,83 @@ body.light-theme .cyber-bubbles-bg {
     display: none !important;
 }
 
+/* ===================================================
+   ۵. پچ نهایی و بومی کلاپس‌های فایروال بدون نیاز به اسکریپت
+=================================================== */
+
+/* تنظیم ساختار و فواصل کادرهای کلاپس بومی */
+.faq-cyber-item {
+    border: 1px solid rgba(0, 245, 212, 0.2) !important;
+    border-radius: 8px !important;
+    margin-bottom: 10px !important;
+    background: #fafbfc !important;
+    transition: all 0.3s ease !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* هاور نئونی شیک دور کادر سوال */
+.faq-cyber-item:hover {
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 4px 15px rgba(0, 245, 212, 0.15) !important;
+}
+
+/* استایل نوار ثابت سوال (تضمین ۱۰۰٪ عدم غیب شدن متن سوال هنگام کلیک) */
+.faq-cyber-item summary.faq-question {
+    background: #f8fafc !important;
+    padding: 12px 15px !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    color: #03045e !important;
+    cursor: pointer !important;
+    user-select: none !important;
+    outline: none !important;
+    list-style: none !important; /* حذف فلش پیش‌فرض مرورگر */
+}
+
+/* حذف فلش پیش‌فرض کلاپس در مرورگرهای وبکیت مثل کروم و سافاری */
+.faq-cyber-item summary::-webkit-details-marker {
+    display: none !important;
+}
+
+/* تراز بودن همیشگی متن سوال */
+.faq-cyber-item summary.faq-question span {
+    visibility: visible !important;
+    display: inline-block !important;
+}
+
+/* استایل کادر پاسخ هنگام باز شدن کشو زیر سوال */
+.faq-cyber-item div.border-top {
+    padding: 15px !important;
+    font-size: 0.76rem !important;
+    line-height: 1.6 !important;
+    background-color: #f1f3f7 !important;
+    color: #1e293b !important;
+    border-top: 1px solid rgba(0, 245, 212, 0.15) !important;
+    font-weight: 600 !important;
+}
+
+/* --- تنظیمات رنگ کلاپس‌ها در حالت شب و روز صرافی مروه جان --- */
+body.light-theme .support {
+    background-color: #ffffff !important;
+}
+
+/* استایل دهی تمام خودکار کادر سوال و جواب در تم شب (تیره سایبرپانک اصلی شما) */
+body:not(.light-theme) .faq-cyber-item {
+    background: rgba(5, 29, 59, 0.25) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+body:not(.light-theme) .faq-cyber-item summary.faq-question {
+    background: rgba(5, 29, 59, 0.45) !important;
+    color: var(--white) !important;
+}
+body:not(.light-theme) .faq-cyber-item div.border-top {
+    background-color: rgba(3, 9, 20, 0.5) !important;
+    color: #cbd5e1 !important;
+}
 
