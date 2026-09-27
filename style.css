@@ -308,9 +308,7 @@ body, .navbar, .nav-links a, .modern-feature-card, .team-section, h1, h2, p, #th
 .btn-cyber-submit:hover { background-color: var(--accent-cyan) !important; color: var(--dark-bg) !important; transform: translateY(-4px) scale(1.02) !important; box-shadow: 0 0 25px var(--accent-cyan) !important; }
 .social-cyber-orb { width: 42px !important; height: 42px !important; border-radius: 50% !important; border: 1px solid rgba(255, 255, 255, 0.25) !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; color: #070609 !important; text-decoration: none !important; font-size: 1.1rem !important; background: rgba(255, 255, 255, 0.08) !important; backdrop-filter: blur(5px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; }
 .social-cyber-orb:hover { color: #010811 !important; transform: translateY(-8px) rotate(360deg) scale(1.18) !important; }
-.faq-cyber-item { border: 1px solid rgba(0, 0, 0, 0.08) !important; margin-bottom: 6px !important; background: #ffffff !important; transform: none !important; animation: none !important; transition: none !important; }
-.faq-question { cursor: pointer !important; outline: none !important; padding: 10px 14px !important; color: #03045e !important; font-weight: 700 !important; font-size: 0.8rem !important; }
-.faq-answer { background-color: #fafbfc !important; padding: 10px 14px !important; line-height: 1.5; color: #1e293b !important; font-weight: 600 !important; font-size: 0.75rem !important; }
+
 
 @media (max-width: 991px) {
     .menu-btn { display: block !important; }
@@ -527,37 +525,6 @@ body.light-theme .trust-text i {
     transform: translateY(-4px) scale(1.01) !important;
     box-shadow: 0 12px 30px rgba(0, 245, 212, 0.25) !important;
     border-color: var(--amber-gold) !important;
-}
-
-/* ۲. پچ هاور لوکس و ثانیه‌دار روی بارهای کالاپس نسرین جان (FAQ Items) */
-.faq-cyber-item {
-    transition: all 0.3s ease-in-out !important; /* زمان‌بندی نرم ابریشمی */
-    cursor: pointer !important;
-}
-
-/* هاور روان بیوش روی نوار پرسش‌ها بدون پرش برقی */
-.faq-cyber-item:hover {
-    background-color: rgba(0, 245, 212, 0.04) !important; /* ایجاد هاله فیروزه‌ای ملایم */
-    border-color: var(--accent-cyan) !important;
-    transform: translateX(4px) !important; /* متمایل شدن نامحسوس به راست یا چپ بر اساس جهت */
-}
-
-/* انیمیشن نرم روی متن سوالات هنگام هاور */
-.faq-question {
-    transition: color 0.3s ease !important;
-}
-.faq-cyber-item:hover .faq-question {
-    color: var(--primary-color) !important; /* متمایل شدن رنگ عنوان به سرمه‌ای لوکس */
-}
-
-/* ۳. پچ کنتراست شدید هاور کالاپس‌ها در تم روشن (Light Mode) */
-body.light-theme .faq-cyber-item:hover {
-    background-color: #f8fafc !important; /* خاکستری مینی‌مال استودیویی در روز */
-    border-color: var(--primary-color) !important;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05) !important;
-}
-body.light-theme .faq-cyber-item:hover .faq-question {
-    color: var(--primary-color) !important;
 }
 /* ===================================================
    🌟 پچ فیکس نهایی مروه لیدر: قفل منو و هاور دکمه‌ها 🌟
@@ -1205,78 +1172,9 @@ body.light-theme .cyber-bubbles-bg {
     list-style: none !important; /* حذف فلش پیش‌فرض مرورگر */
 }
 
-/* حذف فلش پیش‌فرض کلاپس در مرورگرهای وبکیت مثل کروم و سافاری */
-.faq-cyber-item summary::-webkit-details-marker {
-    display: none !important;
-}
-
-/* تراز بودن همیشگی متن سوال */
-.faq-cyber-item summary.faq-question span {
-    visibility: visible !important;
-    display: inline-block !important;
-}
-
-/* استایل کادر پاسخ هنگام باز شدن کشو زیر سوال */
-.faq-cyber-item div.border-top {
-    padding: 15px !important;
-    font-size: 0.76rem !important;
-    line-height: 1.6 !important;
-    background-color: #f1f3f7 !important;
-    color: #1e293b !important;
-    border-top: 1px solid rgba(0, 245, 212, 0.15) !important;
-    font-weight: 600 !important;
-}
 
 /* --- تنظیمات رنگ کلاپس‌ها در حالت شب و روز صرافی مروه جان --- */
 body.light-theme .support {
     background-color: #ffffff !important;
 }
 
-/* استایل دهی تمام خودکار کادر سوال و جواب در تم شب (تیره سایبرپانک اصلی شما) */
-body:not(.light-theme) .faq-cyber-item {
-    background: rgba(5, 29, 59, 0.25) !important;
-    border-color: rgba(255, 255, 255, 0.08) !important;
-}
-body:not(.light-theme) .faq-cyber-item summary.faq-question {
-    background: rgba(5, 29, 59, 0.45) !important;
-    color: var(--white) !important;
-}
-body:not(.light-theme) .faq-cyber-item div.border-top {
-    background-color: rgba(3, 9, 20, 0.5) !important;
-    color: #cbd5e1 !important;
-}
-/* ===================================================
-   ۲۴. پچ فیکس قطعی و ۱۰۰٪: جلوگیری از غیب شدن متن سوال کلاپس
-=================================================== */
-/* ===================================================
-   ۲۴. پچ پایداری و فیکس نهایی کلاپس‌های ساختاری بوت‌استرپ
-=================================================== */
-
-/* تضمین ماندگاری و عدم غیب شدن کل کادر سوال و جواب */
-.faq-cyber-item {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-/* دکمه و متن سوال همیشه باید سر جای خود کاملاً نمایان و خوانا بماند */
-.faq-cyber-item .faq-question {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    width: 100% !important;
-}
-
-/* تضمین همیشگی برای غیب نشدن متن کدهای داخلی سوالات صرافی */
-.faq-cyber-item .faq-question span {
-    visibility: visible !important;
-    display: inline-block !important;
-    color: #383849 !important; /* رنگ تیره اصلی برای خوانایی در تم روز */
-}
-
-/* رنگ سوالات در حالت تم تاریک (شب) */
-body:not(.light-theme) .faq-cyber-item .faq-question span {
-    color: var(--white) !important; /* تبدیل خودکار رنگ سوال به سفید در شب */
-}

@@ -127,19 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
             container.classList.toggle('flipped');
         });
     });
-
-    // --- ۷. آکاردئون سؤالات متداول FAQ نسرین جان ---
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            const span = question.querySelector('span');
-            if (answer) {
-                answer.classList.toggle('d-none');
-                if (span) span.innerText = answer.classList.contains('d-none') ? "+" : "−";
-            }
-        });
-    });
     const changeLanguage = (lang) => {
         if (langBtnText) langBtnText.innerHTML = lang === "en" ? "🌐 EN" : "🌐 FA";
         document.body.style.direction = lang === "fa" ? "rtl" : "ltr";
@@ -505,21 +492,4 @@ setTimeout(() => {
         document.addEventListener("DOMContentLoaded", initBubbles);
     }
 })();
-    // --- ۶. مدیریت بومی نشانگرهای مثبت و منفی کلاپس‌های استاندارد بوت‌استرپ نسرین جان ---
-    const faqItems = document.querySelectorAll('.faq-cyber-item');
-    
-    faqItems.forEach(item => {
-        const collapseEl = item.querySelector('.faq-answer-collapse');
-        const indicator = item.querySelector('.icon-indicator');
-        
-        if (collapseEl && indicator) {
-            // موقع باز شدن کامل پاسخ توسط بوت‌استرپ، علامت را منفی کن
-            collapseEl.addEventListener('shown.bs.collapse', () => {
-                indicator.innerText = "−";
-            });
-            // موقع بسته شدن کامل پاسخ توسط بوت‌استرپ، علامت را مثبت کن
-            collapseEl.addEventListener('hidden.bs.collapse', () => {
-                indicator.innerText = "+";
-            });
-        }
-    });
+   
