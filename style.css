@@ -115,23 +115,119 @@ h1 span { color: var(--amber-gold); text-shadow: 0 0 25px rgba(255,159,28,0.3); 
 .team-section .modern-feature-card { background: rgba(255, 255, 255, 0.03) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; color: var(--white) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important; }
 .team-section .modern-feature-card:hover { border-color: var(--accent-cyan) !important; box-shadow: 0 15px 35px rgba(0, 245, 212, 0.2) !important; transform: translateY(-10px) scale(1.02); }
 /* ===================================================
-   ۵. ADVANCED EXCHANGE RATES & LASER DATA FLOW (مروه جان)
+   ۵. پچ نهایی: افکت شیشه‌ای بیرق‌ها، هاور طولانی تیم و تنظیم رنگ سکشن نرخ اسعار
 =================================================== */
-.exchange-rates-section { background: linear-gradient(135deg, #01060d 0%, var(--navy-primary) 100%) !important; }
-.flip-card-container { perspective: 1200px; height: 220px; }
-.flip-card { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s ease; }
-.flip-card-container:hover .flip-card, .flip-card-container.flipped .flip-card { transform: rotateY(180deg); }
-.flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 16px; }
-.flip-card-front { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); }
-.flip-card-back { background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%); transform: rotateY(180deg); }
-
-.flip-card-front .my-3 { position: relative; padding-bottom: 8px; }
-.flip-card-front .my-3::after {
-    content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
-    background-size: 200% 100%; animation: rateLaserFlow 2.5s infinite linear; will-change: background-position;
+@keyframes neonBorderRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
-@keyframes rateLaserFlow { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+/* 🌟 تنظیم اختصاصی رنگ پس‌زمینه بخش نرخ اسعار در حالت شب (تیره) 🌟 */
+.exchange-rates-section {
+    background: linear-gradient(180deg, #030816 0%, #061129 100%) !important; /* سرمه‌ای سایبرپانک تیره و عمیق */
+    border-top: 1px solid rgba(0, 245, 212, 0.1) !important;
+    border-bottom: 1px solid rgba(0, 245, 212, 0.1) !important;
+}
+
+/* افکت شیشه‌ای لوکس بیرق‌های بخش نرخ ارز (Glassmorphism) */
+.flag-wrapper {
+    position: relative !important;
+    width: 46px;
+    height: 46px;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.08) !important; 
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1.5px solid rgba(0, 245, 212, 0.4) !important; 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 1rem;
+    overflow: hidden !important;
+}
+
+/* انیمیشن چرخش مداوم تصاویر بیرق‌ها درون شیشه */
+.currency-flag-img {
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    animation: neonBorderRotate 14s linear infinite !important; 
+    transition: transform 0.4s ease !important;
+    width: 38px !important;
+    height: 38px !important;
+}
+
+.flag-wrapper:hover {
+    border-color: #ffffff !important;
+    box-shadow: 0 0 15px rgba(0, 245, 212, 0.6) !important;
+}
+.flag-wrapper:hover .currency-flag-img {
+    animation-duration: 6s !important; 
+}
+
+/* هاور طولانی و لوکس کارت‌های اعضای تیم */
+.team-section .modern-feature-card {
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1) !important;
+}
+.team-section .modern-feature-card:hover {
+    transform: translateY(-15px) scale(1.03) !important;
+    border-color: var(--amber-gold) !important;
+    box-shadow: 0 20px 40px rgba(255, 159, 28, 0.25) !important;
+}
+.team-section .modern-feature-card .icon-circle i {
+    transition: transform 0.8s ease-in-out !important;
+}
+.team-section .modern-feature-card:hover .icon-circle i {
+    transform: rotate(360deg) scale(1.2);
+}
+
+/* سفید ماندن سه دایره بخش درباره ما */
+.icon-circle {
+    background-color: #ffffff !important;
+    width: 60px; height: 60px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important;
+}
+.icon-circle .fa-medal { color: var(--amber-gold) !important; }
+.icon-circle .fa-chart-line { color: var(--accent-cyan) !important; }
+.icon-circle .fa-exchange-alt { color: var(--primary-color) !important; }
+
+#themeToggle {
+    color: var(--amber-gold) !important;
+    text-shadow: 0 0 15px rgba(255, 159, 28, 0.8);
+    font-size: 1.3rem !important;
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* ===================================================
+   استایل‌های وضعیت لایت مود (تم روشن)
+=================================================== */
+body.light-theme { background: #f4f6fa !important; color: #0f172a !important; }
+body.light-theme .navbar { background-color: rgba(255, 255, 255, 0.95) !important; border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
+body.light-theme #themeToggle { color: #ff7b00 !important; filter: drop-shadow(0 0 8px rgba(255, 123, 0, 0.6)); }
+body.light-theme .nav-links a { color: #475569 !important; }
+body.light-theme .nav-links a:hover, body.light-theme .nav-links a.active { color: var(--primary-color) !important; text-shadow: none !important; }
+body.light-theme .hero-overlay { background: radial-gradient(circle, rgba(5, 29, 59, 0.6) 0%, var(--dark-bg) 100%) !important; }
+body.light-theme h1, body.light-theme .description, body.light-theme .hero-slogan { color: var(--white) !important; }
+body.light-theme h2, body.light-theme h6, body.light-theme .text-navy, body.light-theme .fw-black { color: #0f172a !important; }
+body.light-theme .text-secondary, body.light-theme .text-muted, body.light-theme .small-description { color: #475569 !important; }
+body.light-theme .modern-feature-card, body.light-theme .team-section .modern-feature-card, body.light-theme .flip-card-front, body.light-theme .flip-card-back { background: #ffffff !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
+
+/* 🌟 تنظیم رنگ بخش نرخ اسعار در حالت روشن 🌟 */
+body.light-theme .exchange-rates-section {
+    background: #edf1f7 !important; /* رنگ روشن و متمایز از سایر بخش‌ها */
+}
+body.light-theme .flag-wrapper { background: rgba(0, 0, 0, 0.04) !important; border-color: rgba(0, 0, 0, 0.15) !important; }
+body.light-theme .icon-circle .fa-medal { color: #ff9f1c !important; }
+body.light-theme .icon-circle .fa-chart-line { color: #00b4d8 !important; }
+body.light-theme .icon-circle .fa-exchange-alt { color: #0077b6 !important; }
+body.light-theme .team-section { background: #e2e8f0 !important; border-top: 1px solid rgba(0, 0, 0, 0.05) !important; }
+body.light-theme .floating-badge { background: #ffffff !important; border: 1px solid rgba(0, 0, 0, 0.1) !important; }
+
+body, .navbar, .nav-links a, .modern-feature-card, .team-section, h1, h2, p, #themeToggle, .icon-circle, .flip-card-front, .flip-card-back, .flag-wrapper, .exchange-rates-section {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease !important;
+}
 
 /* ===================================================
    ۶. TRUST & TERMINAL FLOW (تهمینه جان)
@@ -206,11 +302,11 @@ h1 span { color: var(--amber-gold); text-shadow: 0 0 25px rgba(255,159,28,0.3); 
 /* ===================================================
    ۸. NASRIN SUPPORT LABELS & 100% MOBILE RESPONSIVE
 =================================================== */
-.custom-cyber-input { border: 1px solid #ced4da !important; background-color: #ffffff !important; transition: all 0.3s ease-in-out !important; }
+.custom-cyber-input { border: 1px solid #03062f !important; background-color: #ffffff !important; transition: all 0.3s ease-in-out !important; }
 .custom-cyber-input:hover, .custom-cyber-input:focus { border-color: var(--amber-gold) !important; background-color: rgba(255, 159, 28, 0.02) !important; box-shadow: 0 0 15px rgba(255, 159, 28, 0.25) !important; padding-left: 20px !important; outline: none !important; }
 .btn-cyber-submit { position: relative; overflow: hidden; z-index: 1; font-size: 0.9rem !important; font-weight: 800 !important; background-color: var(--dark-color) !important; color: var(--white) !important; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important; box-shadow: 0 4px 15px rgba(3, 4, 94, 0.4) !important; }
 .btn-cyber-submit:hover { background-color: var(--accent-cyan) !important; color: var(--dark-bg) !important; transform: translateY(-4px) scale(1.02) !important; box-shadow: 0 0 25px var(--accent-cyan) !important; }
-.social-cyber-orb { width: 42px !important; height: 42px !important; border-radius: 50% !important; border: 1px solid rgba(255, 255, 255, 0.25) !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; color: #ffffff !important; text-decoration: none !important; font-size: 1.1rem !important; background: rgba(255, 255, 255, 0.08) !important; backdrop-filter: blur(5px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; }
+.social-cyber-orb { width: 42px !important; height: 42px !important; border-radius: 50% !important; border: 1px solid rgba(255, 255, 255, 0.25) !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; color: #070609 !important; text-decoration: none !important; font-size: 1.1rem !important; background: rgba(255, 255, 255, 0.08) !important; backdrop-filter: blur(5px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; }
 .social-cyber-orb:hover { color: #010811 !important; transform: translateY(-8px) rotate(360deg) scale(1.18) !important; }
 .faq-cyber-item { border: 1px solid rgba(0, 0, 0, 0.08) !important; margin-bottom: 6px !important; background: #ffffff !important; transform: none !important; animation: none !important; transition: none !important; }
 .faq-question { cursor: pointer !important; outline: none !important; padding: 10px 14px !important; color: #03045e !important; font-weight: 700 !important; font-size: 0.8rem !important; }
@@ -506,3 +602,424 @@ body.light-theme .faq-cyber-item:hover .faq-question {
     transform: translateY(-4px) scale(1.03) !important;
     box-shadow: 0 10px 25px rgba(0, 245, 212, 0.5) !important;
 }
+/* ===================================================
+   ۵. پچ نهایی: افکت شیشه‌ای بیرق‌ها، انیمیشن چرخش مداوم و لایت مود
+=================================================== */
+
+/* تعریف انیمیشن چرخش ۳۶۰ درجه مداوم برای بیرق‌ها */
+@keyframes continuousFlagRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 🌟 کانتینر افکت شیشه‌ای و نئونی بیرق‌ها (Glassmorphic) 🌟 */
+.flag-wrapper {
+    position: relative !important;
+    width: 46px;
+    height: 46px;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.08) !important; /* شیشه شفاف */
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1.5px solid rgba(0, 245, 212, 0.4) !important; /* مرز فیروزه‌ای نئونی */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 1rem;
+    overflow: hidden !important;
+}
+
+/* 🌟 انیمیشن چرخش مداوم، همیشگی و بی‌پایان تصاویر بیرق‌ها درون شیشه 🌟 */
+.currency-flag-img {
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    animation: continuousFlagRotate 14s linear infinite !important; /* چرخش بی‌پایان دور خود */
+    transition: transform 0.4s ease !important;
+    width: 38px !important;
+    height: 38px !important;
+}
+
+/* افکت درخشش شدیدتر نئونی هنگام هاور روی شیشه پرچم */
+.flag-wrapper:hover {
+    border-color: #ffffff !important;
+    box-shadow: 0 0 15px rgba(0, 245, 212, 0.6) !important;
+}
+.flag-wrapper:hover .currency-flag-img {
+    animation-duration: 6s !important; /* سریع‌تر شدن چرخش هنگام هاور */
+}
+
+/* 🌟 هاور طولانی، لوکس و جذاب برای المان‌ها و کارت‌های اعضای تیم 🌟 */
+.team-section .modern-feature-card {
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1) !important;
+}
+.team-section .modern-feature-card:hover {
+    transform: translateY(-15px) scale(1.03) !important;
+    border-color: var(--amber-gold) !important;
+    box-shadow: 0 20px 40px rgba(255, 159, 28, 0.25) !important;
+}
+.team-section .modern-feature-card .icon-circle i {
+    transition: transform 0.8s ease-in-out !important;
+}
+.team-section .modern-feature-card:hover .icon-circle i {
+    transform: rotate(360deg) scale(1.2);
+}
+
+/* سفید ماندن سه دایره بخش درباره ما */
+.icon-circle {
+    background-color: #ffffff !important;
+    width: 60px; height: 60px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important;
+}
+.icon-circle .fa-medal { color: var(--amber-gold) !important; }
+.icon-circle .fa-chart-line { color: var(--accent-cyan) !important; }
+.icon-circle .fa-exchange-alt { color: var(--primary-color) !important; }
+
+/* استایل دکمه ناوبری تغییر تم */
+#themeToggle {
+    color: var(--amber-gold) !important;
+    text-shadow: 0 0 15px rgba(255, 159, 28, 0.8);
+    font-size: 1.3rem !important;
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* استایل‌های جامع وضعیت لایت مود (تم روشن) بدون افت کیفیت پس‌زمینه هیرو */
+body.light-theme { background: #f4f6fa !important; color: #0f172a !important; }
+body.light-theme .navbar { background-color: rgba(255, 255, 255, 0.95) !important; border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
+body.light-theme #themeToggle { color: #ff7b00 !important; filter: drop-shadow(0 0 8px rgba(255, 123, 0, 0.6)); }
+body.light-theme .nav-links a { color: #475569 !important; }
+body.light-theme .nav-links a:hover, body.light-theme .nav-links a.active { color: var(--primary-color) !important; text-shadow: none !important; }
+body.light-theme .hero-overlay { background: radial-gradient(circle, rgba(5, 29, 59, 0.6) 0%, var(--dark-bg) 100%) !important; }
+body.light-theme h1, body.light-theme .description, body.light-theme .hero-slogan { color: var(--white) !important; }
+body.light-theme h2, body.light-theme h6, body.light-theme .text-navy, body.light-theme .fw-black { color: #0f172a !important; }
+body.light-theme .text-secondary, body.light-theme .text-muted, body.light-theme .small-description { color: #475569 !important; }
+body.light-theme .modern-feature-card, body.light-theme .team-section .modern-feature-card, body.light-theme .flip-card-front, body.light-theme .flip-card-back { background: #ffffff !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
+body.light-theme .flag-wrapper { background: rgba(0, 0, 0, 0.04) !important; border-color: rgba(0, 0, 0, 0.15) !important; }
+body.light-theme .icon-circle .fa-medal { color: #ff9f1c !important; }
+body.light-theme .icon-circle .fa-chart-line { color: #00b4d8 !important; }
+body.light-theme .icon-circle .fa-exchange-alt { color: #0077b6 !important; }
+body.light-theme .team-section { background: #e2e8f0 !important; border-top: 1px solid rgba(0, 0, 0, 0.05) !important; }
+body.light-theme .floating-badge { background: #ffffff !important; border: 1px solid rgba(0, 0, 0, 0.1) !important; }
+
+body, .navbar, .nav-links a, .modern-feature-card, .team-section, h1, h2, p, #themeToggle, .icon-circle, .flip-card-front, .flip-card-back, .flag-wrapper {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease !important;
+}
+/* ===================================================
+   ۷. انیمیشن چرخش مداوم آیکون‌های ویژگی در زمان هاور
+=================================================== */
+
+/* چرخش کامل آیکون اصلی کارت‌ها با حرکت نرم فیزیکی زمان هاور */
+.feature-card .icon-box i {
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    display: inline-block;
+}
+
+.feature-card:hover .icon-box i {
+    transform: rotate(360deg) scale(1.15) !important; /* چرخش ۳۶۰ درجه آیکون */
+}
+
+/* ترنزیشن نرم برای ستون‌های نمودار لکوییدیتی */
+.live-chart-graphics .chart-bar {
+    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+/* ===================================================
+   ۸. افکت هاور لوکس و نئونی عنوان Our Trust Our Priority
+=================================================== */
+
+/* تنظیمات اولیه برای عنوان‌ها */
+.trust-text h2,
+.trust-text h2 span.text-warning {
+    display: inline-block;
+    cursor: default;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                text-shadow 0.5s ease, 
+                filter 0.5s ease !important;
+    will-change: transform, text-shadow;
+}
+
+/* افکت هاور روی بخش اول عنوان (Our Trust) */
+.trust-text h2:hover {
+    transform: translateY(-3px) scale(1.03);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
+                 0 0 30px rgba(0, 119, 182, 0.3); /* درخشش ملایم بدون تغییر رنگ */
+}
+
+/* افکت هاور روی بخش طلایی عنوان (Our Priority) */
+.trust-text h2 span.text-warning:hover {
+    transform: translateY(-3px) scale(1.06) rotate(-1deg) !important;
+    text-shadow: 0 0 15px var(--amber-gold),
+                 0 0 30px rgba(255, 159, 28, 0.5) !important; /* درخشش نئونی پررنگ زعفرانی صرافی */
+    filter: drop-shadow(0 0 8px var(--amber-gold));
+}
+/* ===================================================
+   ۹. افکت هاور نئونی و موج نوری متحرک برای دکمه Why Choose Us?
+=================================================== */
+
+/* تنظیمات ساختاری پایه برای دکمه اختصاصی صرافی مروه */
+.trust-text .btn-modern-glow {
+    position: relative !important;
+    overflow: hidden !important; /* برای مخفی ماندن موج نوری قبل از هاور */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.4s ease, 
+                border-color 0.4s ease !important;
+    border: 1px solid rgba(0, 245, 212, 0.2) !important;
+    z-index: 1;
+}
+
+/* ایجاد لایه کاذب برای افکت لغزش موج نور نئونی از پشت متن */
+.trust-text .btn-modern-glow::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important; /* ابتدا در سمت چپ دکمه پنهان است */
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 245, 212, 0.25), 
+                rgba(255, 159, 28, 0.2), 
+                transparent) !important;
+    transition: left 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    z-index: -1 !important;
+}
+
+/* افکت هاور اصلی دکمه: حرکت ۳ بعدی رو به بالا و درخشش هاله سایبرپانک */
+.trust-text .btn-modern-glow:hover {
+    transform: translateY(-5px) scale(1.03) !important; /* صعود ملایم دکمه */
+    box-shadow: 0 10px 25px rgba(0, 245, 212, 0.4), 
+                0 0 15px rgba(255, 159, 28, 0.2) !important; /* ایجاد دبل گلو یا درخشش دوگانه */
+    border-color: var(--accent-cyan) !important;
+}
+
+/* لغزش آنی موج نوری زمان رفتن ماوس روی دکمه */
+.trust-text .btn-modern-glow:hover::before {
+    left: 100% !important; /* عبور موج نوری جذاب از چپ به راست */
+}
+
+/* 🌟 انیمیشن پویای شلیک و لغزش فلشِ داخل دکمه 🌟 */
+.trust-text .btn-modern-glow .arrow-slide {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.trust-text .btn-modern-glow:hover .arrow-slide {
+    transform: translateX(6px) scale(1.15) !important; /* شلیک فلش به سمت جلو با افکت ضربه‌ای */
+    color: var(--accent-cyan) !important;
+}
+/* ===================================================
+   ۱۰. انیمیشن شناور و بالا پایین رفتن مداوم آیکون‌های ویژگی (Trust)
+=================================================== */
+
+/* تعریف انیمیشن حرکت عمقی بالا و پایین (شناور نرم) */
+@keyframes autonomousFloatIcon {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-6px); /* هدایت ملایم آیکون به سمت بالا */
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* 🌟 اعمال انیمیشن شناور همیشگی روی هر ۴ باکس آیکون بخش ویژگی‌ها 🌟 */
+.trust-section .feature-card .icon-box {
+    animation: autonomousFloatIcon 3s ease-in-out infinite !important; /* حرکت مداوم و بی‌پایان بالا و پایین */
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+}
+
+/* 🌟 متمایز کردن زمان شروع حرکت هر آیکون برای طبیعی‌تر شدن افکت (حرکت موجی چشمی) 🌟 */
+.trust-section .row .col-6:nth-child(1) .icon-box { animation-delay: 0s !important; }
+.trust-section .row .col-6:nth-child(2) .icon-box { animation-delay: 0.4s !important; }
+.trust-section .row .col-6:nth-child(3) .icon-box { animation-delay: 0.8s !important; }
+.trust-section .row .col-6:nth-child(4) .icon-box { animation-delay: 1.2s !important; }
+
+/* افکت فوق‌العاده جذاب زمان هاور: بزرگ شدن آیکون در حین شناور بودن */
+.trust-section .feature-card:hover .icon-box {
+    animation-play-state: paused !important; /* توقف موقت بالا پایین رفتن زمان هاور برای تمرکز کاربر */
+    transform: scale(1.18) rotate(-3deg) !important; /* بزرگ شدن و مایل شدن شیک آیکون با ماوس */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+/* ===================================================
+   ۱۱. انیمیشن شناور سراسری و مداوم برای تمام آیتم‌های سکشن Trust
+=================================================== */
+
+/* تعریف انیمیشن پایه شناور نرم (بالا و پایین رفتن خودکار) */
+@keyframes globalItemFloat {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px); /* هدایت نرم المان به سمت بالا */
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* ۱. اعمال انیمیشن شناور روی قاب ویدیوی صرافی */
+.trust-section .trust-image {
+    animation: globalItemFloat 4s ease-in-out infinite !important;
+    will-change: transform;
+}
+.trust-section .trust-image:hover {
+    animation-play-state: paused !important; /* توقف موقت شناور هنگام هاور ماوس */
+    transform: scale(1.03) translateY(-4px) !important; /* افکت هاور اختصاصی */
+}
+
+/* ۲. اعمال انیمیشن شناور روی باکس نمودار متحرک لکوییدیتی */
+.trust-section .moving-chart-container {
+    animation: globalItemFloat 4.2s ease-in-out infinite !important;
+    animation-delay: 0.5s !important; /* تأخیر برای ایجاد حرکت موجی */
+    will-change: transform;
+}
+.trust-section .moving-chart-container:hover {
+    animation-play-state: paused !important;
+    transform: scale(1.02) translateY(-3px) !important;
+}
+
+/* ۳. اعمال انیمیشن شناور روی متن عنوان اصلی (Our Trust Our Priority) */
+.trust-section .trust-text h2 {
+    animation: globalItemFloat 4.5s ease-in-out infinite !important;
+    animation-delay: 0.2s !important;
+    will-change: transform;
+}
+
+/* ۴. اعمال انیمیشن شناور روی هر ۴ کارت ویژگی سمت راست به صورت متمایز */
+.trust-section .feature-card {
+    animation: globalItemFloat 3.8s ease-in-out infinite !important;
+    will-change: transform;
+}
+
+/* ایجاد تأخیر زمانی (Delay) بین کارت‌ها برای ایجاد افکت حرکت پله‌ای بسیار مقبول */
+.trust-section .row .col-6:nth-child(1) .feature-card { animation-delay: 0s !important; }
+.trust-section .row .col-6:nth-child(2) .feature-card { animation-delay: 0.3s !important; }
+.trust-section .row .col-6:nth-child(3) .feature-card { animation-delay: 0.6s !important; }
+.trust-section .row .col-6:nth-child(4) .feature-card { animation-delay: 0.9s !important; }
+
+/* افکت هاور خفن کارت‌ها: توقف حالت شناور خودکار و صعود سه‌بعدی نئونی با ماوس */
+.trust-section .feature-card:hover {
+    animation-play-state: paused !important;
+    transform: translateY(-12px) scale(1.03) !important;
+}
+
+/* ۵. اعمال انیمیشن شناور روی دکمه اصلی (Why Choose Us?) */
+.trust-section .btn-modern-glow {
+    animation: globalItemFloat 4.8s ease-in-out infinite !important;
+    animation-delay: 0.4s !important;
+    will-change: transform;
+}
+.trust-section .btn-modern-glow:hover {
+    animation-play-state: paused !important;
+    transform: translateY(-7px) scale(1.04) !important;
+}
+/* ===================================================
+   ۱۳. هاورهای فوق‌العاده لوکس، نئونی و ۳بعدی سکشن نرخ اسعار
+=================================================== */
+
+/* ۱. هاور دکمه اصلی (View All Markets) - افکت موج نوری و درخشش نئونی فیروزه‌ای */
+.exchange-rates-section .btn-glow {
+    position: relative !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(0, 245, 212, 0.2) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.4s ease, 
+                border-color 0.4s ease !important;
+    z-index: 1;
+}
+
+.exchange-rates-section .btn-glow:hover {
+    transform: translateY(-5px) scale(1.03) !important;
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 0 25px rgba(0, 245, 212, 0.6), 
+                0 0 40px rgba(0, 245, 212, 0.2) !important; /* درخشان شدن دکمه */
+}
+
+/* انیمیشن جهشی و ضربه‌ای آیکون داخل دکمه مارکت‌ها */
+.exchange-rates-section .btn-glow i.animate-bounce {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+.exchange-rates-section .btn-glow:hover i.animate-bounce {
+    transform: translate(4px, -2px) scale(1.2) !important; /* حرکت شیک آیکون رو به جلو و بالا */
+    color: var(--accent-cyan) !important;
+}
+
+/* ۲. هاور عنوان اصلی سکشن (Today's Exchange Rates) - افکت درخشش نئونی سفید ماتریکسی */
+.exchange-rates-section h2.fw-extrabold {
+    cursor: default;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.4s ease !important;
+}
+.exchange-rates-section h2.fw-extrabold:hover {
+    transform: scale(1.02) !important;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 
+                 0 0 40px rgba(0, 245, 212, 0.3) !important; /* هاله نوری دور تیتر اصلی */
+}
+
+/* ۳. هاور کارت‌های فلیپ ارزی (USD, EUR, GBP) - صعود سه‌بعدی و درخشش مرزها */
+.exchange-rates-section .flip-card-front {
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    transition: border-color 0.5s ease, box-shadow 0.5s ease !important;
+}
+
+/* افکت هوشمند: تغییر رنگ مرز و سایه هر کارت متناسب با وضعیت سود و تم ارز */
+.exchange-rates-section .flip-card-container:hover .flip-card-front {
+    border-color: var(--accent-cyan) !important; /* مرز فیروزه‌ای زمان هاور */
+    box-shadow: 0 20px 45px rgba(0, 245, 212, 0.18), 
+                0 0 30px rgba(3, 9, 20, 0.6) !important; /* سایه عمیق لوکس */
+}
+
+/* بزرگ‌نمایی ملایم تگ‌های قیمت داخل کارت‌ها زمان هاور کاربر */
+.exchange-rates-section .flip-card-container:hover .count-up {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
+    transition: text-shadow 0.3s ease !important;
+}
+
+/* انیمیشن پویای تکان خوردن آیکون فلش کوچک راهنمای هاور در پشت کارت */
+.exchange-rates-section .flip-card-front .text-warning i {
+    transition: transform 0.4s ease !important;
+}
+.exchange-rates-section .flip-card-container:hover .flip-card-front .text-warning i {
+    transform: translateX(-4px) scale(1.1); /* اشاره متحرک به سمت فلیپ شدن کارت */
+}
+
+/* ۴. هاور و تغییر رنگ استایل دایره‌های کوچک درصد نوسان (+0.15% و...) */
+.exchange-rates-section .badge {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease !important;
+}
+.exchange-rates-section .flip-card-container:hover .badge {
+    transform: scale(1.1) rotate(3deg) !important; /* بزرگ شدن و چرخش فانتزی بج درصد نوسان */
+    background-color: var(--accent-cyan) !important;
+    color: var(--dark-bg) !important;
+    border-color: var(--accent-cyan) !important;
+}
+/* ===================================================
+   ۱۴. افکت‌های چشمک‌زن نئونی (Blink) برای نوسان پویای اعداد
+=================================================== */
+
+/* آماده‌سازی ترنزیشن نرم برای برگشت رنگ اعداد پس از چشمک زدن */
+.exchange-rates-section .count-up {
+    transition: color 0.4s ease, text-shadow 0.4s ease !important;
+}
+
+/* 🌟 حالت چشمک‌زن سبز نئونی در زمان افزایش قیمت 🌟 */
+.price-up-blink {
+    color: #00f5d4 !important; /* فیروزه‌ای نئونی صرافی شما */
+    text-shadow: 0 0 15px #00f5d4, 0 0 30px rgba(0, 245, 212, 0.6) !important;
+    transform: scale(1.05);
+    display: inline-block;
+}
+
+/* 🌟 حالت چشمک‌زن نارنجی زعفرانی در زمان کاهش قیمت 🌟 */
+.price-down-blink {
+    color: #ff9f1c !important; /* زرد زعفرانی صرافی شما */
+    text-shadow: 0 0 15px #ff9f1c, 0 0 30px rgba(255, 159, 28, 0.6) !important;
+    transform: scale(1.05);
+    display: inline-block;
+}
+
