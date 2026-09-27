@@ -434,3 +434,113 @@ setInterval(() => {
         const normalRates = document.querySelectorAll('.count-up.rate-slow');
         normalRates.forEach(counter => updateFluctuation(counter));
     }, 5000);
+// === ۱۲. موتور ذرات نئونی متحرک (نقطه‌های بزرگ و واضح) و تایپ خودکار صرافی مروه جان ===
+document.addEventListener("DOMContentLoaded", () => {
+    // الف) افکت تایپ خودکار متن هیرو
+    const heroDesc = document.querySelector(".hero-content .description");
+    if (heroDesc) {
+        const originalText = heroDesc.innerText;
+        heroDesc.innerText = "";
+        let index = 0;
+        
+        const typeWriter = () => {
+            if (index < originalText.length) {
+                heroDesc.innerHTML += originalText.charAt(index);
+                index++;
+                setTimeout(typeWriter, 25);
+            }
+        };
+        setTimeout(typeWriter, 1000);
+    }
+
+    // ب) ساخت ساختار ذرات شناور بزرگتر در پس‌زمینه سایت
+    const createParticles = () => {
+        const particleContainer = document.createElement("div");
+        particleContainer.className = "cyber-particles-bg";
+        document.body.appendChild(particleContainer);
+
+        for (let i = 0; i < 35; i++) { // تعداد متناسب برای بازدهی عالی و عدم شلوغی صفحه
+            const particle = document.createElement("span");
+            
+            // 🌟 بزرگتر کردن اندازه نقطه‌ها (بین ۵ تا ۱۰ پیکسل) 🌟
+            const randomSize = Math.random() * 5 + 5; 
+            particle.style.width = randomSize + "px";
+            particle.style.height = randomSize + "px";
+            
+            particle.style.left = Math.random() * 100 + "vw";
+            particle.style.top = Math.random() * 100 + "vh";
+            
+            // رنگ‌بندی تصادفی بر اساس پالت فیروزه‌ای و طلایی شما
+            particle.style.background = Math.random() > 0.5 ? "#00f5d4" : "#ff9f1c";
+            particle.style.animationDuration = (Math.random() * 12 + 10) + "s"; // کمی آرام‌تر برای حرکت رویایی‌تر
+            particle.style.animationDelay = (Math.random() * 6) + "s";
+            
+            particleContainer.appendChild(particle);
+        }
+    };
+    createParticles();
+});
+// === ۱۲. موتور فوق پیشرفته و مستقل حباب‌های شیشه‌ای گرد صرافی مروه جان ===
+
+// الف) افکت تایپ خودکار متن هیرو
+setTimeout(() => {
+    const heroDesc = document.querySelector(".hero-content .description");
+    if (heroDesc) {
+        const originalText = heroDesc.innerText;
+        heroDesc.innerText = "";
+        let index = 0;
+        const typeWriter = () => {
+            if (index < originalText.length) {
+                heroDesc.innerHTML += originalText.charAt(index);
+                index++;
+                setTimeout(typeWriter, 25);
+            }
+        };
+        typeWriter();
+    }
+}, 1000);
+
+// ب) موتور اصلی و کاملاً مستقل ساخت حباب‌های شیشه‌ای بزرگ
+(function() {
+    function initBubbles() {
+        // حذف کانتینر قدیمی برای جلوگیری از تداخل
+        const oldBg = document.querySelector(".cyber-bubbles-bg");
+        if (oldBg) oldBg.remove();
+
+        const bubbleContainer = document.createElement("div");
+        bubbleContainer.className = "cyber-bubbles-bg";
+        document.body.appendChild(bubbleContainer);
+
+        // تولید ۴۰ عدد حباب گرد شیشه‌ای کاملاً واضح
+        for (let i = 0; i < 40; i++) {
+            const bubble = document.createElement("span");
+            
+            // بزرگتر کردن ابعاد حباب‌ها برای وضوح عالی (بین ۱۲ تا ۲۴ پیکسل)
+            const randomSize = Math.floor(Math.random() * 12) + 12; 
+            bubble.style.width = randomSize + "px";
+            bubble.style.height = randomSize + "px";
+            
+            // پخش متوازن در تمام صفحه
+            bubble.style.left = (Math.random() * 98) + "vw";
+            bubble.style.top = (Math.random() * 95) + "vh";
+            
+            // تنظیم رنگ‌های اصلی نئونی صرافی شما
+            const isCyan = Math.random() > 0.5;
+            bubble.style.borderColor = isCyan ? "#00f5d4" : "#ff9f1c";
+            bubble.style.color = isCyan ? "#00f5d4" : "#ff9f1c";
+            
+            // زمان‌بندی انیمیشن صعود رویایی
+            bubble.style.animationDuration = (Math.random() * 8 + 8) + "s";
+            bubble.style.animationDelay = (Math.random() * 6) + "s";
+            
+            bubbleContainer.appendChild(bubble);
+        }
+    }
+
+    // اجرای فوری موتور حباب‌ها
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        initBubbles();
+    } else {
+        document.addEventListener("DOMContentLoaded", initBubbles);
+    }
+})();

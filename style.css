@@ -1022,4 +1022,148 @@ body, .navbar, .nav-links a, .modern-feature-card, .team-section, h1, h2, p, #th
     transform: scale(1.05);
     display: inline-block;
 }
+/* ===================================================
+   ۱۸. پچ اصلاحی و نهایی هاورهای بخش ارتباط با ما (Connect Us)
+=================================================== */
+
+/* ۱. استایل و هاور فیلدهای ورودی فرم (Inputs) - افکت فوکوس نئونی */
+.connect-us-section .form-control,
+.connect-us-section input,
+.connect-us-section textarea {
+    background: rgba(5, 29, 59, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: var(--white) !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* هاور و فوکوس روان روی فیلدها بدون تغییر رنگ اصلی */
+.connect-us-section .form-control:hover,
+.connect-us-section input:hover,
+.connect-us-section textarea:hover {
+    border-color: rgba(0, 245, 212, 0.4) !important;
+    box-shadow: 0 0 10px rgba(0, 245, 212, 0.15) !important;
+}
+
+.connect-us-section .form-control:focus,
+.connect-us-section input:focus,
+.connect-us-section textarea:focus {
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 0 15px rgba(0, 245, 212, 0.4) !important;
+    background: rgba(5, 29, 59, 0.6) !important;
+    outline: none !important;
+}
+
+/* ۲. هاور فوق‌العاده لوکس دکمه ارسال فرم - افکت درخشش دوگانه سایبرپانک */
+.connect-us-section .btn-submit-form,
+.connect-us-section button[type="submit"] {
+    background: var(--amber-gold) !important;
+    color: #03045e !important;
+    font-weight: 800 !important;
+    border: 1px solid transparent !important;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1) !important;
+    box-shadow: 0 4px 15px rgba(255, 159, 28, 0.3) !important;
+}
+
+.connect-us-section .btn-submit-form:hover,
+.connect-us-section button[type="submit"]:hover {
+    transform: translateY(-4px) scale(1.02) !important;
+    background: var(--accent-cyan) !important; /* جابه‌جایی شیک رنگ به فیروزه‌ای هنگام هاور */
+    color: var(--dark-bg) !important;
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 12px 25px rgba(0, 245, 212, 0.5),
+                0 0 15px rgba(255, 159, 28, 0.3) !important;
+}
+
+/* ۳. هاور آیکون‌های شبکه‌های اجتماعی (اینستاگرام، تلگرام و...) در فوتر */
+.connect-us-section .social-icon,
+.footer-section .social-link {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.connect-us-section .social-icon:hover,
+.footer-section .social-link:hover {
+    transform: translateY(-6px) scale(1.15) rotate(8deg) !important;
+    color: var(--accent-cyan) !important;
+    text-shadow: 0 0 12px var(--accent-cyan) !important;
+}
+
+/* ۴. فیکس رنگ متون در حالت لایت‌مود (حالت روز روشن) برای این بخش */
+body.light-theme .connect-us-section {
+    background-color: #ffffff !important;
+}
+body.light-theme .connect-us-section .form-control,
+body.light-theme .connect-us-section input,
+body.light-theme .connect-us-section textarea {
+    background: #f8fafc !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    color: #0f172a !important;
+}
+body.light-theme .connect-us-section .form-control:focus {
+    background: #ffffff !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 12px rgba(0, 119, 182, 0.25) !important;
+}
+/* ===================================================
+   ۱۷. سیستم حباب‌های گرد شیشه‌ای، توخالی و درخشان سایبرپانک (نسخه تضمینی)
+=================================================== */
+
+/* کانتینر اصلی حباب‌ها در پس‌زمینه صرافی */
+.cyber-bubbles-bg {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    pointer-events: none !important; /* لغو کلیک روی حباب‌ها برای باز شدن فرم‌ها */
+    z-index: 1 !important; /* آوردن حباب‌ها به لایه بالاتر جهت دیده شدن قطعی */
+    overflow: hidden !important;
+    display: block !important;
+}
+
+/* انیمیشن صعود ملایم و شناور حباب‌ها به همراه تکان خوردن افقی ظریف */
+@keyframes bubbleFloatUpAnimation {
+    0% {
+        transform: translateY(105vh) translateX(0px) scale(0.7);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.75; /* وضوح کامل حباب‌ها در بدو ورود */
+    }
+    50% {
+        transform: translateY(50vh) translateX(25px) scale(1.1);
+        opacity: 0.6;
+    }
+    85% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(-15vh) translateX(-20px) scale(0.8);
+        opacity: 0;
+    }
+}
+
+/* 🌟 تبدیل قطعی به حباب‌های گرد، توخالی، شیشه‌ای و بسیار مقبول 🌟 */
+.cyber-bubbles-bg span {
+    position: absolute !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.05) !important; /* پس‌زمینه شیشه‌ای شفاف */
+    border: 2px solid transparent !important; /* کادر رنگی از جاوااسکریپت می‌آید */
+    opacity: 0;
+    animation: bubbleFloatUpAnimation 12s linear infinite !important;
+    /* ایجاد افکت انعکاس نور نئونی قدرتمند دور حباب‌ها */
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.4), 
+                0 0 14px currentColor,
+                0 0 25px rgba(0, 0, 0, 0.5) !important;
+    will-change: transform, opacity;
+    display: inline-block !important;
+}
+
+/* پنهان کردن حباب‌ها در حالت روز (Light Mode) برای حفظ تمیزی صفحه روشن */
+body.light-theme .cyber-bubbles-bg {
+    display: none !important;
+}
+
 
