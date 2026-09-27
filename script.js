@@ -140,28 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-
-    // --- ۸. موتور جامع ترجمه آنی کل متون بدون به هم ریختن چیدمان هیرو منو ---
-    const langEnBtn = document.querySelector(".lang-en");
-    const langFaBtn = document.querySelector(".lang-fa");
-    const langBtnText = document.getElementById("langDropdown");
-    const heroSloganCircle = document.querySelector(".hero-slogan");
-
-    const translations = {
-        en: {
-            brand: "Global Exchange", slogan: "Fast • Reliable",
-            heroTitle: "Your Trusted<br><span>Currency Exchange</span> Partner",
-            heroDesc: "We provide fast, secure and reliable currency exchange services for individuals and businesses.",
-            sloganCircle: "<span>More</span><br><strong>Than Just</strong><br><span>Exchange</span><i></i>"
-        },
-        fa: {
-            brand: "صرافی جهانی", slogan: "سریع • مطمئن",
-            heroTitle: "شریک قابل اعتماد شما<br>در <span>تبادلات اسعاری</span>",
-            heroDesc: "ما خدمات صرافی سریع، مطمئن و قابل اعتمادی را برای افراد و شرکت‌ها فراهم می‌کنیم تا تراکنش‌های شما آسان‌تر و امن‌تر شود.",
-            sloganCircle: "<span>بیشتر</span><br><strong>از یک</strong><br><span>صرافی</span><i></i>"
-        }
-    };
-
     const changeLanguage = (lang) => {
         if (langBtnText) langBtnText.innerHTML = lang === "en" ? "🌐 EN" : "🌐 FA";
         document.body.style.direction = lang === "fa" ? "rtl" : "ltr";
@@ -310,23 +288,6 @@ document.addEventListener("DOMContentLoaded", () => {
             container.classList.toggle('flipped');
         });
     });
-
-    // --- ۷. آکاردئون سؤالات متداول FAQ نسرین جان ---
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            const span = question.querySelector('span');
-            if (answer) {
-                answer.classList.toggle('d-none');
-                if (span) span.innerText = answer.classList.contains('d-none') ? "+" : "−";
-            }
-        });
-    });
-
-   
-    
-
     const changeLanguage = (lang) => {
         if (langBtnText) langBtnText.innerHTML = lang === "en" ? "🌐 EN" : "🌐 FA";
         document.body.style.direction = lang === "fa" ? "rtl" : "ltr";
@@ -434,7 +395,7 @@ setInterval(() => {
         const normalRates = document.querySelectorAll('.count-up.rate-slow');
         normalRates.forEach(counter => updateFluctuation(counter));
     }, 5000);
-// === ۱۲. موتور ذرات نئونی متحرک (نقطه‌های بزرگ و واضح) و تایپ خودکار صرافی مروه جان ===
+// === ۱۲. موتور ذرات نئونی متحرک (نقطه‌های بزرگ و واضح) و تایپ خودکار صرافی   ===
 document.addEventListener("DOMContentLoaded", () => {
     // الف) افکت تایپ خودکار متن هیرو
     const heroDesc = document.querySelector(".hero-content .description");
@@ -544,3 +505,21 @@ setTimeout(() => {
         document.addEventListener("DOMContentLoaded", initBubbles);
     }
 })();
+    // --- ۶. مدیریت بومی نشانگرهای مثبت و منفی کلاپس‌های استاندارد بوت‌استرپ نسرین جان ---
+    const faqItems = document.querySelectorAll('.faq-cyber-item');
+    
+    faqItems.forEach(item => {
+        const collapseEl = item.querySelector('.faq-answer-collapse');
+        const indicator = item.querySelector('.icon-indicator');
+        
+        if (collapseEl && indicator) {
+            // موقع باز شدن کامل پاسخ توسط بوت‌استرپ، علامت را منفی کن
+            collapseEl.addEventListener('shown.bs.collapse', () => {
+                indicator.innerText = "−";
+            });
+            // موقع بسته شدن کامل پاسخ توسط بوت‌استرپ، علامت را مثبت کن
+            collapseEl.addEventListener('hidden.bs.collapse', () => {
+                indicator.innerText = "+";
+            });
+        }
+    });

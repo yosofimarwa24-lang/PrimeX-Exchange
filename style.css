@@ -1245,4 +1245,38 @@ body:not(.light-theme) .faq-cyber-item div.border-top {
     background-color: rgba(3, 9, 20, 0.5) !important;
     color: #cbd5e1 !important;
 }
+/* ===================================================
+   ۲۴. پچ فیکس قطعی و ۱۰۰٪: جلوگیری از غیب شدن متن سوال کلاپس
+=================================================== */
+/* ===================================================
+   ۲۴. پچ پایداری و فیکس نهایی کلاپس‌های ساختاری بوت‌استرپ
+=================================================== */
 
+/* تضمین ماندگاری و عدم غیب شدن کل کادر سوال و جواب */
+.faq-cyber-item {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* دکمه و متن سوال همیشه باید سر جای خود کاملاً نمایان و خوانا بماند */
+.faq-cyber-item .faq-question {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+}
+
+/* تضمین همیشگی برای غیب نشدن متن کدهای داخلی سوالات صرافی */
+.faq-cyber-item .faq-question span {
+    visibility: visible !important;
+    display: inline-block !important;
+    color: #383849 !important; /* رنگ تیره اصلی برای خوانایی در تم روز */
+}
+
+/* رنگ سوالات در حالت تم تاریک (شب) */
+body:not(.light-theme) .faq-cyber-item .faq-question span {
+    color: var(--white) !important; /* تبدیل خودکار رنگ سوال به سفید در شب */
+}
