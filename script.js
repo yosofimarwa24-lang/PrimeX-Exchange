@@ -1,10 +1,10 @@
 // ===================================================
-/* 🌟 ULTIMATE 3D PORTAL ENGINE - script.js (Part 1) */
+/* 🌟 ULTIMATE CLEAN ENGINE - script.js (Part 1) 🌟 */
 // ===================================================
 
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- ۱. انیمیشن صعودی پویای شمارشگر اعداد کارت‌های مروه جان ---
+    // --- ۱. انیمیشن افزایش پویای شمارشگر اعداد کارت‌ها ---
     const startCounterAnimation = (counter) => {
         const target = parseFloat(counter.getAttribute('data-target'));
         if (!isNaN(target)) {
@@ -25,55 +25,35 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // --- ۲. 🌟 موتور ماتریکس چرخش ۳D و پشت‌ورو شدن اجباری دیوها با اسکرول (Up & Down) 🌟 ---
+    // --- ۲. موتور ظهور نرم، ثانیه‌دار و هم‌تراز سکشن‌ها هنگام اسکرول صفحه ---
     const cyberSections = document.querySelectorAll('.about-us-section, .exchange-rates-section, .pie-chart-section, .trust-section');
     
     cyberSections.forEach(sec => {
         if (sec) {
             sec.classList.add('scroll-rotate-effect');
-            // فعال‌سازی شتاب‌دهنده سخت‌افزاری مرورگر برای چرخش واقعی
-            sec.style.transformOrigin = "center top";
         }
     });
 
-    let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    // اجرای فوری انیمیشن مگنتیک با چرخش محسوس کل محتویات بدنه
-    window.addEventListener('scroll', () => {
-        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-        let delta = currentScroll - lastScrollTop;
-        
+    const checkScrollIntersection = () => {
         cyberSections.forEach(sec => {
             const rect = sec.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                
-                // محاسبه زاویه چرخش پویا بر اساس شدت و جهت اسکرول دست کاربر
-                let rotationAngle = Math.min(Math.max(delta * 0.12, -15), 15);
-                
-                if (currentScroll > lastScrollTop) {
-                    // اسکرول به سمت پایین: محتویات رو به جلو کج می‌شوند
-                    sec.style.transform = `perspective(1200px) translateY(0) rotateX(${rotationAngle}deg) scale(1)`;
-                    sec.style.opacity = "1";
-                    sec.style.filter = "blur(0px)";
-                } else {
-                    // اسکرول به سمت بالا: کل دیوها پشت و رو شده و تاب می‌خورند!
-                    sec.style.transform = `perspective(1200px) translateY(-20px) rotateX(${rotationAngle}deg) scale(0.97)`;
-                    sec.style.filter = "blur(0.5px)";
-                }
+            if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
                 sec.classList.add('cyber-active');
                 
                 if (sec.classList.contains('exchange-rates-section')) {
                     const counters = sec.querySelectorAll('.count-up');
                     counters.forEach(counter => {
-                        if(counter.innerText === "0" || counter.innerText === "0.00") {
+                        if(counter.innerText === "0" || counter.innerText === "0.00" || counter.innerText === "") {
                             startCounterAnimation(counter);
                         }
                     });
                 }
             }
         });
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    }, { passive: true });
+    };
+
+    window.addEventListener('scroll', checkScrollIntersection, { passive: true });
+    checkScrollIntersection(); // اجرای اولیه برای المان‌های داخل ویوپورت
 
     // --- ۳. محاسبات هوشمند آنلاین ماشین‌حساب صرافی مروه ---
     const amountInput = document.getElementById('convertAmount');
@@ -101,34 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
             menuBtn.innerText = navLinks.classList.contains("open") ? "✕" : "☰";
         });
     }
-    // --- ۵. افکت مگنتیک سه‌بعدی ماوس روی کارت‌های صرافی مروه و تهمینه ---
-    const premiumCards = document.querySelectorAll('.modern-feature-card, .flip-card-front, .feature-card');
-    
-    premiumCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left; 
-            const y = e.clientY - rect.top;  
-            
-            const xc = rect.width / 2;
-            const yc = rect.height / 2;
-            
-            const angleX = (yc - y) / 10; 
-            const angleY = (x - xc) / 10;
-            
-            card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-8px) scale(1.04)`;
-            card.style.boxShadow = `${-angleY * 2}px ${angleX * 2}px 35px rgba(0, 245, 212, 0.3)`;
-            card.style.transition = "transform 0.05s ease-out, box-shadow 0.05s ease-out";
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)";
-            card.style.boxShadow = "";
-            card.style.transition = "transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
-        });
-    });
-
-    // --- ۶. چرخش سه‌بعدی کارت‌های نرخ ارز با لمس دست در موبایل و کلیک ---
+    // --- ۵. چرخش سه‌بعدی کارت‌های نرخ ارز با لمس دست در موبایل و کلیک ---
     const cardContainers = document.querySelectorAll('.flip-card-container');
     cardContainers.forEach(container => {
         container.style.cursor = 'pointer';
@@ -140,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // --- ۷. آکاردئون سؤالات متداول FAQ نسرین جان ---
+    // --- ۶. آکاردئون سؤالات متداول FAQ نسرین جان ---
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(question => {
         question.addEventListener('click', () => {
@@ -152,9 +105,72 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    // --- ۷. ماژول جابه‌جایی تم شب و روز لوکس و بدون تداخل ---
+    const themeToggle = document.getElementById("themeToggle");
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("light-theme");
+            const icon = themeToggle.querySelector("i");
+            if (icon) {
+                icon.className = document.body.classList.contains("light-theme") ? "fas fa-sun" : "fas fa-moon";
+            }
+        });
+    }
+
+    // --- ۸. موتور جامع ترجمه آنی کل متون بدون به هم ریختن چیدمان هیرو منو ---
+    const langEnBtn = document.querySelector(".lang-en");
+    const langFaBtn = document.querySelector(".lang-fa");
+    const langBtnText = document.getElementById("langDropdown");
+    const heroSloganCircle = document.querySelector(".hero-slogan");
+
+    const translations = {
+        en: {
+            brand: "Global Exchange", slogan: "Fast • Reliable",
+            heroTitle: "Your Trusted<br><span>Currency Exchange</span> Partner",
+            heroDesc: "We provide fast, secure and reliable currency exchange services for individuals and businesses.",
+            sloganCircle: "<span>More</span><br><strong>Than Just</strong><br><span>Exchange</span><i></i>"
+        },
+        fa: {
+            brand: "صرافی جهانی", slogan: "سریع • مطمئن",
+            heroTitle: "شریک قابل اعتماد شما<br>در <span>تبادلات اسعاری</span>",
+            heroDesc: "ما خدمات صرافی سریع، مطمئن و قابل اعتمادی را برای افراد و شرکت‌ها فراهم می‌کنیم تا تراکنش‌های شما آسان‌تر و امن‌تر شود.",
+            sloganCircle: "<span>بیشتر</span><br><strong>از یک</strong><br><span>صرافی</span><i></i>"
+        }
+    };
+
+    const changeLanguage = (lang) => {
+        if (langBtnText) langBtnText.innerHTML = lang === "en" ? "🌐 EN" : "🌐 FA";
+        document.body.style.direction = lang === "fa" ? "rtl" : "ltr";
+        document.body.style.textAlign = lang === "fa" ? "right" : "left";
+
+        if (heroSloganCircle) {
+            if (lang === "fa") {
+                heroSloganCircle.style.right = "auto";
+                heroSloganCircle.style.left = "8%";
+            } else {
+                heroSloganCircle.style.left = "auto";
+                heroSloganCircle.style.right = "8%";
+            }
+            heroSloganCircle.innerHTML = translations[lang].sloganCircle;
+        }
+
+        const brandText = document.querySelector(".brand-text strong");
+        const sloganText = document.querySelector(".brand-text small");
+        const heroTitle = document.querySelector(".hero-content h1");
+        const heroDesc = document.querySelector(".hero-content .description");
+
+        if (brandText) brandText.innerText = translations[lang].brand;
+        if (sloganText) sloganText.innerText = translations[lang].slogan;
+        if (heroTitle) heroTitle.innerHTML = translations[lang].heroTitle;
+        if (heroDesc) heroDesc.innerText = translations[lang].heroDesc;
+    };
+
+    if (langEnBtn) langEnBtn.addEventListener("click", (e) => { e.preventDefault(); changeLanguage("en"); });
+    if (langFaBtn) langFaBtn.addEventListener("click", (e) => { e.preventDefault(); changeLanguage("fa"); });
 });
 
-// === ۸. شبیه‌ساز زنده نوسانات نرخ ارزها روی کارت‌ها هر ۴ ثانیه (Marwa Stream) ===
+// === ۹. شبیه‌ساز زنده نوسانات نرخ ارزها روی کارت‌ها هر ۴ ثانیه ===
 setInterval(() => {
     const counters = document.querySelectorAll('.count-up');
     counters.forEach(counter => {
@@ -163,38 +179,25 @@ setInterval(() => {
             const fluctuation = (Math.random() * 0.08 - 0.04);
             let newPrice = currentPrice + fluctuation;
             counter.innerText = newPrice.toFixed(2);
-
-            const card = counter.closest('.flip-card-front');
-            if (card) {
-                const badge = card.querySelector('.badge');
-                if (badge) {
-                    if (fluctuation >= 0) {
-                        badge.className = "badge bg-success-subtle text-success border border-success rounded-pill px-2 py-1 small";
-                        badge.innerText = "+" + (Math.random() * 0.25).toFixed(2) + "%";
-                    } else {
-                        badge.className = "badge bg-danger-subtle text-danger border border-danger rounded-pill px-2 py-1 small";
-                        badge.innerText = "-" + (Math.random() * 0.25).toFixed(2) + "%";
-                    }
-                }
-            }
         }
     });
 }, 4000);
-
-// === ۹. شبیه‌ساز زنده نوسانات کادرهای نمودار متحرک تهمینه هر ۲ ثانیه (Tahmina Stream) ===
-setInterval(() => {
-    const bars = document.querySelectorAll('.chart-bar');
-    const rateBadge = document.querySelector('.item-rate-badge');
+    // --- 🌟 پچ فیکس قطعی مروه لیدر: دگرگونی آنی رنگ‌های کل صفحه 🌟 ---
+    const themeToggle = document.getElementById("themeToggle");
     
-    bars.forEach(bar => {
-        const randomHeight = Math.floor(Math.random() * 75) + 25;
-        bar.style.height = randomHeight + '%';
-    });
-
-    if (rateBadge) {
-        const randomRate = (Math.random() * 0.4).toFixed(2);
-        rateBadge.innerText = "+" + randomRate + "%";
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            // اضافه و حذف کردن کلاس لایت‌تم روی تگ اصلی بدنه سایت
+            document.body.classList.toggle("light-theme");
+            
+            // تغییر آنی آیکون ماه و خورشید
+            const icon = themeToggle.querySelector("i");
+            if (icon) {
+                if (document.body.classList.contains("light-theme")) {
+                    icon.className = "fas fa-sun text-warning";
+                } else {
+                    icon.className = "fas fa-moon";
+                }
+            }
+        });
     }
-}, 2000);
-    // اضافه شدن سکشن تیم ما به رادار تعاملی چرخشی سه‌بعدی اسکرول مروه
-    const animatedBlocks = document.querySelectorAll('.about-us-section, .team-section, .exchange-rates-section, .pie-chart-section, .trust-section');

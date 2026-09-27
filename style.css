@@ -14,7 +14,7 @@
     --accent-color: #00f5d4;       
     --text-muted: #b0c4de;       
     --white: #ffffff;   
-    --dark-bg: #030914;        /* سرمه‌ای ماتریکس عمیق، باریک و فوق‌العاده شیک */
+    --dark-bg: #030914;        
     --navy-primary: #051d3b;
     --amber-gold: #ff9f1c;     /* زرد پررنگ زعفرانی صرافی */
     --accent-cyan: #00f5d4;     /* فیروزه‌ای نئونی */
@@ -27,18 +27,14 @@ body {
     overflow-x: hidden;
 }
 
-/* 🌟 پچ اصلی انیمیشن‌های چرخشی سه‌بعدی اسکرول مروه جان در موبایل و کامپیوتر */
+/* پچ انیمیشن ۳۳ اسکرول سه‌بعدی مروه جان */
 .scroll-rotate-effect {
     opacity: 0;
-    /* دیوها در ابتدا کمی به پایین متمایل شده و ۶ درجه به صورت سه‌بعدی می‌چرخند */
     transform: translateY(60px) rotateX(6deg) scale(0.95);
     transform-style: preserve-3d;
-    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
-                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: opacity, transform;
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform, opacity;
 }
-
-/* حالت فعال که با اسکرول دست در گوشی روشن و فیکس می‌شود */
 .scroll-rotate-effect.cyber-active {
     opacity: 1;
     transform: translateY(0) rotateX(0deg) scale(1);
@@ -50,7 +46,7 @@ body {
 }
 
 /* ===================================================
-   ۲. NAVBAR & PREMIUM LINKS (اصلاح نوار باریک و دکمه لاگین زبیده)
+   ۲. NAVBAR & PREMIUM LINKS (منوی کاملاً ریسپانسیو زبیده)
 =================================================== */
 .navbar {
     display: flex; align-items: center; justify-content: space-between;
@@ -59,178 +55,454 @@ body {
     position: fixed; top: 0; width: 100%; z-index: 1000;
     border-bottom: 1px solid rgba(0, 245, 212, 0.15);
     box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+    height: 65px;
 }
-
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; }
-.logo {
-    background-color: var(--amber-gold); color: #03045e; font-weight: 900;
-    width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem; box-shadow: 0 0 15px var(--amber-gold); transition: transform 0.3s;
-}
+.logo { background-color: var(--amber-gold); color: #03045e; font-weight: 900; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: 0 0 15px var(--amber-gold); transition: transform 0.3s; }
 .brand:hover .logo { transform: scale(1.1) rotate(15deg); }
 
-.nav-links a {
-    color: var(--text-muted); text-decoration: none; margin: 0 12px; font-size: 0.9rem; font-weight: 700;
-    position: relative; transition: all 0.3s ease; display: inline-block;
-}
-.nav-links a::after {
-    content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
-    background: linear-gradient(90deg, var(--accent-cyan), var(--amber-gold)); 
-    transition: width 0.3s ease;
-}
+.nav-links a { color: var(--text-muted); text-decoration: none; margin: 0 12px; font-size: 0.9rem; font-weight: 700; position: relative; transition: all 0.3s ease; display: inline-block; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--accent-cyan), var(--amber-gold)); transition: width 0.3s ease; }
 .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan) !important; text-shadow: 0 0 8px var(--accent-cyan); transform: translateY(-2px); }
 
-.login {
-    background-color: var(--amber-gold) !important; color: #03045e !important;
-    text-decoration: none !important; padding: 8px 24px !important; border-radius: 20px !important;
-    font-weight: 800 !important; font-size: 0.85rem !important; display: inline-block !important;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    box-shadow: 0 0 12px rgba(255, 159, 28, 0.3) !important;
-}
-.login:hover {
-    background-color: var(--accent-cyan) !important; color: var(--dark-bg) !important;
-    transform: translateY(-3px) scale(1.05) !important; box-shadow: 0 0 22px var(--accent-cyan) !important;
-}
-
+.login { background-color: var(--amber-gold) !important; color: #03045e !important; text-decoration: none !important; padding: 8px 24px !important; border-radius: 20px !important; font-weight: 800 !important; font-size: 0.85rem !important; display: inline-block; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important; box-shadow: 0 0 12px rgba(255, 159, 28, 0.3) !important; }
+.login:hover { background-color: var(--accent-cyan) !important; color: var(--dark-bg) !important; transform: translateY(-3px) scale(1.05) !important; box-shadow: 0 0 22px var(--accent-cyan) !important; }
 .nav-right { display: flex; align-items: center; gap: 15px; flex-direction: row !important; }
 .language { background: transparent; border: none; color: var(--white); cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: color 0.2s; }
 .language:hover { color: var(--accent-cyan); }
-.menu-btn { background: transparent; border: none; color: var(--white); font-size: 1.3rem; cursor: pointer; transition: color 0.2s; }
+.menu-btn { background: transparent; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; display: none; }
 
 /* ===================================================
-   ۳. CINEMATIC HERO SECTION (بخش عریض زبیده)
+   ۳. CINEMATIC HERO SECTION (دایره فیکس شده هیرو زبیده)
 =================================================== */
-.hero {
-    min-height: 100vh; display: flex; align-items: center; padding: 0 8%;
-    background-image: url("./image/monetjpg.jpg"); background-size: cover; background-position: center; position: relative;
-}
+.hero { min-height: 100vh; display: flex; align-items: center; padding: 0 8%; background-image: url("./image/monetjpg.jpg"); background-size: cover; background-position: center; position: relative; }
 .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, rgba(5,29,59,0.3) 0%, var(--dark-bg) 100%); z-index: 1; }
 .hero-content { position: relative; z-index: 2; animation: matrixFloat 4.5s ease-in-out infinite alternate; }
 
-h1 { font-size: clamp(42px, 5.5vw, 85px); font-weight: 900; color: var(--white); margin-bottom: 25px; line-height: 1.05; letter-spacing: -2px; }
+h1 { font-size: clamp(32px, 5.5vw, 85px); font-weight: 900; color: var(--white); margin-bottom: 25px; line-height: 1.05; letter-spacing: -2px; }
 h1 span { color: var(--amber-gold); text-shadow: 0 0 25px rgba(255,159,28,0.3); }
 .description { max-width: 550px; color: #e0e5ea; font-size: 14px; line-height: 1.7; margin-bottom: 30px; }
 
-.hero-slogan {
-    position: absolute; right: 8%; top: 32%; z-index: 2; color: var(--white); text-align: center;
-    background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);
-    width: 165px; height: 165px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center;
-    animation: rightBadgePulse 3.5s infinite ease-in-out alternate;
+.hero-slogan { 
+    position: absolute; right: 8%; top: 32%; z-index: 2; color: var(--white); text-align: center; 
+    background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15); width: 165px; height: 165px; border-radius: 50%; 
+    display: flex; flex-direction: column; align-items: center; justify-content: center; 
+    animation: rightBadgePulse 3.5s infinite ease-in-out alternate; will-change: transform;
 }
-@keyframes rightBadgePulse {
-    0% { transform: translateY(0px) rotate(-8deg); box-shadow: 0 5px 25px rgba(0,0,0,0.4); }
-    100% { transform: translateY(-25px) rotate(5deg); box-shadow: 0 0 35px var(--amber-gold); border-color: var(--amber-gold); }
-}
+@keyframes rightBadgePulse { 0% { transform: translateY(0px) rotate(-8deg); box-shadow: 0 5px 25px rgba(0,0,0,0.4); } 100% { transform: translateY(-20px) rotate(5deg); box-shadow: 0 0 30px rgba(255,159,28,0.4); border-color: var(--amber-gold); } }
 .hero-slogan strong { font-size: 22px; color: var(--amber-gold); font-weight: 900; }
-/* هاور دکمه‌های هیرو زبیده */
+
 .hero-buttons { display: flex; align-items: center; gap: 18px; }
 .btn { text-decoration: none; font-size: 14px; border-radius: 25px; padding: 12px 28px; display: inline-flex; align-items: center; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); font-weight: 700; position: relative; overflow: hidden; }
 .btn.primary { color: #152033; background: var(--amber-gold); border: none; box-shadow: 0 4px 15px rgba(255, 159, 28, 0.3); }
 .btn.primary:hover { background: var(--accent-cyan); color: var(--dark-bg); transform: translateY(-5px) scale(1.02); box-shadow: 0 12px 25px rgba(0, 245, 212, 0.5); }
 .btn.outline { color: var(--white); border: 1.5px solid #d2d8df; background: rgba(0, 0, 0, 0.1); }
 .btn.outline:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); background: rgba(255, 255, 255, 0.04); transform: translateY(-3px); box-shadow: 0 0 15px rgba(0, 245, 212, 0.2); }
-.arrow-move { display: inline-block; transition: transform 0.3s ease; margin-left: 8px; }
-.btn.primary:hover .arrow-move { transform: translateX(5px); }
 
 /* ===================================================
-   ۴. MODERN ABOUT US SECTION & 99.9% SPIN RECOVERY (مروه جان)
+   ۴. MODERN ABOUT US SECTION & TEAM BASES
 =================================================== */
-.modern-feature-card {
-    background: var(--white); border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 16px;
-    transition: all 0.5s ease; animation: matrixFloat 4.2s ease-in-out infinite alternate-reverse;
-}
+.modern-feature-card { background: var(--white); border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 16px; transition: all 0.5s ease; }
 .modern-feature-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0, 245, 212, 0.15) !important; border-color: var(--accent-cyan) !important; }
-
 .modern-img-frame { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); position: relative; }
 .scale-img { transition: transform 0.8s ease; }
 .modern-img-frame:hover .scale-img { transform: scale(1.07) rotate(2deg); }
-
 .floating-badge { bottom: 20px !important; left: -20px !important; z-index: 100 !important; background: #ffffff !important; border: 1px solid #eee; display: flex !important; padding: 10px 15px !important; }
-.animate-spin-slow { animation: spinnerSlowRotate 12s linear infinite !important; display: inline-block; }
-@keyframes spinnerSlowRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
+.team-section { background: linear-gradient(180deg, #020b14 0%, #051833 100%) !important; border-top: 1px solid rgba(0, 245, 212, 0.1) !important; padding: 80px 0; }
+.team-section .modern-feature-card { background: rgba(255, 255, 255, 0.03) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; color: var(--white) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important; }
+.team-section .modern-feature-card:hover { border-color: var(--accent-cyan) !important; box-shadow: 0 15px 35px rgba(0, 245, 212, 0.2) !important; transform: translateY(-10px) scale(1.02); }
 /* ===================================================
-   ۵. EXCHANGE RATES & RESPONSIVE FLAG PULSE (پرچم‌های کارت صرافی مروه)
+   ۵. ADVANCED EXCHANGE RATES & LASER DATA FLOW (مروه جان)
 =================================================== */
-.exchange-rates-section { background: linear-gradient(135deg, #01060d 0%, var(--navy-primary) 100%) !important; transition: transform 0.6s ease; }
-.flip-card-container { perspective: 1200px; height: 220px; transition: all 0.4s ease; }
+.exchange-rates-section { background: linear-gradient(135deg, #01060d 0%, var(--navy-primary) 100%) !important; }
+.flip-card-container { perspective: 1200px; height: 220px; }
 .flip-card { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s ease; }
-.flip-card-container:hover .flip-card { transform: rotateY(180deg); }
+.flip-card-container:hover .flip-card, .flip-card-container.flipped .flip-card { transform: rotateY(180deg); }
 .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 16px; }
 .flip-card-front { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); }
 .flip-card-back { background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%); transform: rotateY(180deg); }
 
-.flip-card-front img { filter: grayscale(0.4) brightness(0.9); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-/* پچ پالس و فوکوس سه‌بعدی پرچم‌های صرافی شما مروه جان (به جای چرخیدن نامنظم قدیمی) */
-.flip-card-container:hover img { transform: scale(1.12); filter: grayscale(0) brightness(1.1) drop-shadow(0 0 12px var(--accent-cyan)) !important; }
-
-.btn-glow {
-    background: var(--primary-color) !important; color: var(--white) !important; border-radius: 25px !important; padding: 10px 26px !important; display: inline-flex !important;
-    align-items: center !important; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important; box-shadow: 0 4px 15px rgba(0, 119, 182, 0.3) !important; font-size: 0.85rem !important; border: none !important;
+.flip-card-front .my-3 { position: relative; padding-bottom: 8px; }
+.flip-card-front .my-3::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+    background-size: 200% 100%; animation: rateLaserFlow 2.5s infinite linear; will-change: background-position;
 }
-.btn-glow:hover { background: var(--accent-cyan) !important; color: var(--dark-bg) !important; transform: translateY(-3px) !important; box-shadow: 0 0 22px var(--accent-cyan) !important; }
-
-/* === TAHMINA LAYOUTS (بخش و دکمه شناور تهمینه) === */
-.trust-section { background-color: var(--white) !important; padding: 60px 0; border-top: 1px solid #eee; }
-.trust-text { animation: matrixFloat 4s ease-in-out infinite alternate !important; will-change: transform; }
-.trust-text .btn:hover { background: var(--accent-cyan) !important; color: var(--dark-bg) !important; transform: translateY(-3px) !important; box-shadow: 0 0 18px var(--accent-cyan) !important; }
-
-.trust-image { position: relative; border-radius: 16px; overflow: hidden; animation: matrixFloat 3.6s ease-in-out infinite alternate-reverse; }
-.trust-image::before { content: ''; position: absolute; left: 0; width: 100%; height: 4px; background: var(--accent-cyan); box-shadow: 0 0 20px var(--accent-cyan); z-index: 3; animation: videoLaserMove 2.2s ease-in-out infinite alternate; }
-@keyframes videoLaserMove { 0% { top: 0%; } 100% { top: 100%; } }
-
-.feature-card { transition: all 0.4s ease !important; cursor: pointer !important; }
-.feature-card:hover { transform: translateY(-8px) scale(1.03) !important; background-color: var(--white) !important; border-color: var(--amber-gold) !important; box-shadow: 0 15px 30px rgba(255, 159, 28, 0.2) !important; }
-.feature-card:hover .icon-box { transform: scale(1.2) rotate(10deg) !important; color: var(--amber-gold) !important; }
-
-.cyber-terminal-card { border-radius: 16px; border: 1px solid var(--accent-cyan); position: relative; overflow: hidden; }
-.network-progress-bar { width: 100%; height: 100%; background-color: var(--accent-cyan) !important; box-shadow: 0 0 15px var(--accent-cyan); animation: cryptoLineFlow 1.5s linear infinite !important; }
-@keyframes cryptoLineFlow { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+@keyframes rateLaserFlow { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
 /* ===================================================
-   🌟 ۷. ROTATING PIE CHART LAYER & STATIC CENTER HOLE (کاور چرخشی مروه)
+   ۶. TRUST & TERMINAL FLOW (تهمینه جان)
 =================================================== */
-.pie-chart-section { background-color: var(--white) !important; padding: 70px 0; transition: transform 0.6s ease; }
-.chart-wrapper { width: 260px; height: 260px; display: flex; align-items: center; justify-content: center; position: relative; }
+.trust-section { background-color: var(--white) !important; padding: 60px 0; }
+.cyber-terminal-card { border-radius: 16px; border: 1px solid var(--accent-cyan); position: relative; overflow: hidden; }
+.cyber-terminal-card::after { content: ''; position: absolute; top: 0; left: -100%; width: 40%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0, 245, 212, 0.5), transparent); animation: steelLaser 2.8s infinite linear; will-change: left; }
+@keyframes steelLaser { 0% { left: -100%; } 100% { left: 100%; } }
 
-/* کاور بیرونی چارت که چرخشی و متحرک باقی می‌ماند */
+.trust-text .btn, .trust-section .btn, [style*="Why Choose Us"], .btn-warning.btn-sm {
+    width: auto !important; max-width: 180px !important; min-width: 140px !important; display: inline-flex !important; justify-content: center !important; align-items: center !important; margin: 10px auto !important;
+}
+
+/* ===================================================
+   ۷. 🌟 REVOLUTIONARY CYBER LASER RADAR CHART 🌟 (چارت لیزری چرخشی مروه جان)
+=================================================== */
+.pie-chart-section { background-color: var(--white) !important; padding: 60px 0; }
+
+/* کادر نئونی بیرونی مجهز به پالس درخشان شفق قطبی */
+.chart-wrapper { 
+    width: 260px; height: 260px; display: flex; align-items: center; justify-content: center; position: relative;
+    border-radius: 50%; background: rgba(3, 9, 20, 0.05); padding: 6px;
+    box-shadow: 0 0 25px rgba(0, 245, 212, 0.2);
+    animation: radarGlowPulse 2.8s infinite ease-in-out alternate;
+    will-change: box-shadow;
+}
+@keyframes radarGlowPulse {
+    0% { box-shadow: 0 0 15px rgba(0, 245, 212, 0.15), 0 0 5px rgba(255, 159, 28, 0.05); }
+    100% { box-shadow: 0 0 35px rgba(0, 245, 212, 0.4), 0 0 15px rgba(255, 159, 28, 0.2); }
+}
+
+/* گراف راداری با افکت اسکن لیزری ۳۶۰ درجه مداوم و بخش‌بندی‌های تجاری لوکس */
 .modern-pie-chart { 
-    width: 100%; height: 100%; border-radius: 50%; 
-    background: conic-gradient(#0077b6 0% 50%, #00f5d4 50% 80%, #ffb703 80% 100%); 
-    animation: continuousRotate 12s linear infinite !important; 
+    width: 100%; height: 100%; border-radius: 50%; position: relative;
+    background: conic-gradient(
+        var(--primary-color) 0% 45%, 
+        #023e8a 45% 50%,
+        var(--accent-cyan) 50% 75%, 
+        #00f5d4 75% 80%,
+        var(--amber-gold) 80% 95%,
+        #ffb703 95% 100
+    ); 
+    border: 3px solid #ffffff;
+}
+
+/* 🌟 تزریق چادر لیزری چرخشی شیک روی چارت با استفاده از لایه شبه‌عنصر 🌟 */
+.modern-pie-chart::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    /* ایجاد پرتو نوری لیزری باریک متمرکز */
+    background: conic-gradient(from 0deg, var(--accent-cyan) 0deg, transparent 40deg, transparent 360deg);
+    mix-blend-mode: screen;
+    animation: laserSweeper 4s linear infinite;
     will-change: transform;
 }
-@keyframes continuousRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-/* 🌟 پچ طلایی مروه جان برای ثابت و قفل نگه داشتن کامل دایره‌ی مرکزی و پرچم‌های داخلی چارت */
-.chart-center-hole { 
-    position: absolute; width: 140px; height: 140px; 
-    background-color: #ffffff !important; border-radius: 50%; z-index: 10; 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1); 
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    animation: none !important; transform: rotate(0deg) !important; 
+@keyframes laserSweeper {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
-.chart-center-hole h4, .chart-center-hole small, .chart-center-hole img { animation: none !important; transform: none !important; }
+
+/* هسته مرکزی ایزوله و لوکس سه‌بعدی برای تمرکز متن ارزها */
+.chart-center-hole { 
+    position: absolute; width: 142px; height: 145px; 
+    background-color: #ffffff !important; border-radius: 50%; z-index: 10; 
+    display: flex; flex-direction: column; align-items: center; justify-content: center; 
+    box-shadow: 0 8px 25px rgba(3, 9, 20, 0.12), inset 0 2px 6px rgba(0,0,0,0.04);
+    border: 1px solid rgba(3, 4, 94, 0.05);
+}
 
 /* ===================================================
-   📱 ۸. RESPONSIVE HARDWARE MEDIA QUERIES (پچ نهایی موبایل)
+   ۸. NASRIN SUPPORT LABELS & 100% MOBILE RESPONSIVE
 =================================================== */
+.custom-cyber-input { border: 1px solid #ced4da !important; background-color: #ffffff !important; transition: all 0.3s ease-in-out !important; }
+.custom-cyber-input:hover, .custom-cyber-input:focus { border-color: var(--amber-gold) !important; background-color: rgba(255, 159, 28, 0.02) !important; box-shadow: 0 0 15px rgba(255, 159, 28, 0.25) !important; padding-left: 20px !important; outline: none !important; }
+.btn-cyber-submit { position: relative; overflow: hidden; z-index: 1; font-size: 0.9rem !important; font-weight: 800 !important; background-color: var(--dark-color) !important; color: var(--white) !important; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important; box-shadow: 0 4px 15px rgba(3, 4, 94, 0.4) !important; }
+.btn-cyber-submit:hover { background-color: var(--accent-cyan) !important; color: var(--dark-bg) !important; transform: translateY(-4px) scale(1.02) !important; box-shadow: 0 0 25px var(--accent-cyan) !important; }
+.social-cyber-orb { width: 42px !important; height: 42px !important; border-radius: 50% !important; border: 1px solid rgba(255, 255, 255, 0.25) !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; color: #ffffff !important; text-decoration: none !important; font-size: 1.1rem !important; background: rgba(255, 255, 255, 0.08) !important; backdrop-filter: blur(5px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; }
+.social-cyber-orb:hover { color: #010811 !important; transform: translateY(-8px) rotate(360deg) scale(1.18) !important; }
+.faq-cyber-item { border: 1px solid rgba(0, 0, 0, 0.08) !important; margin-bottom: 6px !important; background: #ffffff !important; transform: none !important; animation: none !important; transition: none !important; }
+.faq-question { cursor: pointer !important; outline: none !important; padding: 10px 14px !important; color: #03045e !important; font-weight: 700 !important; font-size: 0.8rem !important; }
+.faq-answer { background-color: #fafbfc !important; padding: 10px 14px !important; line-height: 1.5; color: #1e293b !important; font-weight: 600 !important; font-size: 0.75rem !important; }
+
 @media (max-width: 991px) {
-    .hero { padding-top: 110px; text-align: center; justify-content: center; flex-direction: column; }
-    .hero-buttons { justify-content: center; }
-    .hero-slogan { position: relative !important; right: 0 !important; top: 0 !important; margin: 40px auto 0 !important; width: 140px; height: 140px; display: flex !important; }
-    .chart-wrapper { margin-top: 30px; }
+    .menu-btn { display: block !important; }
+    .nav-links { position: absolute; top: 65px; left: 0; right: 0; background: var(--dark-bg); flex-direction: column; padding: 20px; gap: 15px; border-bottom: 1px solid rgba(0, 245, 212, 0.15); display: none; width: 100%; text-align: center; }
+    .nav-links.open { display: flex !important; }
+    .nav-links a { margin: 10px 0; display: block; }
+    .nav-right .login { display: none !important; }
+    .hero { flex-direction: column !important; justify-content: center !important; padding-top: 100px !important; }
+    .hero-slogan { position: relative !important; right: auto !important; top: auto !important; left: auto !important; margin: 40px auto 0 auto !important; width: 145px !important; height: 145px !important; background: rgba(255, 255, 255, 0.05) !important; display: flex !important; }
+    .contact-section .row { flex-direction: column !important; gap: 25px !important; }
+    .col-lg-4, .col-md-6 { width: 100% !important; max-width: 100% !important; }
+}
+@media (max-width: 768px) {
+    h1 { font-size: 2.1rem !important; }
+    .hero-buttons { flex-direction: column !important; gap: 12px !important; }
+    .hero-buttons .btn { width: 100% !important; max-width: 100% !important; justify-content: center !important; }
+}
+/* ===================================================
+   🌟 پچ فیکس نهایی دو دکمه فرم تماس (نسرین جان) 🌟
+=================================================== */
+
+/* ۱. دکمه ارسال پیام فرم (Secure Node Form) */
+.btn-cyber-submit {
+    position: relative !important;
+    overflow: hidden !important;
+    font-size: 0.88rem !important;
+    font-weight: 800 !important;
+    background-color: var(--dark-color) !important;
+    color: #ffffff !important;
+    border-radius: 30px !important;
+    width: 180px !important;
+    height: 42px !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(3, 4, 94, 0.4) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    cursor: pointer !important;
 }
 
-@media (max-width: 768px) {
-    .navbar { padding: 0.5rem 4% !important; height: 50px !important; }
-    .nav-links { position: absolute; top: 48px; left: 0; right: 0; background: var(--dark-bg); flex-direction: column; padding: 20px; gap: 15px; display: none; border-bottom: 2px solid rgba(0, 245, 212, 0.2); }
-    .nav-links.open { display: flex !important; }
-    .menu-btn { display: block !important; }
-    .nav-right .login { display: none !important; }
-    
-    .col-lg-6, .col-md-6, .col-sm-4, .col-lg-5, .col-lg-4, .col-lg-3 { width: 100% !important; }
-    .floating-badge { position: relative !important; bottom: 0 !important; left: 0 !important; margin-top: 15px; width: 100%; justify-content: center; }
-    .trust-image { height: 230px !important; }
+.btn-cyber-submit:hover {
+    background-color: var(--accent-cyan) !important;
+    color: var(--dark-bg) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 18px var(--accent-cyan) !important;
+}
+
+/* ۲. دکمه فعال‌سازی چت زنده (Activate Live Core Chat) با هاور نئونی لوکس */
+.super-radar-button {
+    position: relative !important;
+    overflow: hidden !important;
+    font-size: 0.88rem !important;
+    font-weight: 800 !important;
+    background: var(--amber-gold) !important;
+    color: var(--dark-bg) !important;
+    border-radius: 30px !important;
+    width: 210px !important;
+    height: 42px !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(255, 159, 28, 0.3) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    cursor: pointer !important;
+}
+
+.super-radar-button:hover {
+    background: linear-gradient(90deg, var(--accent-cyan), var(--primary-color)) !important;
+    color: #ffffff !important;
+    transform: translateY(-4px) scale(1.02) !important;
+    box-shadow: 0 10px 25px rgba(0, 245, 212, 0.5) !important; /* پالس نوری فیروزه‌ای */
+}
+
+/* پچ تراز و کنتراست دو دکمه در تم روشن (Light Mode) */
+body.light-theme .btn-cyber-submit {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+}
+body.light-theme .super-radar-button {
+    background: var(--amber-gold) !important;
+    color: #0f172a !important;
+}
+body.light-theme .super-radar-button:hover {
+    color: #ffffff !important;
+}
+/* ===================================================
+   🌟 پچ فیکس نهایی دو دکمه فرم تماس (نسرین جان) 🌟
+=================================================== */
+
+/* ۱. دکمه ارسال پیام فرم (Secure Node Form) */
+.btn-cyber-submit {
+    position: relative !important;
+    overflow: hidden !important;
+    font-size: 0.88rem !important;
+    font-weight: 800 !important;
+    background-color: var(--dark-color) !important;
+    color: #ffffff !important;
+    border-radius: 30px !important;
+    width: 180px !important;
+    height: 42px !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(3, 4, 94, 0.4) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    cursor: pointer !important;
+}
+
+.btn-cyber-submit:hover {
+    background-color: var(--accent-cyan) !important;
+    color: var(--dark-bg) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 18px var(--accent-cyan) !important;
+}
+
+/* ۲. دکمه فعال‌سازی چت زنده (Activate Live Core Chat) با هاور نئونی لوکس */
+.super-radar-button {
+    position: relative !important;
+    overflow: hidden !important;
+    font-size: 0.88rem !important;
+    font-weight: 800 !important;
+    background: var(--amber-gold) !important;
+    color: var(--dark-bg) !important;
+    border-radius: 30px !important;
+    width: 210px !important;
+    height: 42px !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(255, 159, 28, 0.3) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    cursor: pointer !important;
+}
+
+.super-radar-button:hover {
+    background: linear-gradient(90deg, var(--accent-cyan), var(--primary-color)) !important;
+    color: #ffffff !important;
+    transform: translateY(-4px) scale(1.02) !important;
+    box-shadow: 0 10px 25px rgba(0, 245, 212, 0.5) !important; /* پالس نوری فیروزه‌ای */
+}
+
+/* پچ تراز و کنتراست دو دکمه در تم روشن (Light Mode) */
+body.light-theme .btn-cyber-submit {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+}
+body.light-theme .super-radar-button {
+    background: var(--amber-gold) !important;
+    color: #0f172a !important;
+}
+body.light-theme .super-radar-button:hover {
+    color: #ffffff !important;
+}
+/* ===================================================
+   🌟 پچ مروه لیدر: استایل و هاور آیکون‌های ویدیو و امنیت بخش TRUST 🌟
+=================================================== */
+
+/* استایل آیکون ویدیو یا پایگاه ترمینال مرکزی تهمینه */
+.cyber-terminal-card i,
+.cyber-terminal-card svg {
+    color: var(--accent-cyan) !important;
+    font-size: 1.4rem !important;
+    transition: all 0.4s ease-in-out !important; /* انیمیشن نرم ثانیه‌دار */
+}
+
+/* هاور آیکون ویدیویی ترمینال: پالس نوری و چرخش مینی‌مال */
+.cyber-terminal-card:hover i,
+.cyber-terminal-card:hover svg {
+    color: var(--amber-gold) !important;
+    transform: scale(1.15) rotate(10deg) !important;
+    text-shadow: 0 0 15px var(--amber-gold) !important;
+}
+
+/* استایل آیکون‌های بخش متون امنیت (Our Priority Security) */
+.trust-text i,
+.trust-section i {
+    color: var(--amber-gold) !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.trust-text:hover i,
+.trust-section:hover i {
+    transform: translateY(-3px) scale(1.1) !important;
+}
+
+/* پچ کنتراست شدید: تنظیم رنگ آیکون‌های ویدیو و ترمینال در تم روشن (Light Mode) */
+body.light-theme .cyber-terminal-card i,
+body.light-theme .cyber-terminal-card svg {
+    color: #00f5d4 !important; /* حفظ فیروزه‌ای روی بک‌گراند تیره ترمینال */
+}
+
+body.light-theme .trust-text i {
+    color: #ff9f1c !important;
+}
+/* ===================================================
+   🌟 پچ نهایی مروه لیدر: استایل هاور بخش TRUST و کالاپس‌های نسرین جان 🌟
+=================================================== */
+
+/* ۱. پچ هاور کل دیو کارت ترمینال و بخش امنیت (Our Trust Section) */
+.cyber-terminal-card, 
+#trust-section .cyber-terminal-card {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* افکت شیشه‌ای و پالس سایه‌ای بسیار شیک هنگام هاور ماوس */
+.cyber-terminal-card:hover, 
+#trust-section .cyber-terminal-card:hover {
+    transform: translateY(-4px) scale(1.01) !important;
+    box-shadow: 0 12px 30px rgba(0, 245, 212, 0.25) !important;
+    border-color: var(--amber-gold) !important;
+}
+
+/* ۲. پچ هاور لوکس و ثانیه‌دار روی بارهای کالاپس نسرین جان (FAQ Items) */
+.faq-cyber-item {
+    transition: all 0.3s ease-in-out !important; /* زمان‌بندی نرم ابریشمی */
+    cursor: pointer !important;
+}
+
+/* هاور روان بیوش روی نوار پرسش‌ها بدون پرش برقی */
+.faq-cyber-item:hover {
+    background-color: rgba(0, 245, 212, 0.04) !important; /* ایجاد هاله فیروزه‌ای ملایم */
+    border-color: var(--accent-cyan) !important;
+    transform: translateX(4px) !important; /* متمایل شدن نامحسوس به راست یا چپ بر اساس جهت */
+}
+
+/* انیمیشن نرم روی متن سوالات هنگام هاور */
+.faq-question {
+    transition: color 0.3s ease !important;
+}
+.faq-cyber-item:hover .faq-question {
+    color: var(--primary-color) !important; /* متمایل شدن رنگ عنوان به سرمه‌ای لوکس */
+}
+
+/* ۳. پچ کنتراست شدید هاور کالاپس‌ها در تم روشن (Light Mode) */
+body.light-theme .faq-cyber-item:hover {
+    background-color: #f8fafc !important; /* خاکستری مینی‌مال استودیویی در روز */
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05) !important;
+}
+body.light-theme .faq-cyber-item:hover .faq-question {
+    color: var(--primary-color) !important;
+}
+/* ===================================================
+   🌟 پچ فیکس نهایی مروه لیدر: قفل منو و هاور دکمه‌ها 🌟
+=================================================== */
+
+/* قفل قطعی و صددرصدی نوار بالای صفحه هنگام اسکرول */
+.navbar, header.navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 60px !important;
+    z-index: 99999 !important; /* بالاترین لایه مرورگر */
+    background-color: var(--dark-bg) !important;
+    border-bottom: 1px solid var(--border-line) !important;
+    box-shadow: 0 4px 20px var(--global-shadow) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+/* هاور فوق‌العاده جذاب و لوکس ثانیه‌دار برای تمام دکمه‌های کپسولی سایت */
+.btn.primary, .btn-cyber-submit, .super-radar-button {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    cursor: pointer !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* افکت هاور درخشان فیروزه‌ای برای دکمه‌های اصلی و فرم نسرین جان */
+.btn.primary:hover, .btn-cyber-submit:hover {
+    background-color: var(--accent-cyan) !important;
+    color: var(--dark-bg) !important;
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: 0 8px 25px rgba(0, 245, 212, 0.6) !important;
+}
+
+/* افکت هاور متالیک نئونی برای دکمه فعال‌سازی چت زنده */
+.super-radar-button:hover {
+    background: linear-gradient(90deg, var(--accent-cyan), var(--primary-color)) !important;
+    color: #ffffff !important;
+    transform: translateY(-4px) scale(1.03) !important;
+    box-shadow: 0 10px 25px rgba(0, 245, 212, 0.5) !important;
 }
