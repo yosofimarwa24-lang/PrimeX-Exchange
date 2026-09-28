@@ -10,7 +10,7 @@
 :root {
     --primary-color: #0077b6;      
     --dark-color: #03045e;        
-    --light-bg: #f8f9fa;           
+    --light-bg: #205c97;           
     --accent-color: #00f5d4;       
     --text-muted: #b0c4de;       
     --white: #ffffff;   
@@ -54,7 +54,7 @@ body {
     backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
     position: fixed; top: 0; width: 100%; z-index: 1000;
     border-bottom: 1px solid rgba(0, 245, 212, 0.15);
-    box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
     height: 65px;
 }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; }
@@ -76,7 +76,7 @@ body {
 /* ===================================================
    ۳. CINEMATIC HERO SECTION (دایره فیکس شده هیرو زبیده)
 =================================================== */
-.hero { min-height: 100vh; display: flex; align-items: center; padding: 0 8%; background-image: url("./image/monetjpg.jpg"); background-size: cover; background-position: center; position: relative; }
+.hero { min-height: 100vh; display: flex; align-items: center; padding: 0 8%; background-image: url("./image/1150247561110694593.jpg"); background-size: cover; background-position: center; position: relative; }
 .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, rgba(5,29,59,0.3) 0%, var(--dark-bg) 100%); z-index: 1; }
 .hero-content { position: relative; z-index: 2; animation: matrixFloat 4.5s ease-in-out infinite alternate; }
 
@@ -135,7 +135,7 @@ h1 span { color: var(--amber-gold); text-shadow: 0 0 25px rgba(255,159,28,0.3); 
     width: 46px;
     height: 46px;
     border-radius: 50% !important;
-    background: rgba(255, 255, 255, 0.08) !important; 
+    background: rgba(250, 247, 247, 0.08) !important; 
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
     border: 1.5px solid rgba(0, 245, 212, 0.4) !important; 
@@ -203,8 +203,8 @@ h1 span { color: var(--amber-gold); text-shadow: 0 0 25px rgba(255,159,28,0.3); 
 /* ===================================================
    استایل‌های وضعیت لایت مود (تم روشن)
 =================================================== */
-body.light-theme { background: #f4f6fa !important; color: #0f172a !important; }
-body.light-theme .navbar { background-color: rgba(255, 255, 255, 0.95) !important; border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
+body.light-theme { background: #f5f5f7 !important; color: #0f172a !important; }
+body.light-theme .navbar { background-color: rgba(243, 245, 248, 0.95) !important; border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
 body.light-theme #themeToggle { color: #ff7b00 !important; filter: drop-shadow(0 0 8px rgba(255, 123, 0, 0.6)); }
 body.light-theme .nav-links a { color: #475569 !important; }
 body.light-theme .nav-links a:hover, body.light-theme .nav-links a.active { color: var(--primary-color) !important; text-shadow: none !important; }
@@ -216,7 +216,7 @@ body.light-theme .modern-feature-card, body.light-theme .team-section .modern-fe
 
 /* 🌟 تنظیم رنگ بخش نرخ اسعار در حالت روشن 🌟 */
 body.light-theme .exchange-rates-section {
-    background: #edf1f7 !important; /* رنگ روشن و متمایز از سایر بخش‌ها */
+    background: #3765aa !important; /* رنگ روشن و متمایز از سایر بخش‌ها */
 }
 body.light-theme .flag-wrapper { background: rgba(0, 0, 0, 0.04) !important; border-color: rgba(0, 0, 0, 0.15) !important; }
 body.light-theme .icon-circle .fa-medal { color: #ff9f1c !important; }
@@ -387,7 +387,7 @@ body, .navbar, .nav-links a, .modern-feature-card, .team-section, h1, h2, p, #th
 
 /* پچ تراز و کنتراست دو دکمه در تم روشن (Light Mode) */
 body.light-theme .btn-cyber-submit {
-    background-color: #0f172a !important;
+    background-color: #f8f9fb !important;
     color: #ffffff !important;
 }
 body.light-theme .super-radar-button {
@@ -458,7 +458,7 @@ body.light-theme .super-radar-button:hover {
 
 /* پچ تراز و کنتراست دو دکمه در تم روشن (Light Mode) */
 body.light-theme .btn-cyber-submit {
-    background-color: #0f172a !important;
+    background-color: #f6f7f9 !important;
     color: #ffffff !important;
 }
 body.light-theme .super-radar-button {
@@ -469,7 +469,7 @@ body.light-theme .super-radar-button:hover {
     color: #ffffff !important;
 }
 /* ===================================================
-   🌟 پچ مروه لیدر: استایل و هاور آیکون‌های ویدیو و امنیت بخش TRUST 🌟
+   🌟 پچ مروه : استایل و هاور آیکون‌های ویدیو و امنیت بخش TRUST 🌟
 =================================================== */
 
 /* استایل آیکون ویدیو یا پایگاه ترمینال مرکزی تهمینه */
@@ -527,7 +527,7 @@ body.light-theme .trust-text i {
     border-color: var(--amber-gold) !important;
 }
 /* ===================================================
-   🌟 پچ فیکس نهایی مروه لیدر: قفل منو و هاور دکمه‌ها 🌟
+   🌟 پچ فیکس نهایی مروه : قفل منو و هاور دکمه‌ها 🌟
 =================================================== */
 
 /* قفل قطعی و صددرصدی نوار بالای صفحه هنگام اسکرول */
@@ -654,21 +654,21 @@ body.light-theme .trust-text i {
 
 /* استایل‌های جامع وضعیت لایت مود (تم روشن) بدون افت کیفیت پس‌زمینه هیرو */
 body.light-theme { background: #f4f6fa !important; color: #0f172a !important; }
-body.light-theme .navbar { background-color: rgba(255, 255, 255, 0.95) !important; border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
+body.light-theme .navbar { background-color: rgb(255, 255, 255) !important; border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
 body.light-theme #themeToggle { color: #ff7b00 !important; filter: drop-shadow(0 0 8px rgba(255, 123, 0, 0.6)); }
 body.light-theme .nav-links a { color: #475569 !important; }
 body.light-theme .nav-links a:hover, body.light-theme .nav-links a.active { color: var(--primary-color) !important; text-shadow: none !important; }
-body.light-theme .hero-overlay { background: radial-gradient(circle, rgba(5, 29, 59, 0.6) 0%, var(--dark-bg) 100%) !important; }
+body.light-theme .hero-overlay { background: radial-gradient(circle, rgba(248, 249, 251, 0.6) 0%, var(--dark-bg) 100%) !important; }
 body.light-theme h1, body.light-theme .description, body.light-theme .hero-slogan { color: var(--white) !important; }
 body.light-theme h2, body.light-theme h6, body.light-theme .text-navy, body.light-theme .fw-black { color: #0f172a !important; }
 body.light-theme .text-secondary, body.light-theme .text-muted, body.light-theme .small-description { color: #475569 !important; }
-body.light-theme .modern-feature-card, body.light-theme .team-section .modern-feature-card, body.light-theme .flip-card-front, body.light-theme .flip-card-back { background: #ffffff !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
+body.light-theme .modern-feature-card, body.light-theme .team-section .modern-feature-card, body.light-theme .flip-card-front, body.light-theme .flip-card-back { background: #ffffff6c !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
 body.light-theme .flag-wrapper { background: rgba(0, 0, 0, 0.04) !important; border-color: rgba(0, 0, 0, 0.15) !important; }
 body.light-theme .icon-circle .fa-medal { color: #ff9f1c !important; }
 body.light-theme .icon-circle .fa-chart-line { color: #00b4d8 !important; }
 body.light-theme .icon-circle .fa-exchange-alt { color: #0077b6 !important; }
-body.light-theme .team-section { background: #e2e8f0 !important; border-top: 1px solid rgba(0, 0, 0, 0.05) !important; }
-body.light-theme .floating-badge { background: #ffffff !important; border: 1px solid rgba(0, 0, 0, 0.1) !important; }
+body.light-theme .team-section { background: #e2e8f064 !important; border-top: 1px solid rgba(0, 0, 0, 0.05) !important; }
+body.light-theme .floating-badge { background: #ffffff2d !important; border: 1px solid rgba(0, 0, 0, 0.1) !important; }
 
 body, .navbar, .nav-links a, .modern-feature-card, .team-section, h1, h2, p, #themeToggle, .icon-circle, .flip-card-front, .flip-card-back, .flag-wrapper {
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease !important;
@@ -1034,39 +1034,31 @@ body, .navbar, .nav-links a, .modern-feature-card, .team-section, h1, h2, p, #th
 .connect-us-section .btn-submit-form:hover,
 .connect-us-section button[type="submit"]:hover {
     transform: translateY(-4px) scale(1.02) !important;
-    background: var(--accent-cyan) !important; /* جابه‌جایی شیک رنگ به فیروزه‌ای هنگام هاور */
+    background: #b0c4de !important; /* جابه‌جایی شیک رنگ به فیروزه‌ای هنگام هاور */
     color: var(--dark-bg) !important;
     border-color: var(--accent-cyan) !important;
     box-shadow: 0 12px 25px rgba(0, 245, 212, 0.5),
                 0 0 15px rgba(255, 159, 28, 0.3) !important;
 }
 
-/* ۳. هاور آیکون‌های شبکه‌های اجتماعی (اینستاگرام، تلگرام و...) در فوتر */
-.connect-us-section .social-icon,
-.footer-section .social-link {
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-}
 
 .connect-us-section .social-icon:hover,
 .footer-section .social-link:hover {
     transform: translateY(-6px) scale(1.15) rotate(8deg) !important;
-    color: var(--accent-cyan) !important;
+    color: #ff7b00 !important;
     text-shadow: 0 0 12px var(--accent-cyan) !important;
 }
 
 /* ۴. فیکس رنگ متون در حالت لایت‌مود (حالت روز روشن) برای این بخش */
 body.light-theme .connect-us-section {
-    background-color: #ffffff !important;
+    background-color: #ffffff56 !important;
 }
 body.light-theme .connect-us-section .form-control,
 body.light-theme .connect-us-section input,
 body.light-theme .connect-us-section textarea {
-    background: #f8fafc !important;
+    background: #f4f6f8 !important;
     border: 1px solid rgba(0, 0, 0, 0.08) !important;
-    color: #0f172a !important;
+    color: #c57347 !important;
 }
 body.light-theme .connect-us-section .form-control:focus {
     background: #ffffff !important;
@@ -1127,15 +1119,7 @@ body.light-theme .connect-us-section .form-control:focus {
     will-change: transform, opacity;
     display: inline-block !important;
 }
-
-/* پنهان کردن حباب‌ها در حالت روز (Light Mode) برای حفظ تمیزی صفحه روشن */
-body.light-theme .cyber-bubbles-bg {
-    display: none !important;
 }
-
-/* ===================================================
-   ۵. پچ نهایی و بومی کلاپس‌های فایروال بدون نیاز به اسکریپت
-=================================================== */
 
 /* تنظیم ساختار و فواصل کادرهای کلاپس بومی */
 .faq-cyber-item {
@@ -1147,6 +1131,7 @@ body.light-theme .cyber-bubbles-bg {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
+    padding: 2px;
 }
 
 /* هاور نئونی شیک دور کادر سوال */
@@ -1178,3 +1163,580 @@ body.light-theme .support {
     background-color: #ffffff !important;
 }
 
+/* استایل کادرها در حالت تم تاریک (پیش‌فرض صرافی شما) */
+.faq-cyber-item {
+    background-color: rgba(25, 116, 228, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+.faq-cyber-item .faq-question {
+    background-color: rgba(5, 29, 59, 0.5) !important;
+}
+.firewall-title {
+    color: #ffffff !important;
+}
+.faq-cyber-item .question-text {
+    color: #ffffff !important; /* فیکس قطعی ماندن رنگ سفید سوال در حالت شب */
+    display: inline-block !important;
+    visibility: visible !important;
+}
+.faq-cyber-item .answer-content-box {
+    background-color: rgba(92, 116, 161, 0.4) !important;
+    color: #cbd5e1 !important;
+    border-top: 1px solid rgba(0, 245, 212, 0.15) !important;
+}
+
+/* 🌟 تنظیم تراز رنگ‌ها در حالت لایت‌مود (تم روشن روز) 🌟 */
+body.light-theme .support {
+    background-color: #ffffff !important;
+}
+body.light-theme .firewall-title {
+    color: #03045e !important;
+}
+body.light-theme .faq-cyber-item {
+    background-color: #fafbfc !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+body.light-theme .faq-cyber-item .faq-question {
+    background-color: #f8fafc !important;
+}
+body.light-theme .faq-cyber-item .question-text {
+    color: #03045e !important; /* فیکس قطعی ماندن رنگ سرمه‌ای سوال در حالت روز */
+}
+body.light-theme .faq-cyber-item .answer-content-box {
+    background-color: #f1f3f7 !important;
+    color: #1e293b !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+/* تعریف رنگ زعفرانی صرافی در ریشه پروژه */
+:root {
+    --saffron-color: #f4c430;
+}
+
+/* استایل پایه دایره‌های شبکه‌های اجتماعی */
+.social-cyber-orb {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #1a1a1a; /* پس‌زمینه تیره فوتر */
+    font-size: 1.2rem;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 🔵 اعمال رنگ‌های اصلی برندها دقیقاً قبل از هاور */
+.fb-hover:not(:hover) { color: #1877f2; }
+.inst-hover:not(:hover) { color: #e1306c; }
+.tg-hover:not(:hover) { color: #0088cc; }
+.gh-hover:not(:hover) { color: #6e5494; }
+.ln-hover:not(:hover) { color: #0077b5; }
+
+/* 🟡 افکت هاور یکدست و درخشان زعفرانی برای تمامی آیکون‌ها */
+.social-cyber-orb:hover {
+    background: #1a1a1a !important;
+    color: var(--saffron-color) !important; /* رنگ آیکون‌ها با اولویت بالا زعفرانی می‌شود */
+    border-color: var(--saffron-color) !important;
+    box-shadow: 0 0 15px var(--saffron-color); /* سایه درخشان زعفرانی */
+    transform: translateY(-3px); /* حرکت نرم به سمت بالا */
+}
+/* ===================================================
+   ۵. تنظیمات اختصاصی آیکون‌های شبکه اجتماعی (فوتر)
+=================================================== */
+/* استایل دایره‌های مادر آیکون‌ها */
+.social-cyber-orb {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03); /* پس‌زمینه شیشه‌ای تیره */
+    font-size: 1.2rem;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 🔵 اعمال رنگ اصلی برندها به خودِ آیکون‌ها (قبل از هاور موس) */
+.fb-hover i   { color: #1877f2 !important; } /* آبی فیس‌بوک */
+.inst-hover i { color: #e1306c !important; } /* صورتی اینستاگرام */
+.tg-hover i   { color: #0088cc !important; } /* آبی تلگرام */
+.gh-hover i   { color: #6e5494 !important; } /* بنفش گیت‌هاب */
+.ln-hover i   { color: #0077b5 !important; } /* آبی لینکدین */
+
+/* 🟡 افکت هاور یکدست و درخشان زعفرانی برای تمامی کارت‌ها */
+.social-cyber-orb:hover {
+    background: #1a1a1a !important; /* تیره شدن پس‌زمینه برای تضاد بیشتر */
+    border-color: var(--amber-gold) !important; /* تغییر مرز دایره به زعفرانی */
+    box-shadow: 0 0 15px var(--amber-gold); /* سایه نئونی زعفرانی صرافی */
+    transform: translateY(-4px); /* حرکت نرم به سمت بالا */
+}
+
+/* تغییر رنگ خود آیکون داخلی به زعفرانی در حالت هاور */
+.social-cyber-orb:hover i {
+    color: var(--amber-gold) !important;
+}
+/* ===================================================
+   ۶. استایل‌های ریسپانسیو منو و استایل دکمه شب/روز
+=================================================== */
+
+/* استایل آیکون تغییر حالت شب و روز */
+.btn-theme-toggle {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.btn-theme-toggle:hover {
+    transform: rotate(30deg);
+    color: var(--amber-gold) !important;
+}
+
+/* حالت روشن (Light Mode) برای کل بدنه سایت */
+body.light-mode {
+    background: #2b5987 !important;
+    color: #030914 !important;
+}
+body.light-mode .navbar,
+body.light-mode .hero-overlay {
+    background-color: rgba(16, 93, 110, 0.29) !important;
+    border-bottom: 1px solid rgba(3, 9, 20, 0.1);
+}
+body.light-mode .nav-links a {
+    color: #555555 !important;
+}
+body.light-mode .nav-links a:hover, 
+body.light-mode .nav-links a.active {
+    color: #0077b6 !important;
+}
+body.light-mode h1, 
+body.light-mode .description {
+    color: #051d3b !important;
+}
+
+/* تنظیمات منو در دستگاه‌های موبایل و تبلت */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block !important; /* نمایش دکمه سه خط در موبایل */
+    }
+    
+    .nav-links {
+        display: none; /* مخفی کردن منو در حالت عادی موبایل */
+        flex-direction: column;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background-color: var(--dark-bg);
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(0, 245, 212, 0.15);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+    }
+    
+    /* تغییر بک‌گراند منوی باز شده در حالت روشن */
+    body.light-mode .nav-links {
+        background-color: #fbfbfc !important;
+    }
+
+    /* کلاس کمکی برای باز شدن منو با جاوااسکریپت */
+    .nav-links.open {
+        display: flex !important;
+    }
+
+    .nav-links a {
+        margin: 12px 0 !important;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/* ===================================================
+   ۵. استایل‌های حالت روز با پالت سرمه‌ای، زعفرانی و سفید
+=================================================== */
+
+/* کدهای مربوط به بدنه و پس‌زمینه اصلی در حالت روز */
+body.light-mode {
+    background: #fcfcfd !important; /* پس‌زمینه سفید خالص */
+    color: #051d3b !important;    /* رنگ متن اصلی: سرمه‌ای تیره */
+}
+
+/* نوار ناوبری (Navbar) در حالت روز */
+body.light-mode .navbar {
+    background-color: rgba(50, 138, 197, 0.884) !important;
+    border-bottom: 1px solid rgba(5, 29, 59, 0.1) !important;
+    box-shadow: 0 4px 20px rgba(5, 29, 59, 0.05) !important;
+}
+
+/* لینک‌های منو در حالت روز */
+body.light-mode .nav-links a {
+    color: #556b85 !important; /* سرمه‌ای ملایم پیش‌فرض */
+}
+body.light-mode .nav-links a:hover, 
+body.light-mode .nav-links a.active {
+    color: #051d3b !important; /* سرمه‌ای تیره هنگام هاور */
+}
+body.light-mode .nav-links a::after {
+    background: linear-gradient(90deg, #051d3b, var(--amber-gold)) !important;
+}
+
+/* دکمه‌ها و متون بخش هیرو (Hero Section) */
+body.light-mode .hero h1 {
+    color: #051d3b !important; /* تیتر بزرگ سرمه‌ای */
+}
+body.light-mode .hero .description {
+    color: #334e68 !important; /* متن توضیحات سرمه‌ای ملایم */
+}
+body.light-mode .hero-overlay {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, #2c4589 100%) !important;
+}
+body.light-mode .btn.outline {
+    color: #051d3b !important;
+    border-color: #051d3b !important;
+}
+body.light-mode .btn.outline:hover {
+    background: rgba(5, 29, 59, 0.05) !important;
+}
+
+/* دکمه سه خط منو و زبان در حالت روز */
+body.light-mode .menu-btn,
+body.light-mode .language {
+    color: #051d3b !important;
+}
+
+/* استایل کارت‌های بخش درباره ما در حالت روز */
+body.light-mode .about-us-section {
+    background-color: #f4f7fa !important;
+}
+body.light-mode .about-us-section .modern-feature-card {
+    background: #e1ebff !important;
+    border: 1px solid rgba(5, 29, 59, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(5, 29, 59, 0.04) !important;
+}
+body.light-mode .about-us-section .text-navy {
+    color: #051d3b !important;
+}
+
+/* منوی بازشو موبایل در حالت روز */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block !important;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background-color: var(--dark-bg); /* حالت پیش‌فرض تاریک */
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(0, 245, 212, 0.15);
+        z-index: 999;
+    }
+    .nav-links.open {
+        display: flex !important;
+    }
+    /* تغییر رنگ بک‌گراند منوی موبایل فقط در حالت روز به سفید کپی‌رایتی */
+    body.light-mode .nav-links {
+        background-color: #083d5e !important;
+        border-bottom: 1px solid rgba(5, 29, 59, 0.1);
+    }
+    .nav-links a {
+        margin: 15px 0 !important;
+        text-align: center;
+        width: 100%;
+    }
+}
+/* ===================================================
+   ۵. تنظیمات تم روز با پالت رُز، آبی آسمانی و سرمه‌ای مات
+=================================================== */
+
+/* تغییر رنگ پس‌زمینه بدنه به آبی آسمانی بسیار ملایم و مات */
+body.light-theme {
+    background: #356596 !important; /* پس‌زمینه آبی آسمانی ملایم */
+    color: #03045e !important;    /* متن اصلی: سرمه‌ای تیره متمایل به مشکی */
+}
+
+/* نوار ناوبری (Navbar) بالایی با رنگ رُز لوکس */
+body.light-theme .navbar {
+    background-color: rgba(90, 152, 224, 0.95) !important; /* رنگ رُز شیک */
+    border-bottom: 1px solid rgba(3, 4, 94, 0.15) !important; /* مرز سرمه‌ای بسیار ظریف */
+    box-shadow: 0 4px 20px rgba(224, 90, 141, 0.2) !important;
+}
+
+/* رنگ لینک‌های منو درون نوار ناوبری رُز */
+body.light-theme .nav-links a {
+    color: #ffffff1e !important; /* متن سفید برای خوانایی عالی روی رُز */
+    opacity: 0.85;
+    font-size: 10px;
+}
+
+/* حالت هاور و فعال لینک‌های منو در حالت روز */
+body.light-theme .nav-links a:hover, 
+body.light-theme .nav-links a.active {
+    color: #03045e !important; /* تبدیل متن به سرمه‌ای هنگام هاور */
+    opacity: 1 !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6) !important;
+}
+
+/* خط انیمیشنی زیر لینک‌ها در حالت روز */
+body.light-theme .nav-links a::after {
+    background: linear-gradient(90deg, #0833a15b, #03045e) !important;
+}
+
+/* دکمه‌های سمت راست هدر (سه خط منو، تغییر تم و زبان) */
+body.light-theme .menu-btn,
+body.light-theme .btn-theme-toggle,
+body.light-theme .language {
+    color: #022186 !important; /* آیکون‌های سفید روی نوار رُز */
+}
+
+/* 🪙 دیوار (دیو) بخش نرخ ارزها با رنگ خاکستری-آبی مات */
+body.light-theme .exchange-rates-section,
+body.light-theme #rates,
+body.light-theme .exchange-rates-section .container {
+    background-color: #1255ae !important; /* دیوار خاکستری متوازن با تم آبی */
+}
+
+/* استایل کارت‌های نرخ ارز روی دیوار */
+body.light-theme .flip-card-container,
+body.light-theme .exchange-card-wall {
+    background-color: #1270bd !important; /* کارت‌های سفید برای تضاد روی دیوار خاکستری */
+    border: 1px solid rgba(3, 4, 94, 0.1) !important;
+    color: #03045e !important;
+}
+
+/* تنظیمات متون بخش هیرو (Hero) در حالت روز */
+body.light-theme .hero h1 {
+    color: #03045e !important; /* تیتر بزرگ سرمه‌ای */
+}
+body.light-theme .hero h1 span {
+    color: #e49e10 !important; /* بخش رنگی تیتر به رُز تبدیل می‌شود */
+    text-shadow: none !important;
+}
+body.light-theme .hero .description {
+    color: #1a2e40 !important; /* توضیحات سرمه‌ای ملایم */
+}
+body.light-theme .hero-overlay {
+    background: radial-gradient(circle, rgb(247, 248, 249) 0%, #f6f9fc 100%) !important;
+}
+
+/* دکمه‌های بخش هیرو در حالت روز */
+body.light-theme .btn.outline {
+    color: #c1c2ce !important;
+    border-color: #03045e !important;
+}
+body.light-theme .btn.outline:hover {
+    background: rgba(3, 4, 94, 0.05) !important;
+}
+
+/* تنظیمات سکشن درباره ما (About Us) در حالت روز */
+body.light-theme .about-us-section {
+    background-color: #f4f6f9 !important;
+}
+body.light-theme .about-us-section .modern-feature-card {
+    background: #f4f5f7 !important; /* کارت‌های آبی آسمانی کمرنگ */
+    border: 1px solid rgba(3, 4, 94, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(3, 4, 94, 0.04) !important;
+}
+body.light-theme .about-us-section .text-navy {
+    color: #eeeef1 !important;
+}
+
+/* ---------------------------------------------------
+   تنظیمات واکنش‌گرایی منوی ناوبری در موبایل و تبلت
+--------------------------------------------------- */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block !important;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background-color: var(--dark-bg); /* حالت شب منو */
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(0, 245, 212, 0.15);
+        z-index: 999;
+    }
+
+    .nav-links.open {
+        display: flex !important;
+    }
+
+    /* تغییر منوی بازشوی موبایل در حالت روز به رنگ رُز یکدست هدر */
+    body.light-theme .nav-links {
+        background-color: #c2c1c9 !important;
+        border-bottom: 1px solid rgba(3, 4, 94, 0.15) !important;
+    }
+
+    body.light-theme .nav-links a {
+        margin: 15px 0 !important;
+        text-align: center;
+        width: 100%;
+        color: #ffffff64 !important;
+    }
+}
+
+/* ---------------------------------------------------
+   تنظیمات واکنش‌گرایی منوی ناوبری در حالت موبایل و تبلت
+--------------------------------------------------- */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block !important; /* نمایش دکمه سه خط در موبایل */
+    }
+
+    .nav-links {
+        display: none; /* مخفی بودن منو در حالت عادی موبایل */
+        flex-direction: column;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background-color: var(--dark-bg); /* بک‌گراند تیره منو در حالت شب */
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(0, 245, 212, 0.15);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        z-index: 999;
+    }
+
+    /* کلاس کمکی که با جاوااسکریپت فعال شده و منو را باز می‌کند */
+    .nav-links.open {
+        display: flex !important;
+    }
+
+    /* ریسپانسیو بک‌گراند کشوی منوی موبایل در حالت روشن (روز) به رنگ سفید کپی‌رایتی */
+    body.light-theme .nav-links {
+        background-color: #fffffff1 !important;
+        border-bottom: 1px solid rgba(224, 90, 141, 0.15) !important;
+    }
+
+    .nav-links a {
+        margin: 15px 0 !important;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+
+/* نوار ناوبری در تم روشن - تغییر رنگ پس‌زمینه به تم رز ملایم */
+body.light-theme .navbar {
+    background-color: rgba(224, 90, 141, 0.08) !important; /* پس‌زمینه با هاله رز بسیار ملایم */
+    border-bottom: 1px solid rgba(224, 90, 141, 0.2) !important; /* مرز پایینی منو به رنگ رز */
+    box-shadow: 0 4px 20px rgba(224, 90, 141, 0.08) !important;
+}
+
+/* اصلاح رنگ لینک‌های منو در حالت روشن به رنگ رز */
+body.light-theme .nav-links a {
+    color: #030527 !important; /* رنگ رز مات برای حالت عادی لینک‌ها */
+    font-weight: 12px;
+}
+
+/* حالت هاور و فعال لینک‌های منو در تم روشن */
+body.light-theme .nav-links a:hover, 
+body.light-theme .nav-links a.active {
+    color: #5aa1e0 !important; /* رنگ رز درخشان در حالت هاور موس */
+    text-shadow: 0 0 8px rgba(224, 90, 141, 0.3);
+}
+
+/* خط انیمیشنی زیر لینک‌ها در حالت روشن */
+body.light-theme .nav-links a::after {
+    background: linear-gradient(90deg, #5a6ee0, var(--amber-gold)) !important; /* ترکیب انیمیشنی رز و زعفرانی */
+}
+
+/* آیکون سه خط منوی همبرگری و دکمه تغییر زبان در تم روشن */
+body.light-theme .menu-btn,
+body.light-theme .language {
+    color: #080127 !important; /* رنگ آیکون‌ها به رز تغییر یافت */
+}
+
+/* تغییر رنگ دیو (دیوار) بخش نرخ ارزها به خاکستری در حالت روز */
+body.light-theme .exchange-rates-section,
+body.light-theme #rates,
+body.light-theme .exchange-rates-section .container {
+    background-color: #143260 !important; /* رنگ دیوار خاکستری ملایم */
+}
+
+/* استایل کارت‌های نرخ ارز روی دیوار خاکستری */
+body.light-theme .flip-card-container,
+body.light-theme .exchange-card-wall {
+    background-color: #153f75 !important;
+    border: 1px solid rgba(5, 29, 59, 0.05) !important;
+    color: #010811;
+}
+
+/* بخش هیرو در تم روشن */
+body.light-theme .hero h1 {
+    color: #f6f7f900 !important;
+}
+body.light-theme .hero .description {
+    color: #f3f7fa !important;
+}
+body.light-theme .hero-overlay {
+    background: radial-gradient(circle, rgba(241, 242, 244, 0) 0%, #f6f7f800 100%) !important;
+}
+body.light-theme .btn.outline {
+    color: #051d3b !important;
+    border-color: #051d3b !important;
+}
+body.light-theme .btn.outline:hover {
+    background: rgba(5, 29, 59, 0.05) !important;
+}
+
+/* سکشن درباره ما در تم روشن */
+body.light-theme .about-us-section {
+    background-color: #ffffff !important;
+}
+body.light-theme .about-us-section .modern-feature-card {
+    background: #ffffff00 !important;
+    border: 1px solid rgba(5, 29, 59, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(5, 29, 59, 0.04) !important;
+}
+body.light-theme .about-us-section .text-navy {
+    color: #051d3b !important;
+}
+
+/* ---------------------------------------------------
+   تنظیمات واکنش‌گرایی منوی ناوبری در حالت موبایل و تبلت
+--------------------------------------------------- */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block !important; /* نمایش دکمه سه خط در موبایل */
+    }
+
+    .nav-links {
+        display: none; /* مخفی بودن منو در حالت عادی موبایل */
+        flex-direction: column;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background-color: var(--dark-bg); /* بک‌گراند تیره منو در حالت شب */
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(0, 245, 212, 0.15);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        z-index: 999;
+    }
+
+    /* کلاس کمکی که با جاوااسکریپت فعال شده و منو را باز می‌کند */
+    .nav-links.open {
+        display: flex !important;
+    }
+
+    /* ریسپانسیو بک‌گراند کشوی منوی موبایل در حالت روشن (روز) به رنگ سفید */
+    body.light-theme .nav-links {
+        background-color: #ffffffa8 !important;
+        border-bottom: 1px solid rgba(224, 90, 141, 0.15) !important;
+    }
+
+    .nav-links a {
+        margin: 15px 0 !important;
+        text-align: center;
+        width: 100%;
+    }
+}
