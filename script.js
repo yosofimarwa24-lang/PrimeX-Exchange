@@ -685,3 +685,199 @@ document.addEventListener("DOMContentLoaded", () => {
     if (langEnBtn) langEnBtn.addEventListener("click", (e) => { e.preventDefault(); changeLanguage("en"); });
     if (langFaBtn) langFaBtn.addEventListener("click", (e) => { e.preventDefault(); changeLanguage("fa"); });
 });
+/* ===================================================
+   اسکریپت تعاملی حالت روز/شب و انیمیشن اسکرول
+=================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    // ۱. مدیریت انیمیشن زمان اسکرول صفحه (Scroll Reveal)
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15 // وقتی ۱۵ درصد المان دیده شد، فعال شود
+    };
+
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('cyber-active');
+                // اگر می‌خواهید با هر بار بالا و پایین کردن صفحه انیمیشن تکرار شود، خط زیر را حذف نکنید
+                // observer.unobserve(entry.target); 
+            }
+        });
+    }, observerOptions);
+
+    // انتخاب تمام المان‌هایی که باید موقع اسکرول متحرک شوند
+    document.querySelectorAll('.scroll-rotate-effect').forEach(el => {
+        scrollObserver.observe(el);
+    });
+
+    // ۲. مدیریت دکمه تغییر تم (تاریک و روشن)
+    // فرض بر این است که یک دکمه با کلاس .theme-toggle در منوی خود دارید
+    const themeToggleBtn = document.querySelector('.theme-toggle');
+    
+    if (themeToggleBtn) {
+        // چک کردن حالت ذخیره شده قبلی در مرورگر کاربر
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-theme');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            
+            // ذخیره انتخاب کاربر در حافظه مرورگر (LocalStorage)
+            if (document.body.classList.contains('light-theme')) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    }
+});
+/* ===================================================
+   ✨ انیمیشن ذرات دیجیتال هوشمند و تعاملی صرافی (Canvas Particles)
+=================================================== */
+const canvas = document.getElementById('cyberCanvas');
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particlesArray = [];
+
+    // تنظیم اندازه کانواس بر اساس ابعاد پنجره مرورگر
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // مختصات ماوس کاربر برای تعامل با ذرات
+    const mouse = { x: null, y: null, radius: 100 };
+    window.addEventListener('mousemove', (event) => {
+        mouse.x = event.x;
+        mouse.y = event.y;
+    });
+
+    // رنگ‌های پالت مدرن صرافی شما (طلایی زعفرانی، فیروزه‌ای دیجیتال و سبز ماتریکسی)
+    const colors = ['#ff9f1c', '#06b6d4', '#39ff14'];
+
+    // ساختار اصلی هر ذره
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 1; // ابعاد بسیار ریز و شیک
+            this.speedX = Math.random() * 0.4 - 0.2; // حرکت افقی ملایم
+            this.speedY = Math.random() * -0.6 - 0.2; // حرکت به سمت بالا
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+        }
+        // به‌روزرسانی موقعیت ذره و تعامل با ماوس
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            // بازگرداندن ذرات به پایین صفحه پس از خارج شدن
+            if (this.y < 0) {
+                this.y = canvas.height;
+                this.x = Math.random() * canvas.width;
+            }
+
+            // تعامل و فرار ذرات از ماوس کاربر
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < mouse.radius) {
+                if (mouse.x < this.x && this.x < canvas.width - this.size * 10) this.x += 2;
+                if (mouse.x > this.x && this.x > this.size * 10) this.x -= 2;
+                if (mouse.y < this.y && this.y < canvas.height - this.size * 10) this.y += 2;
+                if (mouse.y > this.y && this.y > this.size * 10) this.y -= 2;
+            }
+        }
+        // رسم ذره روی صفحه
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+   
+
+    // حلقه انیمیشن روان
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+            particlesArray[i].draw();
+        }
+        requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+}
+/* ===================================================
+   💸 ماژول خرید و فروش آنی سکه و ارز دیجیتال (PrimeX Trade)
+=================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const buyBtn = document.getElementById('buyBtn');
+    const sellBtn = document.getElementById('sellBtn');
+    const cryptoInput = document.getElementById('cryptoAmount');
+    const fiatOutput = document.getElementById('fiatResult');
+    const tradeSubmit = document.getElementById('executeTrade');
+
+    // نرخ ثابت فرضی برای بیت‌کوین (می‌توان بعداً به API وصل کرد)
+    const btcPrice = 64500; 
+    let currentMode = 'buy'; // خرید به صورت پیش‌فرض
+
+    if (buyBtn && sellBtn && cryptoInput && fiatOutput) {
+        
+        // سوییچ به حالت خرید
+        buyBtn.addEventListener('click', () => {
+            currentMode = 'buy';
+            buyBtn.classList.add('active');
+            sellBtn.classList.remove('active');
+            calculateTrade();
+        });
+
+        // سوییچ به حالت فروش
+        sellBtn.addEventListener('click', () => {
+            currentMode = 'sell';
+            sellBtn.classList.add('active');
+            buyBtn.classList.remove('active');
+            calculateTrade();
+        });
+
+        // محاسبه خودکار مبالغ با تغییر مقدار توسط کاربر
+        cryptoInput.addEventListener('input', calculateTrade);
+
+        function calculateTrade() {
+            const amount = parseFloat(cryptoInput.value) || 0;
+            let total = amount * btcPrice;
+
+            if (currentMode === 'buy') {
+                // کارمزد خرید صرافی (مثلاً ۰.۵ درصد اضافه می‌شود)
+                total = total * 1.005; 
+            } else {
+                // کارمزد فروش صرافی (مثلاً ۰.۵ درصد کم می‌شود)
+                total = total * 0.995;
+            }
+
+            fiatOutput.value = "\$" + total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        // افکت کلیک روی دکمه ثبت نهایی معامله
+        if (tradeSubmit) {
+            tradeSubmit.addEventListener('click', () => {
+                const amount = cryptoInput.value;
+                if (amount > 0) {
+                    alert(`✅ درخواست ${currentMode === 'buy' ? 'خرید' : 'فروش'} ${amount} بیت‌کوین با موفقیت ثبت شد!`);
+                } else {
+                    alert('❌ لطفاً مقدار معتبری برای معامله وارد کنید.');
+                }
+            });
+        }
+    }
+});
+

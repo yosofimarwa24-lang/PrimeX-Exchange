@@ -10,6 +10,8 @@
     <!-- اتصال مستقیم به پوشه آیکون‌های لوکال خودت -->
     <link rel="stylesheet" href="./fontawesome-free-5.15.1-web/css/all.min.css">
     <script src="./bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <canvas id="cyberCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;"></canvas>
+
 </head>
 <body>
 
@@ -42,6 +44,8 @@
 
     <!-- === 2. CINEMATIC HERO SECTION (Zobaideh Layout) === -->
     <section class="hero">
+        <div class="cyber-particles"></div>
+
         <div class="hero-overlay"></div>
         <div class="hero-content hero-fade-in">
             <p class="eyebrow">Welcome to Global Exchange</p>
@@ -107,6 +111,7 @@
             </div>
         </div>
     </section>
+    
         <!-- === 3.5 PREMIUM 4-MEMBER TEAM SECTION (Our Team Node Layout) === -->
     <section id="team-section" class="team-section py-5 position-relative overflow-hidden" style="background-color: #ffffff; border-top: 1px solid #eee;">
         <div class="container position-relative z-1">
@@ -181,6 +186,26 @@
             </div>
         </div>
     </section>
+<!-- Instant Crypto Trade Module -->
+<div class="crypto-trade-container scroll-rotate-effect">
+    <h3 class="trade-title"><i class="fas fa-coins"></i> Instant Crypto Exchange</h3>
+    <div class="trade-toggle-buttons">
+        <button id="buyBtn" class="trade-tab active">Buy Coins</button>
+        <button id="sellBtn" class="trade-tab">Sell Coins</button>
+    </div>
+    
+    <div class="trade-input-group">
+        <label for="cryptoAmount">Crypto Amount (BTC / ETH):</label>
+        <input type="number" id="cryptoAmount" placeholder="0.00" min="0" step="0.01">
+    </div>
+
+    <div class="trade-input-group">
+        <label for="fiatResult">Estimated Total (USD):</label>
+        <input type="text" id="fiatResult" placeholder="$0.00" readonly>
+    </div>
+
+    <button id="executeTrade" class="btn primary w-100 mt-3">Confirm Trade</button>
+</div>
 
     <!-- === START GLOBAL MARKET SHARE PIE CHART SECTION (Marwa) === -->
 <section id="market-share-section" class="pie-chart-section py-5 bg-white border-top">
