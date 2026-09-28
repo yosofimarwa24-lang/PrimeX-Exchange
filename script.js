@@ -802,7 +802,14 @@ if (canvas) {
         }
     }
 
-   
+    // ایجاد بانک ذرات
+    function init() {
+        particlesArray = [];
+        let numberOfParticles = 80; // تعداد متعادل برای شلوغ نشدن دیزاین
+        for (let i = 0; i < numberOfParticles; i++) {
+            particlesArray.push(new Particle());
+        }
+    }
 
     // حلقه انیمیشن روان
     function animate() {
@@ -880,4 +887,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+        spinLuckyBtn.addEventListener('click', () => {
+            spinLuckyBtn.style.display = "none";
+            luckyChest.className = "ultimate-crypto-chest shake-mega";
+            luckyResult.innerText = "⚡ Connecting to reward pool and mining transaction...";
+            luckyResult.style.color = "#ff9f1c";
+
+            setTimeout(() => {
+                luckyChest.className = "ultimate-crypto-chest";
+                
+                // 🌟 English Rewards List 🌟
+                const rewards = [
+                    { text: "🌟 Amazing! You won 0.005 Bitcoin (BTC)! 🎉", icon: "🪙", color: "#00f5d4" },
+                    { text: "🌟 Incredible! 50 Tether (USDT) has been deposited to your wallet! 💵", icon: "💎", color: "#00f5d4" },
+                    { text: "🌟 Gold Card! 100% Trading Fee Discount Coupon: VIP_GOLD 🎫", icon: "✨", color: "#ff9f1c" },
+                    { text: "🫙 The chest was empty this time! Try your luck again in 24 hours.", icon: "🫙", color: "#ff3366" }
+                ];
+
+                const randomReward = rewards[Math.floor(Math.random() * rewards.length)];
+                
+                luckyChest.innerText = randomReward.icon;
+                luckyResult.innerText = randomReward.text;
+                luckyResult.style.color = randomReward.color;
+                
+                megaLuckyBox.style.borderColor = randomReward.color;
+                megaLuckyBox.style.boxShadow = `0 0 45px ${randomReward.color}, inset 0 0 20px ${randomReward.color}`;
+
+                // پرتاب ذرات نئونی به دور لبه‌های کادر
+                cancelAnimationFrame(animationFrameId);
+                particles = [];
+                for (let i = 0; i < 110; i++) {
+                    particles.push(new NeonParticle());
+                }
+                animateConfetti();
+
+            }, 2500);
+        });
 

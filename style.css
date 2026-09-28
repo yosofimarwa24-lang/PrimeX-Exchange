@@ -26,7 +26,6 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--dark-bg);
     color: var(--white);
-    overflow-x: hidden;
 }
 
 /* پچ انیمیشن ۳۳ اسکرول سه‌بعدی مروه جان */
@@ -51,14 +50,29 @@ body {
    ۲. NAVBAR & PREMIUM LINKS (منوی کاملاً ریسپانسیو زبیده)
 =================================================== */
 .navbar {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0.7rem 5% !important; background-color: var(--dark-bg);
-    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-    position: fixed; top: 0; width: 100%; z-index: 1000;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    padding: 0.7rem 5% !important; 
+    background-color: var(--dark-bg);
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* ۳ خط طلایی برای حل باگ غیب شدن زیر لایه Hero */
+    position: fixed !important; 
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    z-index: 999999 !important; /* این عدد بزرگ لایه‌های هیرو را به زیر می‌فرستد */
+    
     border-bottom: 1px solid rgba(0, 245, 212, 0.15);
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
     height: 65px;
 }
+
+
+
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; }
 .logo { background-color: var(--amber-gold); color: #03045e; font-weight: 900; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: 0 0 15px var(--amber-gold); transition: transform 0.3s; }
 .brand:hover .logo { transform: scale(1.1) rotate(15deg); }
@@ -78,7 +92,7 @@ body {
 /* ===================================================
    ۳. CINEMATIC HERO SECTION (دایره فیکس شده هیرو زبیده)
 =================================================== */
-.hero { min-height: 100vh; display: flex; align-items: center; padding: 0 8%; background-image: url("./image/1150247561110694593.jpg"); background-size: cover; background-position: center; position: relative; }
+.hero { min-height: 100vh; display: flex; align-items: center; padding: 0 8%; background-image: url("./image/1150247561110694593.jpg"); background-size: cover; background-position: center; position: relative;}
 .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, rgba(5,29,59,0.3) 0%, var(--dark-bg) 100%); z-index: 1; }
 .hero-content { position: relative; z-index: 2; animation: matrixFloat 4.5s ease-in-out infinite alternate; }
 
@@ -1068,9 +1082,6 @@ body.light-theme .connect-us-section .form-control:focus {
     border-color: var(--primary-color) !important;
     box-shadow: 0 0 12px rgba(0, 119, 182, 0.25) !important;
 }
-//* ===================================================
-   ✨ جایگزین حباب‌ها: ذرات درخشان دیجیتال در پس‌زمینه
-=================================================== */
 .cyber-particles {
     position: absolute;
     inset: 0;
@@ -1079,21 +1090,6 @@ body.light-theme .connect-us-section .form-control:focus {
     overflow: hidden;
 }
 
-/* ساخت ذرات ریز به جای حباب */
-.cyber-particles::before {
-    content: '';
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: var(--accent-cyan);
-    box-shadow: 10vw 20vh 4px var(--accent-cyan),
-                30vw 50vh 6px var(--amber-gold),
-                70vw 15vh 5px var(--accent-cyan),
-                85vw 75vh 4px var(--amber-gold),
-                45vw 80vh 6px #39ff14; /* درخشش ماتریکسی */
-    animation: digitalFloat 20s linear infinite;
-    opacity: 0.4;
-}
 
 @keyframes digitalFloat {
     0% { transform: translateY(0); }
@@ -1937,3 +1933,543 @@ body {
     transform: translateY(-4px) scale(1.02);
     box-shadow: 0 10px 25px rgba(6, 182, 212, 0.45) !important;
 }
+/* قفل کردن هدر با بالاترین اولویت ممکن */
+.navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 65px !important;
+    z-index: 9999999 !important; /* یک عدد بحرانی برای قرارگیری در بالاترین لایه مرورگر */
+    transform: none !important; /* خنثی کردن هرگونه افکت ترانسفورم ناخواسته */
+    will-change: transform;
+}
+
+/* مطمئن شدن از اینکه سکشن هیرو زیر هدر پنهان نمی‌شود */
+.hero {
+    transform-style: flat !important; /* جلوگیری از تداخل سه‌بعدی با هدر */
+}
+/* افکت انتقال نرم برای لینک‌های هدر */
+.nav-links a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* افکت پولکی و نوری دکمه‌ها در زمان حرکت ماوس */
+.hero-buttons .btn {
+    position: relative;
+    overflow: hidden;
+}
+
+/* انیمیشن ملایم چرخش خودکار برای آیکون دلار لوگو */
+.logo {
+    display: inline-block;
+    animation: moneyPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes moneyPulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(0, 245, 212, 0.2)); }
+    50% { transform: scale(1.12); filter: drop-shadow(0 0 8px rgba(0, 245, 212, 0.7)); }
+}
+/* باکس اصلی رادار */
+.live-radar-box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(18, 25, 41, 0.85); /* تم سرمه‌ای تیره صرافی */
+    border: 1px solid rgba(0, 245, 212, 0.25); /* لبه نئونی */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 8px 15px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 999999;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    direction: rtl;
+    font-family: sans-serif;
+}
+
+/* تغییر رنگ ملایم در حالت لایت مود */
+body.light-theme .live-radar-box {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 159, 28, 0.3); /* زرد زعفرانی */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* امواج رادار */
+.radar-circle {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    background: #00f5d4; /* سبز نئونی فعال */
+    border-radius: 50%;
+}
+
+body.light-theme .radar-circle {
+    background: #ff9f1c; /* زرد در حالت روز */
+}
+
+.ripple-wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: radarPulse 2s infinite ease-out;
+}
+
+.ripple-wave:nth-child(2) {
+    animation-delay: 1s;
+}
+
+/* نوشته‌های رادار */
+.radar-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.status-title {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+body.light-theme .status-title {
+    color: #333333;
+}
+
+#liveTimer {
+    font-size: 0.65rem;
+    color: #00f5d4;
+    opacity: 0.8;
+}
+
+body.light-theme #liveTimer {
+    color: #ff9f1c;
+}
+
+/* انیمیشن موج رادار */
+@keyframes radarPulse {
+    0% {
+        width: 10px;
+        height: 10px;
+        opacity: 0.6;
+    }
+    100% {
+        width: 40px;
+        height: 40px;
+        opacity: 0;
+    }
+}
+/* استایل اصلی باکس نرخ دلار */
+.mini-rate-ticker {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(18, 25, 41, 0.85);
+    border: 1px solid rgba(0, 245, 212, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 8px 15px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 999999;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    direction: ltr;
+    font-family: sans-serif;
+    color: #ffffff;
+}
+
+body.light-theme .mini-rate-ticker {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 159, 28, 0.3);
+    color: #333333;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.ticker-flag {
+    font-size: 1.1rem;
+}
+
+.ticker-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.ticker-info span {
+    font-size: 0.65rem;
+    opacity: 0.7;
+}
+
+.ticker-info strong {
+    font-size: 0.9rem;
+    color: #00f5d4;
+    transition: color 0.3s;
+}
+
+body.light-theme .ticker-info strong {
+    color: #ff9f1c;
+}
+
+/* جهت روند نرخ (بالا/پایین) */
+.ticker-trend {
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.ticker-trend.up {
+    color: #00f5d4;
+}
+
+.ticker-trend.down {
+    color: #ff3366;
+}
+/* استایل سکشن باکس شانس */
+.lucky-chest-section {
+    padding: 60px 5%;
+    background-color: var(--dark-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.lucky-chest-container {
+    width: 100%;
+    max-width: 600px; /* طراحی به صورت یک باکس منسجم */
+}
+
+/* کارت داخلی */
+.lucky-chest-card {
+    background: #121929; /* رنگ سرمه‌ای تیره صرافی */
+    border: 2px dashed rgba(255, 159, 28, 0.4); /* کادر خط‌چین زعفرانی */
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    font-family: sans-serif;
+    direction: rtl;
+    transition: transform 0.3s ease, border-color 0.3s;
+}
+
+.lucky-chest-card:hover {
+    transform: translateY(-5px);
+    border-color: #ff9f1c;
+}
+
+/* هماهنگی با حالت روز (Light Theme) */
+body.light-theme .lucky-chest-card {
+    background: #ffffff;
+    color: #333333;
+    border-color: rgba(255, 159, 28, 0.6);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+.lucky-badge {
+    display: inline-block;
+    background: rgba(255, 159, 28, 0.15);
+    color: #ff9f1c; /* زعفرانی */
+    padding: 4px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.lucky-chest-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.6rem;
+    color: #ff9f1c;
+}
+
+body.light-theme .lucky-chest-card h3 {
+    color: #ff9f1c;
+}
+
+.lucky-chest-card p {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* المان انیمیشنی صندوقچه */
+.chest-display-area {
+    margin: 35px 0;
+    font-size: 5.5rem;
+    user-select: none;
+    display: inline-block;
+}
+
+.crypto-chest {
+    transition: transform 0.2s;
+}
+
+.crypto-chest.shake {
+    animation: chestBoxShake 0.5s ease-in-out infinite;
+}
+
+/* دکمه عملکرد */
+.btn-spin-lucky {
+    background: #00f5d4; /* سبز نئونی */
+    color: #121929;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    max-width: 280px;
+    transition: all 0.3s ease;
+}
+
+.btn-spin-lucky:hover {
+    box-shadow: 0 0 20px rgba(0, 245, 212, 0.6);
+    transform: scale(1.03);
+}
+
+body.light-theme .btn-spin-lucky {
+    background: #ff9f1c; /* زرد در حالت روز */
+    color: #fff;
+}
+
+body.light-theme .btn-spin-lucky:hover {
+    box-shadow: 0 0 20px rgba(255, 159, 28, 0.5);
+}
+
+.lucky-result-msg {
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    min-height: 25px;
+}
+
+/* انیمیشن لرزش لایه‌ای باکس */
+@keyframes chestBoxShake {
+    0% { transform: translate(2px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(0px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(2px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(2px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+/* --- ابر باکس بزرگ و پر از زرق و برق صرافی --- */
+.mega-glam-lucky-box {
+    position: relative;
+    width: 100%;
+    max-width: 520px; /* اندازه باکس بزرگتر شد */
+    background: linear-gradient(135deg, #090f1d, #121929, #050a14);
+    border: 3px solid #ff9f1c; /* کادر طلایی زعفرانی ضخیم‌تر */
+    border-radius: 24px;
+    padding: 50px 30px;
+    margin: 30px auto;
+    text-align: center;
+    direction: rtl;
+    font-family: sans-serif;
+    overflow: hidden;
+    box-shadow: 0 0 35px rgba(255, 159, 28, 0.35), 
+                0 0 60px rgba(0, 245, 212, 0.15),
+                inset 0 0 25px rgba(255, 159, 28, 0.1);
+    animation: megaGlowPulse 5s infinite ease-in-out;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* انیمیشن تغییر رنگ مداوم سایه و درخشش کادر باکس */
+@keyframes megaGlowPulse {
+    0%, 100% { 
+        border-color: #ff9f1c;
+        box-shadow: 0 0 35px rgba(255, 159, 28, 0.4), 0 0 15px rgba(0, 245, 212, 0.2);
+    }
+    50% { 
+        border-color: #00f5d4; /* تغییر رنگ مرز به سبز نئونی در میان راه */
+        box-shadow: 0 0 50px rgba(0, 245, 212, 0.5), 0 0 30px rgba(255, 159, 28, 0.3);
+        transform: scale(1.02);
+    }
+}
+
+/* لایت مود پر زرق و برق */
+body.light-theme .mega-glam-lucky-box {
+    background: linear-gradient(135deg, #ffffff, #f7f9fc, #fffbee);
+    border-color: #ff9f1c;
+    box-shadow: 0 15px 45px rgba(255, 159, 28, 0.25);
+    animation: megaGlowLight 5s infinite ease-in-out;
+}
+@keyframes megaGlowLight {
+    0%, 100% { box-shadow: 0 15px 45px rgba(255, 159, 28, 0.25); }
+    50% { box-shadow: 0 20px 60px rgba(255, 159, 28, 0.45); transform: scale(1.02); }
+}
+
+/* ستاره‌ها و ذرات درخشان پس‌زمینه (Glitter) */
+.sparkle-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    box-shadow: 0 0 10px #fff, 0 0 20px #00f5d4;
+    border-radius: 50%;
+    animation: particleBlink 2s infinite ease-in-out;
+    pointer-events: none;
+}
+@keyframes particleBlink {
+    0%, 100% { opacity: 0; transform: scale(0.5) translateY(0); }
+    50% { opacity: 1; transform: scale(1.5) translateY(-10px); }
+}
+
+/* نشان نئونی متحرک بالای کارت */
+.cyber-shiny-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, rgba(255,159,28,0.2), rgba(0,245,212,0.2));
+    color: #ff9f1c;
+    border: 1px solid rgba(255, 159, 28, 0.4);
+    padding: 6px 20px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(255, 159, 28, 0.2);
+}
+
+.glam-title {
+    font-size: 2rem; /* ابعاد بزرگتر فونت */
+    margin: 0 0 12px 0;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.2), 0 0 10px #ff9f1c;
+}
+body.light-theme .glam-title { color: #222; text-shadow: none; }
+
+.glam-description {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    color: #e0e6ed;
+    line-height: 1.6;
+    margin: 0;
+}
+body.light-theme .glam-description { color: #555; }
+
+/* ناحیه بزرگ نمایش صندوقچه هدیه همراه با هاله نوری پشتی */
+.mega-chest-zone {
+    position: relative;
+    margin: 40px 0;
+    display: inline-block;
+}
+.ultimate-crypto-chest {
+    font-size: 7rem; /* سایز صندوقچه بسیار بزرگتر شد */
+    user-select: none;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.2s;
+    animation: chestFloatingEffect 3s infinite ease-in-out;
+}
+@keyframes chestFloatingEffect {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+.ultimate-crypto-chest.shake-mega {
+    animation: crazyGlitterShake 0.3s infinite linear !important;
+}
+@keyframes crazyGlitterShake {
+    0% { transform: translate(2px, 2px) rotate(0deg) scale(1.1); }
+    50% { transform: translate(-3px, -2px) rotate(-3deg) scale(1.15); }
+    100% { transform: translate(1px, 2px) rotate(3deg) scale(1.1); }
+}
+
+/* هاله نوری چرخنده پشت هدیه (Glow Aura) */
+.radial-glow-back {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, rgba(0, 245, 212, 0.4) 0%, rgba(255, 159, 28, 0.1) 70%, transparent 100%);
+    border-radius: 50%;
+    z-index: 1;
+    animation: spinAura 8s infinite linear;
+}
+@keyframes spinAura { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* دکمه فوق درخشان پر زرق و برق */
+.btn-mega-flash {
+    background: linear-gradient(135deg, #ff9f1c, #ff6b6b, #00f5d4);
+    background-size: 200% auto;
+    color: #fff;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+    max-width: 320px;
+    box-shadow: 0 0 25px rgba(255, 159, 28, 0.5);
+    transition: all 0.4s ease;
+    animation: gradientShift 3s infinite linear;
+}
+.btn-mega-flash:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px #00f5d4, 0 0 15px #ff9f1c;
+}
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* متن پیام پاداش بزرگ */
+.mega-result-display {
+    margin-top: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    min-height: 30px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+/* تنظیم موقعیت والد برای اینکه کانواس کاملاً در محدوده باکس قفل شود */
+.mega-glam-lucky-box {
+    position: relative; /* بسیار حیاتی برای محدود کردن ذرات */
+    overflow: hidden;    /* پنهان کردن ذرات در صورت خروج از مرز کادر */
+    width: 100%;
+    max-width: 520px;
+    background: linear-gradient(135deg, #090f1d, #121929);
+    border: 3px solid #ff9f1c;
+    border-radius: 24px;
+    padding: 50px 30px;
+    margin: 30px auto;
+    text-align: center;
+    box-shadow: 0 0 35px rgba(255, 159, 28, 0.35);
+}
+
+/* کانواس داخلی ذرات نئونی */
+.confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1; /* قرارگیری در لایه زیرین متن‌ها */
+}
+
+/* رو ماندن محتوای اصلی و دکمه‌ها جهت دسترسی کاربر */
+.lucky-card-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* اگر کلاسی به اسم .cyber-particles یا .sparkle-particle در CSS دارید که در بخش هیرو یا صفحات دیگر ذرات تولید می‌کرد، کدهای آن‌ها را از CSS پاک کنید */

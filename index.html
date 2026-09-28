@@ -16,7 +16,7 @@
 <body>
 
     <!-- === 1. HEADER NAVBAR SECTION (Zobaideh Layout) === -->
-    <header class="navbar">
+    <header class="navbar fixed-top">
         <a href="#" class="brand">
             <span class="logo">$</span>
             <span class="brand-text">
@@ -43,7 +43,7 @@
     </header>
 
     <!-- === 2. CINEMATIC HERO SECTION (Zobaideh Layout) === -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="cyber-particles"></div>
 
         <div class="hero-overlay"></div>
@@ -111,7 +111,58 @@
             </div>
         </div>
     </section>
-    
+    <!-- رادار زنده وضعیت صرافی -->
+<div class="live-radar-box">
+    <div class="radar-circle">
+        <span class="ripple-wave"></span>
+        <span class="ripple-wave"></span>
+    </div>
+    <div class="radar-text">
+        <span class="status-title">شبکه معاملات زنده</span>
+        <small id="liveTimer">بروزرسانی: هم‌اکنون</small>
+    </div>
+</div>
+<!-- باکس شناور نرخ لحظه‌ای دلار -->
+<div class="mini-rate-ticker">
+    <div class="ticker-flag">🇺🇸/🇦🇫</div>
+    <div class="ticker-info">
+        <span>USD to AFN</span>
+        <strong id="liveUsdRate">70.85</strong>
+    </div>
+    <div id="rateTrend" class="ticker-trend up">▲</div>
+</div>
+<!-- === 4. DAILY CRYPTO LUCKY CHEST SECTION === -->
+<section class="lucky-chest-section">
+  <!-- === MEGA LUXURY CRYPTO LUCKY CHEST CONTAINER === -->
+<div class="mega-glam-lucky-box" id="megaLuckyBox">
+    <!-- بستر ایجاد ذرات نئونی انفجاری -->
+    <canvas id="luckyConfetti" class="confetti-canvas"></canvas>
+
+    <div class="glimmer-overlay"></div>
+    <div class="sparkle-particle"></div>
+    <div class="sparkle-particle" style="top: 20%; left: 80%; animation-delay: 1s;"></div>
+    <div class="sparkle-particle" style="top: 70%; left: 15%; animation-delay: 1.5s;"></div>
+
+    <div class="lucky-card-content">
+        <span class="cyber-shiny-badge">💎 SUPREME DAILY BONUS 💎</span>
+        <h2 class="glam-title">Lucky Crypto Chest</h2>
+        <p class="glam-description">The ultimate daily reward event! Unlock the chest and test your luck to win top-tier digital assets or premium trading discounts.</p>
+        
+        <div class="mega-chest-zone">
+            <div id="luckyChest" class="ultimate-crypto-chest">🎁</div>
+            <div class="radial-glow-back"></div>
+        </div>
+        
+        <div class="lucky-action-zone">
+            <button id="spinLuckyBtn" class="btn-mega-flash">💥 Open Lucky Chest 💥</button>
+            <div id="luckyResult" class="mega-result-display"></div>
+        </div>
+    </div>
+</div>
+
+
+</section>
+
         <!-- === 3.5 PREMIUM 4-MEMBER TEAM SECTION (Our Team Node Layout) === -->
     <section id="team-section" class="team-section py-5 position-relative overflow-hidden" style="background-color: #ffffff; border-top: 1px solid #eee;">
         <div class="container position-relative z-1">
@@ -685,9 +736,9 @@
             <div class="col-md-6 text-center text-md-start">
                 <div class="footer-nav d-flex flex-wrap justify-content-center justify-content-md-start gap-4">
                     <a href="#" class="f-cyber-link text-white-50 text-decoration-none small text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 1px;">Home Terminal</a>
-                    <a href="#about-us-section" class="f-cyber-link text-white-50 text-decoration-none small text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 1px;">About Node</a>
-                    <a href="#rates" class="f-cyber-link text-white-50 text-decoration-none small text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 1px;">Live Markets</a>
-                    <a href="#contact" class="f-cyber-link text-white-50 text-decoration-none small text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 1px;">Secure Contact</a>
+                    <a href="#home" class="f-cyber-link text-white-50 text-decoration-none small text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 1px;">About Node</a>
+                    <a href="#about-us-section" class="f-cyber-link text-white-50 text-decoration-none small text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 1px;">Live Markets</a>
+                    <a href="#team-section" class="f-cyber-link text-white-50 text-decoration-none small text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 1px;">Secure Contact</a>
                 </div>
             </div>
            <div class="row align-items-center py-3">
@@ -714,8 +765,6 @@
 </div>
 
 </div>
-
-
         </div>
         <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 text-white-50" style="font-size: 0.78rem;">
             <span class="fw-medium text-muted">© 2026 Global Exchange Inc. Secure Encryption Trading Protocols Active.</span>
